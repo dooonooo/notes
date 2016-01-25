@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  以太坊的一些有用知识 - Lidong's notes
+  mysql命令 - Lidong's notes
   
   </title>
   
@@ -94,19 +94,17 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>以太坊的一些有用知识</h1>
+          <h1>mysql命令</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/1/23</span>
+          <span class="date">2016/1/25</span>
 
-          <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='ethereum.html'>以太</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/ethereum-command.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/mysql-command.html#disqus_thread">comments</a>
             
 
             
@@ -116,29 +114,16 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h2 id="toc_0">以太命令</h2>
+      <p>远程连接mysql</p>
 
-<p>安装钱包（geth）--需要提前安装homebrew。<br/>
-brew tap ethereum/ethereum<br/>
-brew install ethereum</p>
+<pre><code>//***指密码，下同
+mysql -u root -h 127.0.0.1 -P 3306 -p ***
+</code></pre>
 
-<p>1.创建以太账户：geth account new<br/>
-2.查询已创建的账户：geth account list<br/>
-3.开启挖矿功能：geth --mine --minerthreads=4<br/>
- (minerthreads=4是默认值，挖矿会占用电脑所有的计算资源，造成卡顿，可以改成2或者3)，等到generating DAG显示到达100%，就开始挖矿了</p>
+<p>导出数据表</p>
 
-<h3 id="toc_1">官方指南(英文)：</h3>
-
-<p><a href="https://ethereum.gitbooks.io/frontier-guide/content/">https://ethereum.gitbooks.io/frontier-guide/content/</a></p>
-
-<h3 id="toc_2">在线查询帐户余额</h3>
-
-<p><a href="https://etherchain.org/">https://etherchain.org/</a><br/>
-输入你的地址，即可查询到你的余额（只有余额不为0的才可以查到）</p>
-
-<h2 id="toc_3">我的address：</h2>
-
-<p>98a07dd58c3887271ed29f058109e206972e8164</p>
+<pre><code>mysqldump -u root -p *** -h 127.0.0.1 数据库.表 &gt; 导出sqld的路径
+</code></pre>
 
       </div>
 
@@ -146,16 +131,16 @@ brew install ethereum</p>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="mysql-command.html" 
-          title="Previous Post: mysql命令">&laquo; mysql命令</a>
+          <a href="front-optimization.html" 
+          title="Previous Post: 前端优化的方法">&laquo; 前端优化的方法</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="sublime-note.html" 
-          title="Next Post: Sublime笔记">Sublime笔记 &raquo;</a>
+          <a  href="ethereum-command.html" 
+          title="Next Post: 以太坊的一些有用知识">以太坊的一些有用知识 &raquo;</a>
       
       </p>
         </div>

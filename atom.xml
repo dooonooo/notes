@@ -4,13 +4,163 @@
   <title><![CDATA[Lidong's notes]]></title>
   <link href="http://notes.lidong.me/atom.xml" rel="self"/>
   <link href="http://notes.lidong.me/"/>
-  <updated>2016-01-24T02:14:50+08:00</updated>
+  <updated>2016-01-26T00:04:00+08:00</updated>
   <id>http://notes.lidong.me/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[CSS画图形（一）]]></title>
+    <link href="http://notes.lidong.me/css-draw-1.html"/>
+    <updated>2016-01-25T21:44:48+08:00</updated>
+    <id>http://notes.lidong.me/css-draw-1.html</id>
+    <content type="html"><![CDATA[
+<p>1.正方形<br/>
+<div style="width:100px;height:100px;background:red;"></div></p>
+
+<pre><code>.square{
+width:100px;
+height:100px;
+backgroud:red;}
+</code></pre>
+
+<p>2.长方形<br/>
+<div style="width:150px;height:100px;background:red;"></div></p>
+
+<pre><code>.rectangle{
+width:150px;
+height:100px;
+background:red;}
+</code></pre>
+
+<p>3.圆形<br/>
+ <div style="width:100px;height: 100px;background:red;border-top-left-radius:50px;border-top-right-radius:50px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;"></div></p>
+
+<pre><code>.circle {
+//将正方形圆角放大到最大
+width:100px;
+height: 100px;
+background:red;
+border-top-left-radius:50px;
+border-top-right-radius:50px;
+border-bottom-left-radius:50px;
+border-bottom-right-radius:50px;}
+</code></pre>
+
+<p>4.椭圆<br/>
+ <div style="width:200px;height: 100px;background:red;border-top-left-radius:100px 50px;border-top-right-radius:100px 50px;border-bottom-left-radius:100px 50px;border-bottom-right-radius:100px 50px;"></div></p>
+
+<pre><code>.oval{
+//长方形的圆角放大到最大
+width:200px;
+height: 100px;
+background:red;
+border-top-left-radius:100px 50px;
+border-top-right-radius:100px 50px;
+border-bottom-left-radius:100px 50px;
+border-bottom-right-radius:100px 50px;}
+</code></pre>
+
+<p>5.三角形<br/>
+<div style="width:0;height:0px; border-bottom:50px solid red; border-left:25px solid transparent; border-right:25px solid transparent;"></div></p>
+
+<pre><code>.triangle{
+//利用边框填充，
+width:0;
+height:0;
+border-bottom:50px solid red;
+border-left:25px solid transparent;
+border-right:25px solid transparent;}
+</code></pre>
+
+<p>6.直角三角形<br/>
+<div style="height:0;width:0;border-bottom:50px solid red;border-right:50px solid transparent;"></div></p>
+
+<pre><code>.right-angled-triangle{
+//常规三角形的一半，将底边延长即为图例
+height:0;
+width:0;
+border-bottom:50px solid red;
+border-right:50px solid transparent;}
+</code></pre>
+
+<p>7.平行四边形<br/>
+<div style="width:100px;height:50px;background:red;transform: skew(30deg,0);"></div></p>
+
+<pre><code>.parallelogram{
+//将长方形沿x或y轴倾斜某个角度即为平行四边形
+width:100px;
+height:50px;
+background:red;
+transform: skew(30deg,0);}
+</code></pre>
+
+<p>8.梯形<br/>
+<div style="width:100px;height:0;border-bottom:100px solid red;border-left:50px solid transparent;border-right:50px solid transparent;"></div></p>
+
+<pre><code>.trapezoid{
+//对三角形设置宽度
+width:100px;
+height:0;
+border-bottom:100px solid red;
+border-left:50px solid transparent;
+border-right:50px solid transparent;
+
+}
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[前端优化的方法]]></title>
+    <link href="http://notes.lidong.me/front-optimization.html"/>
+    <updated>2016-01-25T20:52:18+08:00</updated>
+    <id>http://notes.lidong.me/front-optimization.html</id>
+    <content type="html"><![CDATA[
+<ol>
+<li>减少http请求（合并压缩css、js、雪碧图（css-sprites）、cdn加速、data缓存、图片缓存）</li>
+<li>前端模版</li>
+<li>设置样式比较多的时候，设置className而不是直接操作样式</li>
+<li>用innerHTML 代替DOM操作，减少DOM的操作次数，优化javascript性能</li>
+<li>图片预加载，将样式放在顶部，将脚本放在底部加上时间戳。</li>
+<li>避免在主体布局使用table。</li>
+</ol>
+
+<p>尽量向前端优化，减少数据库操作，减少磁盘io，<br/>
+在不影响功能体验上情况下，<br/>
+能在浏览器执行的不要在服务端执行，<br/>
+能在缓存服务器上直接返回的不要到应用服务器，<br/>
+程序能直接得出结果的不要到外部取得，<br/>
+本机能取得的数据不要到远程取<br/>
+内存能取得的不要到磁盘取<br/>
+缓存有的不要去数据库查询</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mysql命令]]></title>
+    <link href="http://notes.lidong.me/mysql-command.html"/>
+    <updated>2016-01-25T01:38:34+08:00</updated>
+    <id>http://notes.lidong.me/mysql-command.html</id>
+    <content type="html"><![CDATA[
+<p>远程连接mysql</p>
+
+<pre><code>//***指密码，下同
+mysql -u root -h 127.0.0.1 -P 3306 -p ***
+</code></pre>
+
+<p>导出数据表</p>
+
+<pre><code>mysqldump -u root -p *** -h 127.0.0.1 数据库.表 &gt; 导出sqld的路径
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[以太坊的一些有用知识]]></title>

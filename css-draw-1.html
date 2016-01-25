@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  以太坊的一些有用知识 - Lidong's notes
+  CSS画图形（一） - Lidong's notes
   
   </title>
   
@@ -94,19 +94,19 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>以太坊的一些有用知识</h1>
+          <h1>CSS画图形（一）</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/1/23</span>
+          <span class="date">2016/1/25</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='ethereum.html'>以太</a></span>
+              <span class="posted-in"><a href='css.html'>css</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/ethereum-command.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/css-draw-1.html#disqus_thread">comments</a>
             
 
             
@@ -116,29 +116,99 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h2 id="toc_0">以太命令</h2>
+      <p>1.正方形<br/>
+<div style="width:100px;height:100px;background:red;"></div></p>
 
-<p>安装钱包（geth）--需要提前安装homebrew。<br/>
-brew tap ethereum/ethereum<br/>
-brew install ethereum</p>
+<pre><code>.square{
+width:100px;
+height:100px;
+backgroud:red;}
+</code></pre>
 
-<p>1.创建以太账户：geth account new<br/>
-2.查询已创建的账户：geth account list<br/>
-3.开启挖矿功能：geth --mine --minerthreads=4<br/>
- (minerthreads=4是默认值，挖矿会占用电脑所有的计算资源，造成卡顿，可以改成2或者3)，等到generating DAG显示到达100%，就开始挖矿了</p>
+<p>2.长方形<br/>
+<div style="width:150px;height:100px;background:red;"></div></p>
 
-<h3 id="toc_1">官方指南(英文)：</h3>
+<pre><code>.rectangle{
+width:150px;
+height:100px;
+background:red;}
+</code></pre>
 
-<p><a href="https://ethereum.gitbooks.io/frontier-guide/content/">https://ethereum.gitbooks.io/frontier-guide/content/</a></p>
+<p>3.圆形<br/>
+ <div style="width:100px;height: 100px;background:red;border-top-left-radius:50px;border-top-right-radius:50px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;"></div></p>
 
-<h3 id="toc_2">在线查询帐户余额</h3>
+<pre><code>.circle {
+//将正方形圆角放大到最大
+width:100px;
+height: 100px;
+background:red;
+border-top-left-radius:50px;
+border-top-right-radius:50px;
+border-bottom-left-radius:50px;
+border-bottom-right-radius:50px;}
+</code></pre>
 
-<p><a href="https://etherchain.org/">https://etherchain.org/</a><br/>
-输入你的地址，即可查询到你的余额（只有余额不为0的才可以查到）</p>
+<p>4.椭圆<br/>
+ <div style="width:200px;height: 100px;background:red;border-top-left-radius:100px 50px;border-top-right-radius:100px 50px;border-bottom-left-radius:100px 50px;border-bottom-right-radius:100px 50px;"></div></p>
 
-<h2 id="toc_3">我的address：</h2>
+<pre><code>.oval{
+//长方形的圆角放大到最大
+width:200px;
+height: 100px;
+background:red;
+border-top-left-radius:100px 50px;
+border-top-right-radius:100px 50px;
+border-bottom-left-radius:100px 50px;
+border-bottom-right-radius:100px 50px;}
+</code></pre>
 
-<p>98a07dd58c3887271ed29f058109e206972e8164</p>
+<p>5.三角形<br/>
+<div style="width:0;height:0px; border-bottom:50px solid red; border-left:25px solid transparent; border-right:25px solid transparent;"></div></p>
+
+<pre><code>.triangle{
+//利用边框填充，
+width:0;
+height:0;
+border-bottom:50px solid red;
+border-left:25px solid transparent;
+border-right:25px solid transparent;}
+</code></pre>
+
+<p>6.直角三角形<br/>
+<div style="height:0;width:0;border-bottom:50px solid red;border-right:50px solid transparent;"></div></p>
+
+<pre><code>.right-angled-triangle{
+//常规三角形的一半，将底边延长即为图例
+height:0;
+width:0;
+border-bottom:50px solid red;
+border-right:50px solid transparent;}
+</code></pre>
+
+<p>7.平行四边形<br/>
+<div style="width:100px;height:50px;background:red;transform: skew(30deg,0);"></div></p>
+
+<pre><code>.parallelogram{
+//将长方形沿x或y轴倾斜某个角度即为平行四边形
+width:100px;
+height:50px;
+background:red;
+transform: skew(30deg,0);}
+</code></pre>
+
+<p>8.梯形<br/>
+<div style="width:100px;height:0;border-bottom:100px solid red;border-left:50px solid transparent;border-right:50px solid transparent;"></div></p>
+
+<pre><code>.trapezoid{
+//对三角形设置宽度
+width:100px;
+height:0;
+border-bottom:100px solid red;
+border-left:50px solid transparent;
+border-right:50px solid transparent;
+
+}
+</code></pre>
 
       </div>
 
@@ -146,16 +216,13 @@ brew install ethereum</p>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="mysql-command.html" 
-          title="Previous Post: mysql命令">&laquo; mysql命令</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="sublime-note.html" 
-          title="Next Post: Sublime笔记">Sublime笔记 &raquo;</a>
+          <a  href="front-optimization.html" 
+          title="Next Post: 前端优化的方法">前端优化的方法 &raquo;</a>
       
       </p>
         </div>

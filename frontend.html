@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  以太坊的一些有用知识 - Lidong's notes
+  前端 - Lidong's notes
   
   </title>
   
@@ -85,97 +85,82 @@
 
         <section id="main-content" role="main" class="scroll-container">
  <script type="text/javascript">
-  $(function(){
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>以太坊的一些有用知识</h1>
-     
-        <div class="read-more clearfix">
-          <span class="date">2016/1/23</span>
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="front-optimization.html">
+                
+                  <h1>前端优化的方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li>减少http请求（合并压缩css、js、雪碧图（css-sprites）、cdn加速、data缓存、图片缓存）</li>
+<li>前端模版</li>
+<li>设置样式比较多的时候，设置className而不是直接操作样式</li>
+<li>用innerHTML 代替DOM操作，减少DOM的操作次数，优化javascript性能</li>
+<li>图片预加载，将样式放在顶部，将脚本放在底部加上时间戳。</li>
+<li>避免在主体布局使用table。</li>
+</ol>
 
-          <span>posted in&nbsp;</span> 
-          
-              <span class="posted-in"><a href='ethereum.html'>以太</a></span>
-           
-         
-          <span class="comments">
-            
-              <a href="http://notes.lidong.me/ethereum-command.html#disqus_thread">comments</a>
-            
+<p>尽量向前端优化，减少数据库操作，减少磁盘io，<br/>
+在不影响功能体验上情况下，<br/>
+能在浏览器执行的不要在服务端执行，<br/>
+能在缓存服务器上直接返回的不要到应用服务器，<br/>
+程序能直接得出结果的不要到外部取得，<br/>
+本机能取得的数据不要到远程取<br/>
+内存能取得的不要到磁盘取<br/>
+缓存有的不要去数据库查询</p>
 
-            
-          </span>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/front-optimization.html#disqus_thread">comments</a>
+                      
 
-        </div>
-      </div><!-- article -->
-
-      <div class="article-content">
-      <h2 id="toc_0">以太命令</h2>
-
-<p>安装钱包（geth）--需要提前安装homebrew。<br/>
-brew tap ethereum/ethereum<br/>
-brew install ethereum</p>
-
-<p>1.创建以太账户：geth account new<br/>
-2.查询已创建的账户：geth account list<br/>
-3.开启挖矿功能：geth --mine --minerthreads=4<br/>
- (minerthreads=4是默认值，挖矿会占用电脑所有的计算资源，造成卡顿，可以改成2或者3)，等到generating DAG显示到达100%，就开始挖矿了</p>
-
-<h3 id="toc_1">官方指南(英文)：</h3>
-
-<p><a href="https://ethereum.gitbooks.io/frontier-guide/content/">https://ethereum.gitbooks.io/frontier-guide/content/</a></p>
-
-<h3 id="toc_2">在线查询帐户余额</h3>
-
-<p><a href="https://etherchain.org/">https://etherchain.org/</a><br/>
-输入你的地址，即可查询到你的余额（只有余额不为0的才可以查到）</p>
-
-<h2 id="toc_3">我的address：</h2>
-
-<p>98a07dd58c3887271ed29f058109e206972e8164</p>
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="mysql-command.html" 
-          title="Previous Post: mysql命令">&laquo; mysql命令</a>
-      
-        </p>
-        </div>
-        <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="sublime-note.html" 
-          title="Next Post: Sublime笔记">Sublime笔记 &raquo;</a>
-      
-      </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          
-
-          
-            <div id="disqus_thread"></div>
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 -->
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
-
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">

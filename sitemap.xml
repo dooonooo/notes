@@ -2,7 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>http://notes.lidong.me/</loc>
-  <lastmod>2016-01-24T02:24:04+08:00</lastmod>
+  <lastmod>2016-01-26T00:04:48+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/css-draw-1.html</loc>
+  <lastmod>2016-01-25T21:44:48+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/front-optimization.html</loc>
+  <lastmod>2016-01-25T20:52:18+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/mysql-command.html</loc>
+  <lastmod>2016-01-25T01:37:34+08:00</lastmod>
 </url>
 
 <url>
@@ -23,11 +38,19 @@
 
 
 <url>
-  <loc>http://notes.lidong.me/editor-ide.html</loc>
+  <loc>http://notes.lidong.me/css.html</loc>
 </url>
 
 <url>
   <loc>http://notes.lidong.me/ethereum.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/frontend.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/editor-ide.html</loc>
 </url>
 
 
