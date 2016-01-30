@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  CSS画图形（一） - Lidong's notes
+  网站程序 - Lidong's notes
   
   </title>
   
@@ -89,167 +89,72 @@
 
         <section id="main-content" role="main" class="scroll-container">
  <script type="text/javascript">
-  $(function(){
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>CSS画图形（一）</h1>
-     
-        <div class="read-more clearfix">
-          <span class="date">2016/1/25</span>
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="directory-list.html">
+                
+                  <h1>目录列表程序</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>好久就想弄个可以分享文件的页面，感觉不复杂，但也不简单。</p>
 
-          <span>posted in&nbsp;</span> 
-          
-              <span class="posted-in"><a href='css.html'>css</a></span>
-           
-         
-          <span class="comments">
-            
-              <a href="http://notes.lidong.me/css-draw-1.html#disqus_thread">comments</a>
-            
+<p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
 
-            
-          </span>
+<p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
 
-        </div>
-      </div><!-- article -->
+<p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
 
-      <div class="article-content">
-      <p>1.正方形<br/>
-<div style="width:100px;height:100px;background:red;"></div></p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='wangzhanchengxu.html'>网站程序</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/directory-list.html#disqus_thread">comments</a>
+                      
 
-<pre><code>.square{
-width:100px;
-height:100px;
-backgroud:red;}
-</code></pre>
-
-<p>2.长方形<br/>
-<div style="width:150px;height:100px;background:red;"></div></p>
-
-<pre><code>.rectangle{
-width:150px;
-height:100px;
-background:red;}
-</code></pre>
-
-<p>3.圆形<br/>
- <div style="width:100px;height: 100px;background:red;border-top-left-radius:50px;border-top-right-radius:50px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;"></div></p>
-
-<pre><code>.circle {
-//将正方形圆角放大到最大
-width:100px;
-height: 100px;
-background:red;
-border-top-left-radius:50px;
-border-top-right-radius:50px;
-border-bottom-left-radius:50px;
-border-bottom-right-radius:50px;}
-</code></pre>
-
-<p>4.椭圆<br/>
- <div style="width:200px;height: 100px;background:red;border-top-left-radius:100px 50px;border-top-right-radius:100px 50px;border-bottom-left-radius:100px 50px;border-bottom-right-radius:100px 50px;"></div></p>
-
-<pre><code>.oval{
-//长方形的圆角放大到最大
-width:200px;
-height: 100px;
-background:red;
-border-top-left-radius:100px 50px;
-border-top-right-radius:100px 50px;
-border-bottom-left-radius:100px 50px;
-border-bottom-right-radius:100px 50px;}
-</code></pre>
-
-<p>5.三角形<br/>
-<div style="width:0;height:0px; border-bottom:50px solid red; border-left:25px solid transparent; border-right:25px solid transparent;"></div></p>
-
-<pre><code>.triangle{
-//利用边框填充，
-width:0;
-height:0;
-border-bottom:50px solid red;
-border-left:25px solid transparent;
-border-right:25px solid transparent;}
-</code></pre>
-
-<p>6.直角三角形<br/>
-<div style="height:0;width:0;border-bottom:50px solid red;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.right-angled-triangle{
-//常规三角形的一半，将底边延长即为图例
-height:0;
-width:0;
-border-bottom:50px solid red;
-border-right:50px solid transparent;}
-</code></pre>
-
-<p>7.平行四边形<br/>
-<div style="width:100px;height:50px;background:red;transform: skew(30deg,0);"></div></p>
-
-<pre><code>.parallelogram{
-//将长方形沿x或y轴倾斜某个角度即为平行四边形
-width:100px;
-height:50px;
-background:red;
-transform: skew(30deg,0);}
-</code></pre>
-
-<p>8.梯形<br/>
-<div style="width:100px;height:0;border-bottom:100px solid red;border-left:50px solid transparent;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.trapezoid{
-//对三角形设置宽度
-width:100px;
-height:0;
-border-bottom:100px solid red;
-border-left:50px solid transparent;
-border-right:50px solid transparent;
-
-}
-</code></pre>
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="fontend-guide.html" 
-          title="Previous Post: 前端规范">&laquo; 前端规范</a>
-      
-        </p>
-        </div>
-        <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="front-optimization.html" 
-          title="Next Post: 前端优化的方法">前端优化的方法 &raquo;</a>
-      
-      </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          
-
-          
-            <div id="disqus_thread"></div>
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 -->
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
-
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">

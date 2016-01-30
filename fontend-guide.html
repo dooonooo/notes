@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  CSS画图形（一） - Lidong's notes
+  前端规范 - Lidong's notes
   
   </title>
   
@@ -98,19 +98,17 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>CSS画图形（一）</h1>
+          <h1>前端规范</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/1/25</span>
+          <span class="date">2016/1/26</span>
 
-          <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='css.html'>css</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/css-draw-1.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/fontend-guide.html#disqus_thread">comments</a>
             
 
             
@@ -120,99 +118,24 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>1.正方形<br/>
-<div style="width:100px;height:100px;background:red;"></div></p>
+      <h3 id="toc_0">html部分</h3>
 
-<pre><code>.square{
-width:100px;
-height:100px;
-backgroud:red;}
-</code></pre>
-
-<p>2.长方形<br/>
-<div style="width:150px;height:100px;background:red;"></div></p>
-
-<pre><code>.rectangle{
-width:150px;
-height:100px;
-background:red;}
-</code></pre>
-
-<p>3.圆形<br/>
- <div style="width:100px;height: 100px;background:red;border-top-left-radius:50px;border-top-right-radius:50px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;"></div></p>
-
-<pre><code>.circle {
-//将正方形圆角放大到最大
-width:100px;
-height: 100px;
-background:red;
-border-top-left-radius:50px;
-border-top-right-radius:50px;
-border-bottom-left-radius:50px;
-border-bottom-right-radius:50px;}
-</code></pre>
-
-<p>4.椭圆<br/>
- <div style="width:200px;height: 100px;background:red;border-top-left-radius:100px 50px;border-top-right-radius:100px 50px;border-bottom-left-radius:100px 50px;border-bottom-right-radius:100px 50px;"></div></p>
-
-<pre><code>.oval{
-//长方形的圆角放大到最大
-width:200px;
-height: 100px;
-background:red;
-border-top-left-radius:100px 50px;
-border-top-right-radius:100px 50px;
-border-bottom-left-radius:100px 50px;
-border-bottom-right-radius:100px 50px;}
-</code></pre>
-
-<p>5.三角形<br/>
-<div style="width:0;height:0px; border-bottom:50px solid red; border-left:25px solid transparent; border-right:25px solid transparent;"></div></p>
-
-<pre><code>.triangle{
-//利用边框填充，
-width:0;
-height:0;
-border-bottom:50px solid red;
-border-left:25px solid transparent;
-border-right:25px solid transparent;}
-</code></pre>
-
-<p>6.直角三角形<br/>
-<div style="height:0;width:0;border-bottom:50px solid red;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.right-angled-triangle{
-//常规三角形的一半，将底边延长即为图例
-height:0;
-width:0;
-border-bottom:50px solid red;
-border-right:50px solid transparent;}
-</code></pre>
-
-<p>7.平行四边形<br/>
-<div style="width:100px;height:50px;background:red;transform: skew(30deg,0);"></div></p>
-
-<pre><code>.parallelogram{
-//将长方形沿x或y轴倾斜某个角度即为平行四边形
-width:100px;
-height:50px;
-background:red;
-transform: skew(30deg,0);}
-</code></pre>
-
-<p>8.梯形<br/>
-<div style="width:100px;height:0;border-bottom:100px solid red;border-left:50px solid transparent;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.trapezoid{
-//对三角形设置宽度
-width:100px;
-height:0;
-border-bottom:100px solid red;
-border-left:50px solid transparent;
-border-right:50px solid transparent;
-
-}
-</code></pre>
+<ol>
+<li>页面声明：简单粗暴有内涵
+&lt;!DOCTYPE HTML&gt;</li>
+<li>把css放在<head>中，避免使用@import</li>
+<li>语言属性声明。
+<html lang="zh-CN"></li>
+<li>html标签使用小写</li>
+<li><p>使用utf-8编码<br/>
+html中：`<meta charset="uft-8"><br/>
+css中：@charset <q>uft-8</q>;</p></li>
+<li><p>IE兼容模式<br/>
+完美解决IE兼容模式代码： <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"></p></li>
+<li><p>自闭合元素（单闭合标签）后的斜杠是可以省略的，既然可以省略，省略最好，省字节。</p></li>
+<li><p>属性定义最好使用双引号</p></li>
+<li><p>html5中引入js、css文件不需要定义type属性。（能省则省）</p></li>
+</ol>
 
       </div>
 
@@ -220,16 +143,16 @@ border-right:50px solid transparent;
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="fontend-guide.html" 
-          title="Previous Post: 前端规范">&laquo; 前端规范</a>
+          <a href="directory-list.html" 
+          title="Previous Post: 目录列表程序">&laquo; 目录列表程序</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="front-optimization.html" 
-          title="Next Post: 前端优化的方法">前端优化的方法 &raquo;</a>
+          <a  href="css-draw-1.html" 
+          title="Next Post: CSS画图形（一）">CSS画图形（一） &raquo;</a>
       
       </p>
         </div>
