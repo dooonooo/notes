@@ -1,0 +1,811 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Lidong's notes
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Lidong's notes" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        <li id="menu_item_index"><a href="index.html">HOME</a></li>
+        <li id="menu_item_archives"><a href="archives.html">Archives</a></li>
+        <li id="menu_item_about"><a href="about.html">ABOUT</a></li>
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" action="http://google.com/search" method="get">
+    <input type="hidden" name="q" value="site:notes.lidong.me" />
+    <input tabindex="1" type="search" name="q"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Lidong's notes</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+       
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="ethereum.html">以太</a></li>
+        
+            <li><a href="editor-ide.html">工具</a></li>
+        
+            <li><a href="frontend.html">前端</a></li>
+        
+            <li><a href="xinnengyouhua.html">性能优化</a></li>
+        
+            <li><a href="wangzhanchengxu.html">网站程序</a></li>
+        
+            <li><a href="css.html">css</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="css-draw-1.html">
+                
+                  <h1>CSS画图形</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1.正方形<br/>
+<div style="width:100px;height:100px;background:red;"></div></p>
+
+<pre><code>.square{
+width:100px;
+height:100px;
+backgroud:red;}
+</code></pre>
+
+<p>2.长方形<br/>
+<div style="width:150px;height:100px;background:red;"></div></p>
+
+<pre><code>.rectangle{
+width:150px;
+height:100px;
+background:red;}
+</code></pre>
+
+<p>3.圆形<br/>
+ <div style="width:100px;height: 100px;background:red;border-top-left-radius:50px;border-top-right-radius:50px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;"></div></p>
+
+<pre><code>.circle {
+//将正方形圆角放大到最大
+width:100px;
+height: 100px;
+background:red;
+border-top-left-radius:50px;
+border-top-right-radius:50px;
+border-bottom-left-radius:50px;
+border-bottom-right-radius:50px;}
+</code></pre>
+
+<p>4.椭圆<br/>
+ <div style="width:200px;height: 100px;background:red;border-top-left-radius:100px 50px;border-top-right-radius:100px 50px;border-bottom-left-radius:100px 50px;border-bottom-right-radius:100px 50px;"></div></p>
+
+<pre><code>.oval{
+//长方形的圆角放大到最大
+width:200px;
+height: 100px;
+background:red;
+border-top-left-radius:100px 50px;
+border-top-right-radius:100px 50px;
+border-bottom-left-radius:100px 50px;
+border-bottom-right-radius:100px 50px;}
+</code></pre>
+
+<p>5.三角形<br/>
+<div style="width:0;height:0px; border-bottom:50px solid red; border-left:25px solid transparent; border-right:25px solid transparent;"></div></p>
+
+<pre><code>.triangle{
+//利用边框填充，
+width:0;
+height:0;
+border-bottom:50px solid red;
+border-left:25px solid transparent;
+border-right:25px solid transparent;}
+</code></pre>
+
+<p>6.直角三角形<br/>
+<div style="height:0;width:0;border-bottom:50px solid red;border-right:50px solid transparent;"></div></p>
+
+<pre><code>.right-angled-triangle{
+//常规三角形的一半，将底边延长即为图例
+height:0;
+width:0;
+border-bottom:50px solid red;
+border-right:50px solid transparent;}
+</code></pre>
+
+<p>7.平行四边形<br/>
+<div style="width:100px;height:50px;background:red;transform: skew(30deg,0);"></div></p>
+
+<pre><code>.parallelogram{
+//将长方形沿x或y轴倾斜某个角度即为平行四边形
+width:100px;
+height:50px;
+background:red;
+transform: skew(30deg,0);}
+</code></pre>
+
+<p>8.梯形<br/>
+<div style="width:100px;height:0;border-bottom:100px solid red;border-left:50px solid transparent;border-right:50px solid transparent;"></div></p>
+
+<pre><code>.trapezoid{
+//对三角形设置宽度
+width:100px;
+height:0;
+border-bottom:100px solid red;
+border-left:50px solid transparent;
+border-right:50px solid transparent;
+
+}
+</code></pre>
+
+<p>9.六角星</p>
+
+<style>
+<!--
+#star-six {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+    position: relative;
+}
+#star-six:after {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid red;
+    position: absolute;
+    content: "";
+    top: 30px;
+    left: -50px;
+}
+--></style>
+
+<div id="star-six"></div>
+
+<p>&nbsp;</p>
+
+<pre><code>#star-six {
+width: 0;
+height: 0;
+border-left: 50px solid transparent;
+border-right: 50px solid transparent;
+border-bottom: 100px solid red;
+}
+#star-six:after {
+width: 0;
+height: 0;
+border-left: 50px solid transparent;
+border-right: 50px solid transparent;
+border-top: 100px solid red;
+content: &quot;&quot;;
+top: 30px;
+left: -50px;
+}
+</code></pre>
+
+<p>10.五角星</p>
+
+<style>
+
+#star-five{margin:50px 0;
+display:block;
+position:relative;
+color:red;
+width:0;
+height:0;
+border-right:100px solid transparent;
+border-bottom:70px solid red;
+border-left:100px solid transparent;
+transform:rotate(35deg);
+}
+#star-five:before {
+border-bottom:80px solid red;
+border-left:30px solid transparent;
+border-right:30px solid transparent;
+position:absolute;
+height:0;
+width:0;
+top: -45px;
+left: -65px;
+dispaly:block;
+content:'';
+transform:rotate(-35deg);
+}
+
+#star-five:after { 
+position: absolute; 
+display: block; 
+color: red; 
+top: 3px; 
+left: -105px; 
+width: 0px; 
+height: 0px; 
+border-right: 100px solid transparent; 
+border-bottom: 70px solid red; 
+border-left: 100px solid transparent; 
+-webkit-transform: rotate(-70deg); 
+-moz-transform: rotate(-70deg); 
+-ms-transform: rotate(-70deg); 
+-o-transform: rotate(-70deg); 
+content: ''; 
+} 
+
+</style>
+
+<div id="star-five"></div>
+
+<p>&nbsp;</p>
+
+<pre><code>#star-five{
+//画左上与右下的一个三角形
+margin:50px 0;
+display:block;
+position:relative;
+color:red;
+width:0;
+height:0;
+border-right:100px solid transparent;
+border-bottom:70px solid red;
+border-left:100px solid transparent;
+transform:rotate(35deg);
+}
+//画顶上的三角形
+#star-five:before {
+border-bottom:80px solid red;
+border-left:30px solid transparent;
+border-right:30px solid transparent;
+position:absolute;
+height:0;
+width:0;
+top: -45px;
+left: -65px;
+dispaly:block;
+content:&#39;&#39;;
+transform:rotate(-35deg);
+}
+//画右上与左下的一个三角形
+#star-five:after { 
+position: absolute; 
+display: block; 
+color: red; 
+top: 3px; 
+left: -105px; 
+width: 0px; 
+height: 0px; 
+border-right: 100px solid transparent; 
+border-bottom: 70px solid red; 
+border-left: 100px solid transparent; 
+-webkit-transform: rotate(-70deg); 
+-moz-transform: rotate(-70deg); 
+-ms-transform: rotate(-70deg); 
+-o-transform: rotate(-70deg); 
+content: &#39;&#39;; 
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/css-draw-1.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="front-optimization.html">
+                
+                  <h1>前端优化的方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li>减少http请求（合并压缩css、js、雪碧图（css-sprites）、cdn加速、data缓存、图片缓存）</li>
+<li>前端模版</li>
+<li>设置样式比较多的时候，设置className而不是直接操作样式</li>
+<li>用innerHTML 代替DOM操作，减少DOM的操作次数，优化javascript性能</li>
+<li>图片预加载，将样式放在顶部，将脚本放在底部加上时间戳。</li>
+<li>避免在主体布局使用table。</li>
+</ol>
+
+<p>尽量向前端优化，减少数据库操作，减少磁盘io，<br/>
+在不影响功能体验上情况下，<br/>
+能在浏览器执行的不要在服务端执行，<br/>
+能在缓存服务器上直接返回的不要到应用服务器，<br/>
+程序能直接得出结果的不要到外部取得，<br/>
+本机能取得的数据不要到远程取<br/>
+内存能取得的不要到磁盘取<br/>
+缓存有的不要去数据库查询</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				  
+          					    <span class="posted-in"><a href='xinnengyouhua.html'>性能优化</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/front-optimization.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="mysql-command.html">
+                
+                  <h1>mysql命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>远程连接mysql</p>
+
+<pre><code>//***指密码，下同
+mysql -u root -h 127.0.0.1 -P 3306 -p ***
+</code></pre>
+
+<p>导出数据表</p>
+
+<pre><code>mysqldump -u root -p *** -h 127.0.0.1 数据库.表 &gt; 导出sqld的路径
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/25</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/mysql-command.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="ethereum-command.html">
+                
+                  <h1>以太坊的一些有用知识</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">以太命令</h2>
+
+<p>安装钱包（geth）--需要提前安装homebrew。<br/>
+brew tap ethereum/ethereum<br/>
+brew install ethereum</p>
+
+<p>1.创建以太账户：geth account new<br/>
+2.查询已创建的账户：geth account list<br/>
+3.开启挖矿功能：geth --mine --minerthreads=4<br/>
+ (minerthreads=4是默认值，挖矿会占用电脑所有的计算资源，造成卡顿，可以改成2或者3)，等到generating DAG显示到达100%，就开始挖矿了</p>
+
+<h3 id="toc_1">官方指南(英文)：</h3>
+
+<p><a href="https://ethereum.gitbooks.io/frontier-guide/content/">https://ethereum.gitbooks.io/frontier-guide/content/</a></p>
+
+<h3 id="toc_2">在线查询帐户余额</h3>
+
+<p><a href="https://etherchain.org/">https://etherchain.org/</a><br/>
+输入你的地址，即可查询到你的余额（只有余额不为0的才可以查到）</p>
+
+<h2 id="toc_3">我的address：</h2>
+
+<p>98a07dd58c3887271ed29f058109e206972e8164</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ethereum.html'>以太</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/ethereum-command.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="sublime-note.html">
+                
+                  <h1>Sublime笔记</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>转载并修改<br/>
+原文链接： <a href="http://www.cnblogs.com/xiaohuochai/p/5073179.html">http://www.cnblogs.com/xiaohuochai/p/5073179.html</a></p>
+
+<h2 id="toc_0">单词操作</h2>
+
+<p>1.选中当前单词 ctrl＋d<br/>
+2.选中相同的所有单词 alt+f3<br/>
+<img src="http://img.lidong.me/2015/01/C4ufG7enipFE.gif" alt="单词操作"/></p>
+
+<h2 id="toc_1">行操作</h2>
+
+<p>选中当前行 ctrl＋l</p>
+
+<h1 id="toc_2">goto（ctrl＋p）</h1>
+
+<p>文件名 要打开的文件<br/>
+:行 具体行(ctrl+g)<br/>
+@名称  CSS选择器、HTMLid名及ID值、js事件及函数名(ctrl+r)<br/>
+#关键字  具体的关键字(ctrl+;)</p>
+
+<p><img src="http://img.lidong.me/2015/01/5yqBH2O47PHw.gif" alt="goto操作"/></p>
+
+<h2 id="toc_3">缩进</h2>
+
+<p>向前缩进tab ctrl+[<br/>
+向后缩进 tab+shift、ctrl+]</p>
+
+<h2 id="toc_4">注释</h2>
+
+<p>注释和取消注释单行  ctrl + /<br/>
+注释和取消注释大段代码 ctrl + shift + /</p>
+
+<h2 id="toc_5">折叠</h2>
+
+<p>折叠代码 ctrl+shift+[<br/>
+展开代码 ctrl+shift+]</p>
+
+<h2 id="toc_6">代码大小写</h2>
+
+<p>大写 ctrl+k ctrl+u<br/>
+小写ctrl+k ctrl+l</p>
+
+<h2 id="toc_7">其他</h2>
+
+<p>命令面板  ctrl+shift+p<br/>
+侧边栏 ctrl+k ctrl+b<br/>
+粘贴代码保持缩进格式 ctrl＋shiift＋v<br/>
+闭合标签  alt＋,<br/>
+选中光标的首尾标签 ctrl+shift+&#39;</p>
+
+<h2 id="toc_8">插件</h2>
+
+<p>package control安装<br/>
+代码地址：<a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a></p>
+
+<h3 id="toc_9">emmet</h3>
+
+<p>[1] !+tab -&gt;生成骨架结构<br/>
+[2] #foo -&gt;ID为&#39;foo&#39;<br/>
+[3] .foo -&gt;类名为&#39;foo&#39;<br/>
+[4] +   -&gt;同级元素<br/>
+[5] *3   -&gt;生成3个元素<br/>
+[6] w100    -&gt;width:100px<br/>
+[7] m5e    -&gt;margin:5em<br/>
+[8] @f    -&gt;@font-face<br/>
+[9] $    -&gt;从1开始的递增值<br/>
+[10] {}    -&gt;元素内容</p>
+
+<p><img src="http://img.lidong.me/2015/01/hIj1sfqP7OUP.gif" alt="emmet操作"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='editor-ide.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/sublime-note.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Lidong's notes</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+<a class="weibo" target="_blank" href="http://weibo.com/u/2727577442" title="weibo">Weibo</a>
+
+<a class="github" target="_blank" href="http://github.com/dooonooo" title="GitHub">GitHub</a>
+<a class="email" href="mailto:hi@lidong.me" title="Email">Email</a>
+  <a class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="ethereum.html"><strong>以太</strong></a>
+        
+            <a href="editor-ide.html"><strong>工具</strong></a>
+        
+            <a href="frontend.html"><strong>前端</strong></a>
+        
+            <a href="xinnengyouhua.html"><strong>性能优化</strong></a>
+        
+            <a href="wangzhanchengxu.html"><strong>网站程序</strong></a>
+        
+            <a href="css.html"><strong>css</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="hangjianyanshi.html">行间样式使用</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="www-index.html">我有首页了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="nginx-configure.html">Nginx配置</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="directory-list.html">目录列表程序</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="fontend-guide.html">前端规范</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'lidongnotes'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'lidongnotes'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>
