@@ -4,13 +4,58 @@
   <title><![CDATA[Lidong's notes]]></title>
   <link href="http://notes.lidong.me/atom.xml" rel="self"/>
   <link href="http://notes.lidong.me/"/>
-  <updated>2016-01-30T05:16:59+08:00</updated>
+  <updated>2016-02-01T20:21:55+08:00</updated>
   <id>http://notes.lidong.me/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[行间样式使用]]></title>
+    <link href="http://notes.lidong.me/hangjianyanshi.html"/>
+    <updated>2016-02-01T18:43:28+08:00</updated>
+    <id>http://notes.lidong.me/hangjianyanshi.html</id>
+    <content type="html"><![CDATA[
+<p>今天在弄 <a href="http://notes.lidong.me/css-draw-1.html">css画图形</a> 的时候，要用到伪元素，但是伪元素不能在行内使用(貌似是，反正没有找到方法)，所以去看别怎么弄的画图的，我了个去，居然可以在body内容中<code>&lt;style&gt;</code>标签，一般教程都没有说这样用啊，一般文档都是让style标签放在<head></head>标签之内。</p>
+
+<pre><code>&lt;body&gt;
+&lt;style&gt;
+&lt;!--
+#contianer{
+color:red;
+}
+--&gt;
+&lt;/style&gt;
+&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我有首页了]]></title>
+    <link href="http://notes.lidong.me/www-index.html"/>
+    <updated>2016-02-01T03:37:28+08:00</updated>
+    <id>http://notes.lidong.me/www-index.html</id>
+    <content type="html"><![CDATA[
+<p>一直以来都是木有首页，今天终于模仿<a href="http://www.ruanyifeng.com/">阮一峰</a>的首页，做了一个<a href="http://www.lidong.me">首页</a>。使用了 <a href="http://unsplash.it">http://unsplash.it</a> 的随机图片作背景图片，逼格满满，😄<br/>
+目前在PC上访问应该木有，是在手机上有一些问题。背景图片显示只显示半屏幕。其实可以通过获取 unsplash 高度大一些的图片解决，但是我那样的确有些浪费，所以先让我在学习学习再弄。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nginx配置]]></title>
+    <link href="http://notes.lidong.me/nginx-configure.html"/>
+    <updated>2016-01-30T18:49:22+08:00</updated>
+    <id>http://notes.lidong.me/nginx-configure.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[目录列表程序]]></title>
@@ -23,6 +68,8 @@
 <p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
 
 <p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
+
+<p><img src="http://img.lidong.me/2015/01/hREZQHtZdOOK.png" alt=""/></p>
 
 <p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
 
@@ -58,7 +105,7 @@ css中：@charset <q>uft-8</q>;</p></li>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[CSS画图形（一）]]></title>
+    <title type="html"><![CDATA[CSS画图形]]></title>
     <link href="http://notes.lidong.me/css-draw-1.html"/>
     <updated>2016-01-25T21:44:48+08:00</updated>
     <id>http://notes.lidong.me/css-draw-1.html</id>
@@ -154,6 +201,154 @@ border-bottom:100px solid red;
 border-left:50px solid transparent;
 border-right:50px solid transparent;
 
+}
+</code></pre>
+
+<p>9.六角星</p>
+
+<style>
+<!--
+#star-six {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+    position: relative;
+}
+#star-six:after {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid red;
+    position: absolute;
+    content: "";
+    top: 30px;
+    left: -50px;
+}
+--></style>
+
+<div id="star-six"></div>
+
+<p>&nbsp;</p>
+
+<pre><code>#star-six {
+width: 0;
+height: 0;
+border-left: 50px solid transparent;
+border-right: 50px solid transparent;
+border-bottom: 100px solid red;
+}
+#star-six:after {
+width: 0;
+height: 0;
+border-left: 50px solid transparent;
+border-right: 50px solid transparent;
+border-top: 100px solid red;
+content: &quot;&quot;;
+top: 30px;
+left: -50px;
+}
+</code></pre>
+
+<p>10.五角星</p>
+
+<style>
+
+#star-five{margin:50px 0;
+display:block;
+position:relative;
+color:red;
+width:0;
+height:0;
+border-right:100px solid transparent;
+border-bottom:70px solid red;
+border-left:100px solid transparent;
+transform:rotate(35deg);
+}
+#star-five:before {
+border-bottom:80px solid red;
+border-left:30px solid transparent;
+border-right:30px solid transparent;
+position:absolute;
+height:0;
+width:0;
+top: -45px;
+left: -65px;
+dispaly:block;
+content:'';
+transform:rotate(-35deg);
+}
+
+#star-five:after { 
+position: absolute; 
+display: block; 
+color: red; 
+top: 3px; 
+left: -105px; 
+width: 0px; 
+height: 0px; 
+border-right: 100px solid transparent; 
+border-bottom: 70px solid red; 
+border-left: 100px solid transparent; 
+-webkit-transform: rotate(-70deg); 
+-moz-transform: rotate(-70deg); 
+-ms-transform: rotate(-70deg); 
+-o-transform: rotate(-70deg); 
+content: ''; 
+} 
+
+</style>
+
+<div id="star-five"></div>
+
+<p>&nbsp;</p>
+
+<pre><code>#star-five{
+//画左上与右下的一个三角形
+margin:50px 0;
+display:block;
+position:relative;
+color:red;
+width:0;
+height:0;
+border-right:100px solid transparent;
+border-bottom:70px solid red;
+border-left:100px solid transparent;
+transform:rotate(35deg);
+}
+//画顶上的三角形
+#star-five:before {
+border-bottom:80px solid red;
+border-left:30px solid transparent;
+border-right:30px solid transparent;
+position:absolute;
+height:0;
+width:0;
+top: -45px;
+left: -65px;
+dispaly:block;
+content:&#39;&#39;;
+transform:rotate(-35deg);
+}
+//画右上与左下的一个三角形
+#star-five:after { 
+position: absolute; 
+display: block; 
+color: red; 
+top: 3px; 
+left: -105px; 
+width: 0px; 
+height: 0px; 
+border-right: 100px solid transparent; 
+border-bottom: 70px solid red; 
+border-left: 100px solid transparent; 
+-webkit-transform: rotate(-70deg); 
+-moz-transform: rotate(-70deg); 
+-ms-transform: rotate(-70deg); 
+-o-transform: rotate(-70deg); 
+content: &#39;&#39;; 
 }
 </code></pre>
 

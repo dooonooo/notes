@@ -2,7 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>http://notes.lidong.me/</loc>
-  <lastmod>2016-01-30T05:17:03+08:00</lastmod>
+  <lastmod>2016-02-01T20:30:59+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/hangjianyanshi.html</loc>
+  <lastmod>2016-02-01T18:43:28+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/www-index.html</loc>
+  <lastmod>2016-02-01T03:37:28+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/nginx-configure.html</loc>
+  <lastmod>2016-01-30T18:49:22+08:00</lastmod>
 </url>
 
 <url>
@@ -43,16 +58,12 @@
 
 <url>
   <loc>http://notes.lidong.me/about.html</loc>
-  <lastmod>2016-01-24T01:58:48+08:00</lastmod>
+  <lastmod>2016-02-01T20:05:41+08:00</lastmod>
 </url>
 
 
 <url>
-  <loc>http://notes.lidong.me/css.html</loc>
-</url>
-
-<url>
-  <loc>http://notes.lidong.me/ethereum.html</loc>
+  <loc>http://notes.lidong.me/editor-ide.html</loc>
 </url>
 
 <url>
@@ -60,7 +71,7 @@
 </url>
 
 <url>
-  <loc>http://notes.lidong.me/xinnengyouhua.html</loc>
+  <loc>http://notes.lidong.me/ethereum.html</loc>
 </url>
 
 <url>
@@ -68,7 +79,11 @@
 </url>
 
 <url>
-  <loc>http://notes.lidong.me/editor-ide.html</loc>
+  <loc>http://notes.lidong.me/css.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/xinnengyouhua.html</loc>
 </url>
 
 
