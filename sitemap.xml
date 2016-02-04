@@ -2,7 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>http://notes.lidong.me/</loc>
-  <lastmod>2016-02-02T01:39:17+08:00</lastmod>
+  <lastmod>2016-02-04T12:53:36+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/install-fail2ban.html</loc>
+  <lastmod>2016-02-04T12:15:01+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/install-msmtp.html</loc>
+  <lastmod>2016-02-04T11:20:27+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/server-safe.html</loc>
+  <lastmod>2016-02-04T04:50:48+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/html5-1.html</loc>
+  <lastmod>2016-02-03T15:34:02+08:00</lastmod>
 </url>
 
 <url>
@@ -58,12 +78,20 @@
 
 <url>
   <loc>http://notes.lidong.me/about.html</loc>
-  <lastmod>2016-02-01T20:05:41+08:00</lastmod>
+  <lastmod>2016-02-04T02:40:13+08:00</lastmod>
 </url>
 
 
 <url>
   <loc>http://notes.lidong.me/editor-ide.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/xinnengyouhua.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/linux.html</loc>
 </url>
 
 <url>
@@ -75,15 +103,15 @@
 </url>
 
 <url>
-  <loc>http://notes.lidong.me/wangzhanchengxu.html</loc>
-</url>
-
-<url>
   <loc>http://notes.lidong.me/css.html</loc>
 </url>
 
 <url>
-  <loc>http://notes.lidong.me/xinnengyouhua.html</loc>
+  <loc>http://notes.lidong.me/wangzhanchengxu.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/html5.html</loc>
 </url>
 
 

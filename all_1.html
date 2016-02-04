@@ -79,6 +79,10 @@
             <li><a href="wangzhanchengxu.html">网站程序</a></li>
         
             <li><a href="css.html">css</a></li>
+        
+            <li><a href="linux.html">linux</a></li>
+        
+            <li><a href="html5.html">html5</a></li>
          
 
       </ul>
@@ -97,6 +101,305 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="www-index.html">
+                
+                  <h1>我有首页了</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>一直以来都是木有首页，今天终于模仿<a href="http://www.ruanyifeng.com/">阮一峰</a>的首页，做了一个<a href="http://www.lidong.me">首页</a>。使用了 <a href="http://unsplash.it">http://unsplash.it</a> 的随机图片作背景图片，逼格满满，😄<br/>
+目前在PC上访问应该木有，是在手机上有一些问题。背景图片显示只显示半屏幕。其实可以通过获取 unsplash 高度大一些的图片解决，但是我那样的确有些浪费，所以先让我在学习学习再弄。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/1</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/www-index.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="nginx-configure.html">
+                
+                  <h1>Nginx配置</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>最近看了一本<a href="http://book.douban.com/subject/7564094/" title="豆瓣链接">《高性能Linux服务器构建实战》</a>，里面讲到Nginx，感觉以前使用nginx系统配置多不专业，一些要设置，都没有设置。<br/>
+现在整理一下，基本算是完整了。</p>
+
+<p>基本配置</p>
+
+<pre><code>#user  nobody;
+worker_processes  1;
+#error_log  logs/error.log;
+error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+pid        logs/nginx.pid;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+    access_log  logs/access.log  main;
+    sendfile        on;
+    #tcp_nopush     on;
+    #设置客户端连接保持活动的超时时间，超过这个时间，服务器关闭连接
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+    ##gzip压缩
+    #gzip  on;
+
+    #fastCGI优化(书上提到这个，目前我配置Nginx的时候没有设置优化，暂时不想深入这一块)
+    ##fastcgi缓存路径、目录结构等级、关键字区域存储时间、非活动删除时间
+    #fastcgi_path /usr/local/nginx/fastcgi_cache levels=1:2 keys_zone=TEST:10m inactive=5m;
+    ##连接到后端fastcgi超时时间
+    #fastcgi_connect_timeout 300;
+    #fastcgi_send_timeout 300;
+    #fastcgi_read_timeout 300;
+    #fastcgi_buffer_size 64k;
+    #fastcgi_buffers 4 64k;
+    #fastcgi_busy_buffers_size 128k;
+    #fastcgi_temp_file_write_size 128k;
+    #fastcgi_cache TEST;
+    #fastcgi_cache_valid 200 302 1h;
+    #fastcgi_cache_valid 301 1d;
+    #fastcgi_cache_valid any 1m;    
+
+    server {
+        listen       80;
+        server_name  localhost;
+        access_log  logs/host.access.log  main;
+        location / {
+            root   html;
+            index  index.html index.htm index.php;
+        }
+        #设置图片等静态文件的内容过期时间
+        #location ~ .*\.(gif|jpg|jpeg|png|bmp|ico|swf|flv|js|css)${
+        #    expires 30d;
+        #}
+        #设置upload、static文件的内容过期时间
+        #location ~ */(upload|status)/ {
+        #    root html;
+        #    expires 30d;
+        #}
+
+        #error_page  404              /404.html;
+        # redirect server error pages to the static page /50x.html
+        #error_page   500 502 503 504  /50x.html;
+        #location = /50x.html {
+        #    root   html;
+        #}
+
+        #PHP配置
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+    }
+
+    #include /usr/nginx/conf/vhosts/www.domain2.com.conf;
+}
+</code></pre>
+
+<p>这里用到了include指令，其中<code>/usr/nginx/conf/vhosts/www.domain2.com.conf</code>的内容为：    </p>
+
+<pre><code>server {
+    listen 80;
+    server_name www.domain2.com;
+    access_log logs/domain2.access.log main;
+    location / {
+        index index.html;
+        root html/domain2.com/;
+    }
+}
+</code></pre>
+
+<p>https配置   </p>
+
+<pre><code>    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+</code></pre>
+
+<p>防盗链配置</p>
+
+<pre><code>#针对文件名后缀设置防盗链    
+location ~* \.(jpg|gif|png|swf|flv|wma|wmv|asf|mp3|mmf|zip|rar)$ {
+    valid_referers none blocked *.lidong.me lidong.me;
+    if ($invalid_referer) { 
+        rewrite ^/ http://www.lidong.me/img/error.gif;
+        #return 403;
+    }
+}
+#对目录设置防盗链
+location /images {
+root html;
+    valid_referers none blocked *.lidong.me lidong.me;
+    if ($invalid_referer) {
+        return 403;
+        }
+    }
+}     
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/30</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/nginx-configure.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="directory-list.html">
+                
+                  <h1>目录列表程序</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>好久就想弄个可以分享文件的页面，感觉不复杂，但也不简单。</p>
+
+<p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
+
+<p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
+
+<p><img src="http://img.lidong.me/2015/01/hREZQHtZdOOK.png" alt=""/></p>
+
+<p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='wangzhanchengxu.html'>网站程序</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/directory-list.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="fontend-guide.html">
+                
+                  <h1>前端规范</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">html部分</h3>
+
+<ol>
+<li>页面声明：简单粗暴有内涵
+&lt;!DOCTYPE HTML&gt;</li>
+<li>把css放在<head>中，避免使用@import</li>
+<li>语言属性声明。
+<html lang="zh-CN"></li>
+<li>html标签使用小写</li>
+<li><p>使用utf-8编码<br/>
+html中：`<meta charset="uft-8"><br/>
+css中：@charset <q>uft-8</q>;</p></li>
+<li><p>IE兼容模式<br/>
+完美解决IE兼容模式代码： <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"></p></li>
+<li><p>自闭合元素（单闭合标签）后的斜杠是可以省略的，既然可以省略，省略最好，省字节。</p></li>
+<li><p>属性定义最好使用双引号</p></li>
+<li><p>html5中引入js、css文件不需要定义type属性。（能省则省）</p></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/26</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/fontend-guide.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="css-draw-1.html">
                 
@@ -372,261 +675,6 @@ content: &#39;&#39;;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="front-optimization.html">
-                
-                  <h1>前端优化的方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li>减少http请求（合并压缩css、js、雪碧图（css-sprites）、cdn加速、data缓存、图片缓存）</li>
-<li>前端模版</li>
-<li>设置样式比较多的时候，设置className而不是直接操作样式</li>
-<li>用innerHTML 代替DOM操作，减少DOM的操作次数，优化javascript性能</li>
-<li>图片预加载，将样式放在顶部，将脚本放在底部加上时间戳。</li>
-<li>避免在主体布局使用table。</li>
-</ol>
-
-<p>尽量向前端优化，减少数据库操作，减少磁盘io，<br/>
-在不影响功能体验上情况下，<br/>
-能在浏览器执行的不要在服务端执行，<br/>
-能在缓存服务器上直接返回的不要到应用服务器，<br/>
-程序能直接得出结果的不要到外部取得，<br/>
-本机能取得的数据不要到远程取<br/>
-内存能取得的不要到磁盘取<br/>
-缓存有的不要去数据库查询</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				  
-          					    <span class="posted-in"><a href='xinnengyouhua.html'>性能优化</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/front-optimization.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="mysql-command.html">
-                
-                  <h1>mysql命令</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>远程连接mysql</p>
-
-<pre><code>//***指密码，下同
-mysql -u root -h 127.0.0.1 -P 3306 -p ***
-</code></pre>
-
-<p>导出数据表</p>
-
-<pre><code>mysqldump -u root -p *** -h 127.0.0.1 数据库.表 &gt; 导出sqld的路径
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/25</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/mysql-command.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="ethereum-command.html">
-                
-                  <h1>以太坊的一些有用知识</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">以太命令</h2>
-
-<p>安装钱包（geth）--需要提前安装homebrew。<br/>
-brew tap ethereum/ethereum<br/>
-brew install ethereum</p>
-
-<p>1.创建以太账户：geth account new<br/>
-2.查询已创建的账户：geth account list<br/>
-3.开启挖矿功能：geth --mine --minerthreads=4<br/>
- (minerthreads=4是默认值，挖矿会占用电脑所有的计算资源，造成卡顿，可以改成2或者3)，等到generating DAG显示到达100%，就开始挖矿了</p>
-
-<h3 id="toc_1">官方指南(英文)：</h3>
-
-<p><a href="https://ethereum.gitbooks.io/frontier-guide/content/">https://ethereum.gitbooks.io/frontier-guide/content/</a></p>
-
-<h3 id="toc_2">在线查询帐户余额</h3>
-
-<p><a href="https://etherchain.org/">https://etherchain.org/</a><br/>
-输入你的地址，即可查询到你的余额（只有余额不为0的才可以查到）</p>
-
-<h2 id="toc_3">我的address：</h2>
-
-<p>98a07dd58c3887271ed29f058109e206972e8164</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='ethereum.html'>以太</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/ethereum-command.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="sublime-note.html">
-                
-                  <h1>Sublime笔记</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>转载并修改<br/>
-原文链接： <a href="http://www.cnblogs.com/xiaohuochai/p/5073179.html">http://www.cnblogs.com/xiaohuochai/p/5073179.html</a></p>
-
-<h2 id="toc_0">单词操作</h2>
-
-<p>1.选中当前单词 ctrl＋d<br/>
-2.选中相同的所有单词 alt+f3<br/>
-<img src="http://img.lidong.me/2015/01/C4ufG7enipFE.gif" alt="单词操作"/></p>
-
-<h2 id="toc_1">行操作</h2>
-
-<p>选中当前行 ctrl＋l</p>
-
-<h1 id="toc_2">goto（ctrl＋p）</h1>
-
-<p>文件名 要打开的文件<br/>
-:行 具体行(ctrl+g)<br/>
-@名称  CSS选择器、HTMLid名及ID值、js事件及函数名(ctrl+r)<br/>
-#关键字  具体的关键字(ctrl+;)</p>
-
-<p><img src="http://img.lidong.me/2015/01/5yqBH2O47PHw.gif" alt="goto操作"/></p>
-
-<h2 id="toc_3">缩进</h2>
-
-<p>向前缩进tab ctrl+[<br/>
-向后缩进 tab+shift、ctrl+]</p>
-
-<h2 id="toc_4">注释</h2>
-
-<p>注释和取消注释单行  ctrl + /<br/>
-注释和取消注释大段代码 ctrl + shift + /</p>
-
-<h2 id="toc_5">折叠</h2>
-
-<p>折叠代码 ctrl+shift+[<br/>
-展开代码 ctrl+shift+]</p>
-
-<h2 id="toc_6">代码大小写</h2>
-
-<p>大写 ctrl+k ctrl+u<br/>
-小写ctrl+k ctrl+l</p>
-
-<h2 id="toc_7">其他</h2>
-
-<p>命令面板  ctrl+shift+p<br/>
-侧边栏 ctrl+k ctrl+b<br/>
-粘贴代码保持缩进格式 ctrl＋shiift＋v<br/>
-闭合标签  alt＋,<br/>
-选中光标的首尾标签 ctrl+shift+&#39;</p>
-
-<h2 id="toc_8">插件</h2>
-
-<p>package control安装<br/>
-代码地址：<a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a></p>
-
-<h3 id="toc_9">emmet</h3>
-
-<p>[1] !+tab -&gt;生成骨架结构<br/>
-[2] #foo -&gt;ID为&#39;foo&#39;<br/>
-[3] .foo -&gt;类名为&#39;foo&#39;<br/>
-[4] +   -&gt;同级元素<br/>
-[5] *3   -&gt;生成3个元素<br/>
-[6] w100    -&gt;width:100px<br/>
-[7] m5e    -&gt;margin:5em<br/>
-[8] @f    -&gt;@font-face<br/>
-[9] $    -&gt;从1开始的递增值<br/>
-[10] {}    -&gt;元素内容</p>
-
-<p><img src="http://img.lidong.me/2015/01/hIj1sfqP7OUP.gif" alt="emmet操作"/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='editor-ide.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/sublime-note.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -638,7 +686,7 @@ brew install ethereum</p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="all_2.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -687,6 +735,10 @@ brew install ethereum</p>
             <a href="wangzhanchengxu.html"><strong>网站程序</strong></a>
         
             <a href="css.html"><strong>css</strong></a>
+        
+            <a href="linux.html"><strong>linux</strong></a>
+        
+            <a href="html5.html"><strong>html5</strong></a>
          
         </p>
 
@@ -703,33 +755,41 @@ brew install ethereum</p>
 	      
 		      
 			      <li class="post">
+			        <a href="install-fail2ban.html">安装fail2ban 防止服务器的暴力攻击</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="install-msmtp.html">安装msmtp使用smtp发送邮件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="server-safe.html">服务器安全配置</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="html5-1.html">html5</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="hangjianyanshi.html">行间样式使用</a>
 			      </li>
 		     
 		  
 		      
-			      <li class="post">
-			        <a href="www-index.html">我有首页了</a>
-			      </li>
-		     
 		  
 		      
-			      <li class="post">
-			        <a href="nginx-configure.html">Nginx配置</a>
-			      </li>
-		     
 		  
 		      
-			      <li class="post">
-			        <a href="directory-list.html">目录列表程序</a>
-			      </li>
-		     
 		  
 		      
-			      <li class="post">
-			        <a href="fontend-guide.html">前端规范</a>
-			      </li>
-		     
 		  
 		      
 		  

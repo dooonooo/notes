@@ -4,13 +4,203 @@
   <title><![CDATA[Lidong's notes]]></title>
   <link href="http://notes.lidong.me/atom.xml" rel="self"/>
   <link href="http://notes.lidong.me/"/>
-  <updated>2016-02-02T01:31:49+08:00</updated>
+  <updated>2016-02-04T12:53:21+08:00</updated>
   <id>http://notes.lidong.me/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[安装fail2ban 防止服务器的暴力攻击]]></title>
+    <link href="http://notes.lidong.me/install-fail2ban.html"/>
+    <updated>2016-02-04T12:15:01+08:00</updated>
+    <id>http://notes.lidong.me/install-fail2ban.html</id>
+    <content type="html"><![CDATA[
+<p>发现<a href="http://notes.lidong.me/server-safe.html">服务器被扫描得厉害</a>，所以赶紧采取措施，以免被攻破（虽然没用什么宝贝，采取防御措施是不可以少的☺️）</p>
+
+<p>安装</p>
+
+<pre><code>sudo yum install fail2ban
+</code></pre>
+
+<p>修改配置文件（(注意修改其中的内容修改成你自己的内容，如果你是安装的<a href="http://">msmtp</a>要将<code>mta=sendmail</code>修改为<code>mta＝msmtp</code>）</p>
+
+<pre><code>sudo vi /etc/fail2ban/jail.local
+</code></pre>
+
+<p>配置文件内容</p>
+
+<pre><code>[DEFAULT]
+# 以空格分隔的列表，可以是 IP 地址、CIDR 前缀或者 DNS 主机名
+# 用于指定哪些地址可以忽略 fail2ban 防御
+ignoreip = 127.0.0.1 172.31.0.0/24 10.10.0.0/24 192.168.0.0/24
+# 客户端主机被禁止的时长（秒）
+bantime = 86400
+# 客户端主机被禁止前允许失败的次数 
+maxretry = 5
+# 查找失败次数的时长（秒）
+findtime = 600 
+mta = sendmail
+[ssh-iptables]
+enabled = true
+filter = sshd
+action = iptables[name=SSH, port=ssh, protocol=tcp]
+sendmail-whois[name=SSH, dest=your@email.com, sender=fail2ban@email.com]
+# Debian 系的发行版 
+logpath = /var/log/auth.log
+# Red Hat 系的发行版
+logpath = /var/log/secure
+# ssh 服务的最大尝试次数 
+maxretry = 3
+</code></pre>
+
+<p>配置文件准备就绪后，重启fail2ban服务</p>
+
+<pre><code>sudo systemctl restart fail2ban
+</code></pre>
+
+<p>验证fail2ban，使用参数&#39;ping&#39;来运行fail2ban-client 命令。 如果fail2ban服务正常运行，你可以看到“pong（嘭）”作为响应。</p>
+
+<pre><code>$ sudo fail2ban-client ping
+Server replied: pong
+
+
+sudo tail -f /var/log/fail2ban.log
+
+为了测试fail2ban是否能正常工作，尝试通过使用错误的密码来用SSH连接到服务器模拟一个暴力破解攻击。与此同时，监控 /var/log/fail2ban.log，该文件记录在fail2ban中发生的任何敏感事件,(安装fail2ban之前的系统日志，也会被监控)
+
+sudo tail -f /var/log/fail2ban.log
+</code></pre>
+
+<p>fail2ban会自动反向查询IP的主机信息<br/><br/>
+<img src="http://img.lidong.me/2015/02/Ku6WGJyAi2BA.png" alt=""/></p>
+
+<p>查看fail2ban状态信息</p>
+
+<pre><code>sudo fail2ban-client status
+</code></pre>
+
+<p>设置开机自启动</p>
+
+<pre><code>sudo systemctl enable fail2ban
+</code></pre>
+
+<p>此处只记录了centos7的操作。</p>
+
+<p>更多参考：<br/>
+1.<a href="https://linux.cn/article-5067-1.html">如何使用 fail2ban 防御 SSH 服务器的暴力破解攻击</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[安装msmtp使用smtp发送邮件]]></title>
+    <link href="http://notes.lidong.me/install-msmtp.html"/>
+    <updated>2016-02-04T11:20:27+08:00</updated>
+    <id>http://notes.lidong.me/install-msmtp.html</id>
+    <content type="html"><![CDATA[
+<p>1.下载</p>
+
+<pre><code>wget http://downloads.sourceforge.net/msmtp/msmtp-1.6.3.tar.xz
+xz -z msmtp-1.6.3.tar.xz
+tar xvf msmtp-1.6.3.tar
+</code></pre>
+
+<p>2.安装</p>
+
+<pre><code>cd msmtp-1.6.3
+./configure –prefix=/usr/local/msmtp
+sudo make
+sudo make install
+</code></pre>
+
+<p>3.配置</p>
+
+<pre><code>cd /usr/local/msmtp
+//新建文件夹etc, 
+mkdir etc 
+//新建文件
+vi /usr/local/msmtp/etc/msmtprc
+</code></pre>
+
+<p>编辑内容（部分内容需要修改成你自己的）</p>
+
+<pre><code># Set default values for all following accounts.
+defaults
+logfile /usr/local/msmtp/msmtp.log 
+# The SMTP server of the provider. 
+account test
+# SMTP邮件服务器地址
+host smtp.qq.com
+# 发送的邮件Email
+from xiaobaichi@qq.com
+auth login
+# 邮件服务器登录账号
+user xiaobaichi@qq.com
+# 邮件服务器登陆密码
+password 123456
+# Set a default account
+account default: test
+</code></pre>
+
+<p>为了安全起见，修改文件的权限<code>chmod 600 etc/msmtprc</code></p>
+
+<p>4.测试</p>
+
+<pre><code>/usr/local/msmtp/bin/msmtp youremail@test.com
+
+输入任意字符，然后按Ctrl+D退出，查看邮件是否收到。
+
+由于设置了日志，可以到 /usr/local/msmtp/msmtp.log，查看日志，发信成功失败都会有记录。
+</code></pre>
+
+<p>参考：<br/>
+    1.解压tar.xz文件 参考<a href="http://blog.csdn.net/rheostat/article/details/7614451">这里</a><br/>
+    2.官方<a href="http://msmtp.sourceforge.net/documentation.html">配置文档</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[服务器安全配置]]></title>
+    <link href="http://notes.lidong.me/server-safe.html"/>
+    <updated>2016-02-04T04:50:48+08:00</updated>
+    <id>http://notes.lidong.me/server-safe.html</id>
+    <content type="html"><![CDATA[
+<p>查看登陆失败的ip<br/>
+sudo grep <q>Failed password for</q> /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
+
+<p>我这也就曝光一些哪些扫描人ip<br/>
+这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
+<img src="http://img.lidong.me/2015/02/2QYfyR7lVtTy.png" alt=""/></p>
+
+<p>基于密钥认证的配置</p>
+
+<pre><code># vi /etc/ssh/sshd_config  
+PasswordAuthentication no //禁止使用基于口令认证的方式登陆
+PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
+# /etc/init.d/sshd reload
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[html5]]></title>
+    <link href="http://notes.lidong.me/html5-1.html"/>
+    <updated>2016-02-03T15:34:02+08:00</updated>
+    <id>http://notes.lidong.me/html5-1.html</id>
+    <content type="html"><![CDATA[
+<p>figure</p>
+
+<p>embed<br/>
+mark<br/>
+progress</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[行间样式使用]]></title>

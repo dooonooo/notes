@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  CSS画图形 - Lidong's notes
+  html5 - Lidong's notes
   
   </title>
   
@@ -102,19 +102,21 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>CSS画图形</h1>
+          <h1>html5</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/1/25</span>
+          <span class="date">2016/2/3</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='css.html'>css</a></span>
+              <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          
+              <span class="posted-in"><a href='html5.html'>html5</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/css-draw-1.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/html5-1.html#disqus_thread">comments</a>
             
 
             
@@ -124,247 +126,11 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>1.正方形<br/>
-<div style="width:100px;height:100px;background:red;"></div></p>
+      <p>figure</p>
 
-<pre><code>.square{
-width:100px;
-height:100px;
-backgroud:red;}
-</code></pre>
-
-<p>2.长方形<br/>
-<div style="width:150px;height:100px;background:red;"></div></p>
-
-<pre><code>.rectangle{
-width:150px;
-height:100px;
-background:red;}
-</code></pre>
-
-<p>3.圆形<br/>
- <div style="width:100px;height: 100px;background:red;border-top-left-radius:50px;border-top-right-radius:50px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;"></div></p>
-
-<pre><code>.circle {
-//将正方形圆角放大到最大
-width:100px;
-height: 100px;
-background:red;
-border-top-left-radius:50px;
-border-top-right-radius:50px;
-border-bottom-left-radius:50px;
-border-bottom-right-radius:50px;}
-</code></pre>
-
-<p>4.椭圆<br/>
- <div style="width:200px;height: 100px;background:red;border-top-left-radius:100px 50px;border-top-right-radius:100px 50px;border-bottom-left-radius:100px 50px;border-bottom-right-radius:100px 50px;"></div></p>
-
-<pre><code>.oval{
-//长方形的圆角放大到最大
-width:200px;
-height: 100px;
-background:red;
-border-top-left-radius:100px 50px;
-border-top-right-radius:100px 50px;
-border-bottom-left-radius:100px 50px;
-border-bottom-right-radius:100px 50px;}
-</code></pre>
-
-<p>5.三角形<br/>
-<div style="width:0;height:0px; border-bottom:50px solid red; border-left:25px solid transparent; border-right:25px solid transparent;"></div></p>
-
-<pre><code>.triangle{
-//利用边框填充，
-width:0;
-height:0;
-border-bottom:50px solid red;
-border-left:25px solid transparent;
-border-right:25px solid transparent;}
-</code></pre>
-
-<p>6.直角三角形<br/>
-<div style="height:0;width:0;border-bottom:50px solid red;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.right-angled-triangle{
-//常规三角形的一半，将底边延长即为图例
-height:0;
-width:0;
-border-bottom:50px solid red;
-border-right:50px solid transparent;}
-</code></pre>
-
-<p>7.平行四边形<br/>
-<div style="width:100px;height:50px;background:red;transform: skew(30deg,0);"></div></p>
-
-<pre><code>.parallelogram{
-//将长方形沿x或y轴倾斜某个角度即为平行四边形
-width:100px;
-height:50px;
-background:red;
-transform: skew(30deg,0);}
-</code></pre>
-
-<p>8.梯形<br/>
-<div style="width:100px;height:0;border-bottom:100px solid red;border-left:50px solid transparent;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.trapezoid{
-//对三角形设置宽度
-width:100px;
-height:0;
-border-bottom:100px solid red;
-border-left:50px solid transparent;
-border-right:50px solid transparent;
-
-}
-</code></pre>
-
-<p>9.六角星</p>
-
-<style>
-<!--
-#star-six {
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid red;
-    position: relative;
-}
-#star-six:after {
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-top: 100px solid red;
-    position: absolute;
-    content: "";
-    top: 30px;
-    left: -50px;
-}
---></style>
-
-<div id="star-six"></div>
-
-<p>&nbsp;</p>
-
-<pre><code>#star-six {
-width: 0;
-height: 0;
-border-left: 50px solid transparent;
-border-right: 50px solid transparent;
-border-bottom: 100px solid red;
-}
-#star-six:after {
-width: 0;
-height: 0;
-border-left: 50px solid transparent;
-border-right: 50px solid transparent;
-border-top: 100px solid red;
-content: &quot;&quot;;
-top: 30px;
-left: -50px;
-}
-</code></pre>
-
-<p>10.五角星</p>
-
-<style>
-
-#star-five{margin:50px 0;
-display:block;
-position:relative;
-color:red;
-width:0;
-height:0;
-border-right:100px solid transparent;
-border-bottom:70px solid red;
-border-left:100px solid transparent;
-transform:rotate(35deg);
-}
-#star-five:before {
-border-bottom:80px solid red;
-border-left:30px solid transparent;
-border-right:30px solid transparent;
-position:absolute;
-height:0;
-width:0;
-top: -45px;
-left: -65px;
-dispaly:block;
-content:'';
-transform:rotate(-35deg);
-}
-
-#star-five:after { 
-position: absolute; 
-display: block; 
-color: red; 
-top: 3px; 
-left: -105px; 
-width: 0px; 
-height: 0px; 
-border-right: 100px solid transparent; 
-border-bottom: 70px solid red; 
-border-left: 100px solid transparent; 
--webkit-transform: rotate(-70deg); 
--moz-transform: rotate(-70deg); 
--ms-transform: rotate(-70deg); 
--o-transform: rotate(-70deg); 
-content: ''; 
-} 
-
-</style>
-
-<div id="star-five"></div>
-
-<p>&nbsp;</p>
-
-<pre><code>#star-five{
-//画左上与右下的一个三角形
-margin:50px 0;
-display:block;
-position:relative;
-color:red;
-width:0;
-height:0;
-border-right:100px solid transparent;
-border-bottom:70px solid red;
-border-left:100px solid transparent;
-transform:rotate(35deg);
-}
-//画顶上的三角形
-#star-five:before {
-border-bottom:80px solid red;
-border-left:30px solid transparent;
-border-right:30px solid transparent;
-position:absolute;
-height:0;
-width:0;
-top: -45px;
-left: -65px;
-dispaly:block;
-content:&#39;&#39;;
-transform:rotate(-35deg);
-}
-//画右上与左下的一个三角形
-#star-five:after { 
-position: absolute; 
-display: block; 
-color: red; 
-top: 3px; 
-left: -105px; 
-width: 0px; 
-height: 0px; 
-border-right: 100px solid transparent; 
-border-bottom: 70px solid red; 
-border-left: 100px solid transparent; 
--webkit-transform: rotate(-70deg); 
--moz-transform: rotate(-70deg); 
--ms-transform: rotate(-70deg); 
--o-transform: rotate(-70deg); 
-content: &#39;&#39;; 
-}
-</code></pre>
+<p>embed<br/>
+mark<br/>
+progress</p>
 
       </div>
 
@@ -372,16 +138,16 @@ content: &#39;&#39;;
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="fontend-guide.html" 
-          title="Previous Post: 前端规范">&laquo; 前端规范</a>
+          <a href="server-safe.html" 
+          title="Previous Post: 服务器安全配置">&laquo; 服务器安全配置</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="front-optimization.html" 
-          title="Next Post: 前端优化的方法">前端优化的方法 &raquo;</a>
+          <a  href="hangjianyanshi.html" 
+          title="Next Post: 行间样式使用">行间样式使用 &raquo;</a>
       
       </p>
         </div>
