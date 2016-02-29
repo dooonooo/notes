@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  安装msmtp使用smtp发送邮件 - Lidong's notes
+  campass与sass - Lidong's notes
   
   </title>
   
@@ -101,19 +101,17 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>安装msmtp使用smtp发送邮件</h1>
+          <h1>campass与sass</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/2/4</span>
+          <span class="date">2016/2/26</span>
 
-          <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='linux.html'>linux</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/install-msmtp.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/campass-sass.html#disqus_thread">comments</a>
             
 
             
@@ -123,81 +121,23 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>1.下载</p>
-
-<pre><code>wget http://downloads.sourceforge.net/msmtp/msmtp-1.6.3.tar.xz
-xz -z msmtp-1.6.3.tar.xz
-tar xvf msmtp-1.6.3.tar
-</code></pre>
-
-<p>2.安装</p>
-
-<pre><code>cd msmtp-1.6.3
-./configure –prefix=/usr/local/msmtp
-sudo make
-sudo make install
-</code></pre>
-
-<p>3.配置</p>
-
-<pre><code>cd /usr/local/msmtp
-//新建文件夹etc, 
-mkdir etc 
-//新建文件
-vi /usr/local/msmtp/etc/msmtprc
-</code></pre>
-
-<p>编辑内容（部分内容需要修改成你自己的）</p>
-
-<pre><code># Set default values for all following accounts.
-defaults
-logfile /usr/local/msmtp/msmtp.log 
-# The SMTP server of the provider. 
-account test
-# SMTP邮件服务器地址
-host smtp.qq.com
-# 发送的邮件Email
-from xiaobaichi@qq.com
-auth login
-# 邮件服务器登录账号
-user xiaobaichi@qq.com
-# 邮件服务器登陆密码
-password 123456
-# Set a default account
-account default: test
-</code></pre>
-
-<p>为了安全起见，修改文件的权限<code>chmod 600 etc/msmtprc</code></p>
-
-<p>4.测试</p>
-
-<pre><code>/usr/local/msmtp/bin/msmtp youremail@test.com
-
-输入任意字符，然后按Ctrl+D退出，查看邮件是否收到。
-
-由于设置了日志，可以到 /usr/local/msmtp/msmtp.log，查看日志，发信成功失败都会有记录。
-</code></pre>
-
-<p>参考：<br/>
-    1.解压tar.xz文件 参考<a href="http://blog.csdn.net/rheostat/article/details/7614451">这里</a><br/>
-    2.官方<a href="http://msmtp.sourceforge.net/documentation.html">配置文档</a></p>
-
+      
       </div>
 
       <div class="row">
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="install-fail2ban.html" 
-          title="Previous Post: 安装fail2ban 防止服务器的暴力攻击">&laquo; 安装fail2ban 防止服务器的暴力攻击</a>
+          <a href="css-optimization.html" 
+          title="Previous Post: CSS优化">&laquo; CSS优化</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="server-safe.html" 
-          title="Next Post: 服务器安全配置">服务器安全配置 &raquo;</a>
+          <a  href="learn-search-engine.html" 
+          title="Next Post: 走进搜索引擎">走进搜索引擎 &raquo;</a>
       
       </p>
         </div>

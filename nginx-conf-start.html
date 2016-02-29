@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  安装msmtp使用smtp发送邮件 - Lidong's notes
+  nginx自启动设置 - Lidong's notes
   
   </title>
   
@@ -101,19 +101,17 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>安装msmtp使用smtp发送邮件</h1>
+          <h1>nginx自启动设置</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/2/4</span>
+          <span class="date">2016/2/29</span>
 
-          <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='linux.html'>linux</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/install-msmtp.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/nginx-conf-start.html#disqus_thread">comments</a>
             
 
             
@@ -123,64 +121,101 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>1.下载</p>
+      <p>编写shell脚本，并把shell脚本启动命令加入到自启动名单中。</p>
 
-<pre><code>wget http://downloads.sourceforge.net/msmtp/msmtp-1.6.3.tar.xz
-xz -z msmtp-1.6.3.tar.xz
-tar xvf msmtp-1.6.3.tar
+<p>vi /etc/init.d/nginx  </p>
+
+<pre><code>#!/bin/bash
+# nginx Startup script for the nginx HTTP Server
+# it is v.0.0.2 version.
+# chkconfig: - 85 15
+# description: nginx is a high-performance web and proxy server.
+#              It has a lot of features, but it&#39;s not for everyone.
+# processname: nginx
+# pidfile: /var/run/nginx.pid
+# config: /usr/local/nginx/conf/nginx.conf
+nginxd=/usr/local/nginx/sbin/nginx
+nginx_config=/usr/local/nginx/conf/nginx.conf
+nginx_pid=/var/run/nginx.pid
+RETVAL=0
+prog=&quot;nginx&quot;
+# Source function library.
+. /etc/rc.d/init.d/functions
+# Source networking configuration.
+. /etc/sysconfig/network
+# Check that networking is up.
+[ ${NETWORKING} = &quot;no&quot; ] &amp;&amp; exit 0
+[ -x $nginxd ] || exit 0
+# Start nginx daemons functions.
+start() {
+if [ -e $nginx_pid ];then
+  echo &quot;nginx already running....&quot;
+  exit 1
+fi
+  echo -n $&quot;Starting $prog: &quot;
+  daemon $nginxd -c ${nginx_config}
+  RETVAL=$?
+  echo
+  [ $RETVAL = 0 ] &amp;&amp; touch /var/lock/subsys/nginx
+  return $RETVAL
+}
+# Stop nginx daemons functions.
+stop() {
+       echo -n $&quot;Stopping $prog: &quot;
+       killproc $nginxd
+       RETVAL=$?
+       echo
+       [ $RETVAL = 0 ] &amp;&amp; rm -f /var/lock/subsys/nginx /var/run/nginx.pid
+}
+# reload nginx service functions.
+reload() {
+   echo -n $&quot;Reloading $prog: &quot;
+   #kill -HUP `cat ${nginx_pid}`
+   killproc $nginxd -HUP
+   RETVAL=$?
+   echo
+}
+# See how we were called.
+case &quot;$1&quot; in
+start)
+       start
+       ;;
+stop)
+       stop
+       ;;
+reload)
+       reload
+       ;;
+restart)
+       stop
+       start
+       ;;
+status)
+       status $prog
+       RETVAL=$?
+       ;;
+*)
+       echo $&quot;Usage: $prog {start|stop|restart|reload|status|help}&quot;
+       exit 1
+esac
+exit $RETVAL
 </code></pre>
 
-<p>2.安装</p>
+<p>设置文件的权限</p>
 
-<pre><code>cd msmtp-1.6.3
-./configure –prefix=/usr/local/msmtp
-sudo make
-sudo make install
+<pre><code>chmod a+x /etc/init.d/nginx    (a+x ---- all user can execute 所有用户可执行)
 </code></pre>
 
-<p>3.配置</p>
+<p>这样就可以方便的操作：查看nginx当前状态、启动nginx、停止nginx、重启nginx...</p>
 
-<pre><code>cd /usr/local/msmtp
-//新建文件夹etc, 
-mkdir etc 
-//新建文件
-vi /usr/local/msmtp/etc/msmtprc
+<p>开机自启动<br/>
+vi /etc/rc.local<br/>
+添加一行</p>
+
+<pre><code>／etc/init.d/nginx start
 </code></pre>
 
-<p>编辑内容（部分内容需要修改成你自己的）</p>
-
-<pre><code># Set default values for all following accounts.
-defaults
-logfile /usr/local/msmtp/msmtp.log 
-# The SMTP server of the provider. 
-account test
-# SMTP邮件服务器地址
-host smtp.qq.com
-# 发送的邮件Email
-from xiaobaichi@qq.com
-auth login
-# 邮件服务器登录账号
-user xiaobaichi@qq.com
-# 邮件服务器登陆密码
-password 123456
-# Set a default account
-account default: test
-</code></pre>
-
-<p>为了安全起见，修改文件的权限<code>chmod 600 etc/msmtprc</code></p>
-
-<p>4.测试</p>
-
-<pre><code>/usr/local/msmtp/bin/msmtp youremail@test.com
-
-输入任意字符，然后按Ctrl+D退出，查看邮件是否收到。
-
-由于设置了日志，可以到 /usr/local/msmtp/msmtp.log，查看日志，发信成功失败都会有记录。
-</code></pre>
-
-<p>参考：<br/>
-    1.解压tar.xz文件 参考<a href="http://blog.csdn.net/rheostat/article/details/7614451">这里</a><br/>
-    2.官方<a href="http://msmtp.sourceforge.net/documentation.html">配置文档</a></p>
+<p>下次重启生效</p>
 
       </div>
 
@@ -188,16 +223,13 @@ account default: test
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="install-fail2ban.html" 
-          title="Previous Post: 安装fail2ban 防止服务器的暴力攻击">&laquo; 安装fail2ban 防止服务器的暴力攻击</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="server-safe.html" 
-          title="Next Post: 服务器安全配置">服务器安全配置 &raquo;</a>
+          <a  href="js-regexp.html" 
+          title="Next Post: js正则表达式">js正则表达式 &raquo;</a>
       
       </p>
         </div>

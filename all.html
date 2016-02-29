@@ -64,7 +64,6 @@
        <li><a href="index.html">HOME</a></li>
     <li><a href="archives.html">Archives</a></li>
     <li><a href="about.html">ABOUT</a></li>
-
     <li><label>Categories</label></li>
 
         
@@ -102,86 +101,108 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="install-fail2ban.html">
+                <a class="clearlink" href="nginx-conf-start.html">
                 
-                  <h1>安装fail2ban 防止服务器的暴力攻击</h1>
+                  <h1>nginx自启动设置</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>发现<a href="http://notes.lidong.me/server-safe.html">服务器被扫描得厉害</a>，所以赶紧采取措施，以免被攻破（虽然没用什么宝贝，采取防御措施是不可以少的☺️）</p>
+                        	<p>编写shell脚本，并把shell脚本启动命令加入到自启动名单中。</p>
 
-<p>安装</p>
+<p>vi /etc/init.d/nginx  </p>
 
-<pre><code>sudo yum install fail2ban
+<pre><code>#!/bin/bash
+# nginx Startup script for the nginx HTTP Server
+# it is v.0.0.2 version.
+# chkconfig: - 85 15
+# description: nginx is a high-performance web and proxy server.
+#              It has a lot of features, but it&#39;s not for everyone.
+# processname: nginx
+# pidfile: /var/run/nginx.pid
+# config: /usr/local/nginx/conf/nginx.conf
+nginxd=/usr/local/nginx/sbin/nginx
+nginx_config=/usr/local/nginx/conf/nginx.conf
+nginx_pid=/var/run/nginx.pid
+RETVAL=0
+prog=&quot;nginx&quot;
+# Source function library.
+. /etc/rc.d/init.d/functions
+# Source networking configuration.
+. /etc/sysconfig/network
+# Check that networking is up.
+[ ${NETWORKING} = &quot;no&quot; ] &amp;&amp; exit 0
+[ -x $nginxd ] || exit 0
+# Start nginx daemons functions.
+start() {
+if [ -e $nginx_pid ];then
+  echo &quot;nginx already running....&quot;
+  exit 1
+fi
+  echo -n $&quot;Starting $prog: &quot;
+  daemon $nginxd -c ${nginx_config}
+  RETVAL=$?
+  echo
+  [ $RETVAL = 0 ] &amp;&amp; touch /var/lock/subsys/nginx
+  return $RETVAL
+}
+# Stop nginx daemons functions.
+stop() {
+       echo -n $&quot;Stopping $prog: &quot;
+       killproc $nginxd
+       RETVAL=$?
+       echo
+       [ $RETVAL = 0 ] &amp;&amp; rm -f /var/lock/subsys/nginx /var/run/nginx.pid
+}
+# reload nginx service functions.
+reload() {
+   echo -n $&quot;Reloading $prog: &quot;
+   #kill -HUP `cat ${nginx_pid}`
+   killproc $nginxd -HUP
+   RETVAL=$?
+   echo
+}
+# See how we were called.
+case &quot;$1&quot; in
+start)
+       start
+       ;;
+stop)
+       stop
+       ;;
+reload)
+       reload
+       ;;
+restart)
+       stop
+       start
+       ;;
+status)
+       status $prog
+       RETVAL=$?
+       ;;
+*)
+       echo $&quot;Usage: $prog {start|stop|restart|reload|status|help}&quot;
+       exit 1
+esac
+exit $RETVAL
 </code></pre>
 
-<p>修改配置文件（(注意修改其中的内容修改成你自己的内容，如果你是安装的<a href="http://">msmtp</a>要将<code>mta=sendmail</code>修改为<code>mta＝msmtp</code>）</p>
+<p>设置文件的权限</p>
 
-<pre><code>sudo vi /etc/fail2ban/jail.local
+<pre><code>chmod a+x /etc/init.d/nginx    (a+x ---- all user can execute 所有用户可执行)
 </code></pre>
 
-<p>配置文件内容</p>
+<p>这样就可以方便的操作：查看nginx当前状态、启动nginx、停止nginx、重启nginx...</p>
 
-<pre><code>[DEFAULT]
-# 以空格分隔的列表，可以是 IP 地址、CIDR 前缀或者 DNS 主机名
-# 用于指定哪些地址可以忽略 fail2ban 防御
-ignoreip = 127.0.0.1 172.31.0.0/24 10.10.0.0/24 192.168.0.0/24
-# 客户端主机被禁止的时长（秒）
-bantime = 86400
-# 客户端主机被禁止前允许失败的次数 
-maxretry = 5
-# 查找失败次数的时长（秒）
-findtime = 600 
-mta = sendmail
-[ssh-iptables]
-enabled = true
-filter = sshd
-action = iptables[name=SSH, port=ssh, protocol=tcp]
-sendmail-whois[name=SSH, dest=your@email.com, sender=fail2ban@email.com]
-# Debian 系的发行版 
-logpath = /var/log/auth.log
-# Red Hat 系的发行版
-logpath = /var/log/secure
-# ssh 服务的最大尝试次数 
-maxretry = 3
+<p>开机自启动<br/>
+vi /etc/rc.local<br/>
+添加一行</p>
+
+<pre><code>／etc/init.d/nginx start
 </code></pre>
 
-<p>配置文件准备就绪后，重启fail2ban服务</p>
-
-<pre><code>sudo systemctl restart fail2ban
-</code></pre>
-
-<p>验证fail2ban，使用参数&#39;ping&#39;来运行fail2ban-client 命令。 如果fail2ban服务正常运行，你可以看到“pong（嘭）”作为响应。</p>
-
-<pre><code>$ sudo fail2ban-client ping
-Server replied: pong
-
-
-sudo tail -f /var/log/fail2ban.log
-
-为了测试fail2ban是否能正常工作，尝试通过使用错误的密码来用SSH连接到服务器模拟一个暴力破解攻击。与此同时，监控 /var/log/fail2ban.log，该文件记录在fail2ban中发生的任何敏感事件,(安装fail2ban之前的系统日志，也会被监控)
-
-sudo tail -f /var/log/fail2ban.log
-</code></pre>
-
-<p>fail2ban会自动反向查询IP的主机信息<br/><br/>
-<img src="http://img.lidong.me/2015/02/Ku6WGJyAi2BA.png" alt=""/></p>
-
-<p>查看fail2ban状态信息</p>
-
-<pre><code>sudo fail2ban-client status
-</code></pre>
-
-<p>设置开机自启动</p>
-
-<pre><code>sudo systemctl enable fail2ban
-</code></pre>
-
-<p>此处只记录了centos7的操作。</p>
-
-<p>更多参考：<br/>
-1.<a href="https://linux.cn/article-5067-1.html">如何使用 fail2ban 防御 SSH 服务器的暴力破解攻击</a></p>
+<p>下次重启生效</p>
 
                         
                       </div>
@@ -190,16 +211,14 @@ sudo tail -f /var/log/fail2ban.log
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2016/2/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
+                    <span class="date">2016/2/29</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
                       
-                        <a href="http://notes.lidong.me/install-fail2ban.html#disqus_thread">comments</a>
+                        <a href="http://notes.lidong.me/nginx-conf-start.html#disqus_thread">comments</a>
                       
 
                        
@@ -209,71 +228,139 @@ sudo tail -f /var/log/fail2ban.log
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="install-msmtp.html">
+                <a class="clearlink" href="js-regexp.html">
                 
-                  <h1>安装msmtp使用smtp发送邮件</h1>
+                  <h1>js正则表达式</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1.下载</p>
+                        	<h3 id="toc_0">新建正则表达式：</h3>
 
-<pre><code>wget http://downloads.sourceforge.net/msmtp/msmtp-1.6.3.tar.xz
-xz -z msmtp-1.6.3.tar.xz
-tar xvf msmtp-1.6.3.tar
+<pre><code>var regexp = /aabb/g; //g可以省
+var regexp = new Regexp(&quot;xyz&quot;,&quot;g&quot;); //第二个参数可省略
 </code></pre>
 
-<p>2.安装</p>
+<p>区别在于：<br/>
+1.采用字面量的写法新建的正则表达式对象在代码编译时就会生成，是平常开发中常用的方式；<br/>
+2.采用构造函数生成的正则对象要在代码运行时生成。</p>
 
-<pre><code>cd msmtp-1.6.3
-./configure –prefix=/usr/local/msmtp
-sudo make
-sudo make install
+<h3 id="toc_1">使用正则表达式：</h3>
+
+<p>正则对象的方法是指这样使用的： RegExp对象.方法(字符串)<br/>
+ 字符串对象的方法是这样使用：字符串.方法(RegExp对象)</p>
+
+<h2 id="toc_2">正则对象的属性和方法</h2>
+
+<h3 id="toc_3">1.1 正则对象的属性：</h3>
+
+<pre><code>ignoreCase  //返回一个布尔值表示正则对象是否设置i修饰符，只读属性
+global  //表示正则对象是否设置了g修饰符
+muktikine  //表示是否设置了m修饰符，返回布尔值
+lastIndex  //返回下一次开始搜索的位置，该属性可读写，但只在设置了g修饰符有意义
+source  //返回正则表达式的字符串形式（不包括反斜杠），只读属性
 </code></pre>
 
-<p>3.配置</p>
+<p>例子：<br/>
+<img src="http://img.lidong.me/2015/02/F1XIrjz1Ta7w.png" alt=""/></p>
 
-<pre><code>cd /usr/local/msmtp
-//新建文件夹etc, 
-mkdir etc 
-//新建文件
-vi /usr/local/msmtp/etc/msmtprc
+<pre><code>i 执行的时候忽略大小写匹配
+g 执行全局匹配（查看所有的匹配而不是找到第一个匹配就停止）
+m 执行多行匹配
 </code></pre>
 
-<p>编辑内容（部分内容需要修改成你自己的）</p>
+<h3 id="toc_4">1.2 test方法</h3>
 
-<pre><code># Set default values for all following accounts.
-defaults
-logfile /usr/local/msmtp/msmtp.log 
-# The SMTP server of the provider. 
-account test
-# SMTP邮件服务器地址
-host smtp.qq.com
-# 发送的邮件Email
-from xiaobaichi@qq.com
-auth login
-# 邮件服务器登录账号
-user xiaobaichi@qq.com
-# 邮件服务器登陆密码
-password 123456
-# Set a default account
-account default: test
+<p>test方法返回布尔值，用来验证字符串是否符合某个模式。如果正则表达式带有g修饰符，则每一次test方法都从上一次匹配结束的位置开始匹配。</p>
+
+<p>使用了g修饰符的正则对象，表示要记录搜索的位置，接着使用test方法，每次开始搜索的委会都是上一次匹配的后一个位置：</p>
+
+<p><img src="http://img.lidong.me/2015/02/yAxtPduwBk0V.png" alt=""/></p>
+
+<p>如果正则表达式是一个空字符串，则会匹配所有的字符串，但前提是使用new RegExp()的方式：</p>
+
+<p><img src="http://img.lidong.me/2015/02/v3FQQasHlfe9.png" alt=""/></p>
+
+<h3 id="toc_5">1.3 exec方法</h3>
+
+<p>exec()返回匹配的结果，匹配成功返回装有匹配结果的数组，匹配失败返回null</p>
+
+<p><img src="http://img.lidong.me/2015/02/aMqZRO3H3GSb.png" alt=""/></p>
+
+<p>如果正则表达式包含圆括号，则返回的数组会包括多个元素。首先是整个匹配成功的结果，后面是圆括号里匹配成功的结果，如果有多个圆括号，他们的匹配成功的结果都会成为数组元素：</p>
+
+<p><img src="http://img.lidong.me/2015/02/WwhUmwRF85df.png" alt=""/></p>
+
+<p>调用exec方法后返回的数组具有以下两个属性：</p>
+
+<pre><code>input 整个原来待匹配的字符串
+index 整个模式匹配开始位置
 </code></pre>
 
-<p>为了安全起见，修改文件的权限<code>chmod 600 etc/msmtprc</code></p>
+<p><img src="http://img.lidong.me/2015/02/NL6LZM7Qb5P3.png" alt=""/><br/>
+给正则表达式加上g修饰符就可以多次使用exec方法，下一次搜索的位置从上一次成功匹配结束的位置开始。</p>
 
-<p>4.测试</p>
+<p>如果正则对象是一个空字符串：<br/>
+<img src="http://img.lidong.me/2015/02/rbyOilU5hlRg.png" alt=""/></p>
 
-<pre><code>/usr/local/msmtp/bin/msmtp youremail@test.com
+<h2 id="toc_6">字符串对象的方法</h2>
 
-输入任意字符，然后按Ctrl+D退出，查看邮件是否收到。
-
-由于设置了日志，可以到 /usr/local/msmtp/msmtp.log，查看日志，发信成功失败都会有记录。
+<pre><code>match 返回匹配的子字符串
+search  搜索
+replace  替换
+split  分割
 </code></pre>
 
-<p>参考：<br/>
-    1.解压tar.xz文件 参考<a href="http://blog.csdn.net/rheostat/article/details/7614451">这里</a><br/>
-    2.官方<a href="http://msmtp.sourceforge.net/documentation.html">配置文档</a></p>
+<h3 id="toc_7">2.1 match()方法</h3>
+
+<p>字符串对象的match方法和正则对象的exec方法比较类似：</p>
+
+<p><img src="http://img.lidong.me/2015/02/wxfBhlBOt5bQ.png" alt=""/></p>
+
+<p>但是如果正则表达式带有g修饰符，那么match方法与exec方法就有差别了：</p>
+
+<p><img src="http://img.lidong.me/2015/02/LSFvdBnUvK1p.png" alt=""/></p>
+
+<p>match返回了所有成功匹配的结果，但是exec方法返回一个。</p>
+
+<h3 id="toc_8">2.2 search方法</h3>
+
+<p>search方法返回匹配成功的位置在整个字符串中的索引，如果没有匹配成功任何字符则返回-1,search方法自动忽略g修饰符。</p>
+
+<p><img src="http://img.lidong.me/2015/02/TY9VtGZKQwVf.png" alt=""/></p>
+
+<h3 id="toc_9">2.3 replace方法</h3>
+
+<p>str.replace(&#39;搜索模式&#39;，&#39;替换的内容&#39;);</p>
+
+<p><img src="http://img.lidong.me/2015/02/FphzytozqKbA.png" alt=""/><br/>
+如果正则表达式不带g修饰符，那么replace方法会替换第一个匹配成功的结果，如果加上g修饰符号，那么会替换所有匹配成功的结果。</p>
+
+<p>replace方法第二个参数可以使用$符号，用来指代所要替换的内容：</p>
+
+<pre><code>$&amp;  指代匹配的字符串
+$`  匹配结果前面的文本
+$&#39;  匹配结果后面的文本
+$n  指代匹配成功的第n组内容，n从1开始
+$$  指代美元符号
+</code></pre>
+
+<p><img src="http://img.lidong.me/2015/02/IVU3cLqYAiIQ.png" alt=""/></p>
+
+<p>replace方法的第二个参数也可以是函数，用于将第一个参数匹配到的值替换成函数的返回值。</p>
+
+<p><img src="http://img.lidong.me/2015/02/3W2iSi6dYVoj.png" alt=""/></p>
+
+<h3 id="toc_10">2.4 split()方法</h3>
+
+<p>split(&#39;字符串的分割正则&#39;,&#39;返回数组的最大成员数&#39;); 返回分割后各部分组成的数组。<br/>
+<img src="http://img.lidong.me/2015/02/GJNZ7qGuMO3D.png" alt=""/></p>
+
+<p>变换成正则的匹配规则来分割字符串。<br/>
+<img src="http://img.lidong.me/2015/02/TnKy1BazCg8v.png" alt=""/></p>
+
+<p>更多内容：<br/>
+<a href="http://www.cnblogs.com/skylar/p/4265490.html">http://www.cnblogs.com/skylar/p/4265490.html</a></p>
 
                         
                       </div>
@@ -282,105 +369,16 @@ account default: test
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2016/2/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/install-msmtp.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="server-safe.html">
-                
-                  <h1>服务器安全配置</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>查看登陆失败的ip<br/>
-sudo grep <q>Failed password for</q> /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
-
-<p>我这也就曝光一些哪些扫描人ip<br/>
-这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
-<img src="http://img.lidong.me/2015/02/2QYfyR7lVtTy.png" alt=""/></p>
-
-<p>基于密钥认证的配置</p>
-
-<pre><code># vi /etc/ssh/sshd_config  
-PasswordAuthentication no //禁止使用基于口令认证的方式登陆
-PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
-# /etc/init.d/sshd reload
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/server-safe.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="html5-1.html">
-                
-                  <h1>html5</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>figure</p>
-
-<p>embed<br/>
-mark<br/>
-progress</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/3</span>
+                    <span class="date">2016/2/29</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				  
-          					    <span class="posted-in"><a href='html5.html'>html5</a></span>
           				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
                       
-                        <a href="http://notes.lidong.me/html5-1.html#disqus_thread">comments</a>
+                        <a href="http://notes.lidong.me/js-regexp.html#disqus_thread">comments</a>
                       
 
                        
@@ -390,26 +388,77 @@ progress</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="hangjianyanshi.html">
+                <a class="clearlink" href="css-optimization.html">
                 
-                  <h1>行间样式使用</h1>
+                  <h1>CSS优化</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>今天在弄 <a href="http://notes.lidong.me/css-draw-1.html">css画图形</a> 的时候，要用到伪元素，但是伪元素不能在行内使用(貌似是，反正没有找到方法)，所以去看别怎么弄的画图的，我了个去，居然可以在body内容中<code>&lt;style&gt;</code>标签，一般教程都没有说这样用啊，一般文档都是让style标签放在<head></head>标签之内。</p>
+                        	<h3 id="toc_0">一、提高可维护性</h3>
 
-<pre><code>&lt;body&gt;
-&lt;style&gt;
-&lt;!--
-#contianer{
-color:red;
-}
---&gt;
-&lt;/style&gt;
-&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-&lt;/body&gt;
+<p>1.1 命名与备注<br/>
+提高自己命名的能力，可以多看看别人的代码。下面是CSS中的一些命名相关的建议</p>
+
+<pre><code>头：header
+内容：content/container
+尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体佈局宽度：wrapper
+左右中：left right center
+登录条：loginbar
+标志：logo
+广告：banner
+页面主体：main
+热点：hot
+新闻：news
+下载：download
+子导航：subnav
+菜单：menu
+子菜单：submenu
+搜索：search
+友情链接：friendlink
+页脚：footer
+版权：copyright
+滚动：scroll
+内容：content
+标签：tags
+文章列表：list
+提示信息：msg
+小技巧：tips
+栏目标题：title
+加入：joinus
+指南：guide
+服务：service
+注册：regsiter
+状态：status
+投票：vote
+合作伙伴：partner
+导航：nav
+主导航：mainnav
+子导航：subnav
+顶导航：topnav
+边导航：sidebar
+左导航：leftsidebar
+右导航：rightsidebar
+菜单：menu
+子菜单：submenu
+标题: title
+摘要: summary
 </code></pre>
+
+<p>1.2、书写顺序<br/>
+这个书写顺序指的是各个样式的书写顺序，下面是推荐的CSS书写顺序<br/>
+（1）位置属性(position, top, right, z-index, display, float等)<br/>
+（2）大小(width, height, padding, margin)<br/>
+（3）文字系列(font, line-height, letter-spacing, color- text-align等)<br/>
+（4）背景(background, border等)<br/>
+（5）其他(animation, transition等)<br/>
+书写顺序不一定非得按照上面的推荐来进行，而是根据你自己的习惯，但是最好能保证前后的习惯一致的，或者团队应该有一个共同的代码规范去遵守，这样后期维护起来也会方便许多。</p>
+
+<p>1.3、提取重复样式</p>
 
                         
                       </div>
@@ -418,18 +467,82 @@ color:red;
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2016/2/1</span>
+                    <span class="date">2016/2/29</span>
                     <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
           				  
           					    <span class="posted-in"><a href='css.html'>css</a></span>
-          				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
           				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
                       
-                        <a href="http://notes.lidong.me/hangjianyanshi.html#disqus_thread">comments</a>
+                        <a href="http://notes.lidong.me/css-optimization.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="campass-sass.html">
+                
+                  <h1>campass与sass</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/26</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/campass-sass.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="learn-search-engine.html">
+                
+                  <h1>走进搜索引擎</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/25</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/learn-search-engine.html#disqus_thread">comments</a>
                       
 
                        
@@ -518,33 +631,43 @@ color:red;
 	      
 		      
 			      <li class="post">
-			        <a href="install-fail2ban.html">安装fail2ban 防止服务器的暴力攻击</a>
+			        <a href="nginx-conf-start.html">nginx自启动设置</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="install-msmtp.html">安装msmtp使用smtp发送邮件</a>
+			        <a href="js-regexp.html">js正则表达式</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="server-safe.html">服务器安全配置</a>
+			        <a href="css-optimization.html">CSS优化</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="html5-1.html">html5</a>
+			        <a href="campass-sass.html">campass与sass</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="hangjianyanshi.html">行间样式使用</a>
+			        <a href="learn-search-engine.html">走进搜索引擎</a>
 			      </li>
 		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
 		  
 		      
 		  

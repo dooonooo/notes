@@ -2,7 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>http://notes.lidong.me/</loc>
-  <lastmod>2016-02-04T12:53:36+08:00</lastmod>
+  <lastmod>2016-02-29T20:34:28+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/nginx-conf-start.html</loc>
+  <lastmod>2016-02-29T15:21:13+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/js-regexp.html</loc>
+  <lastmod>2016-02-29T12:37:46+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/css-optimization.html</loc>
+  <lastmod>2016-02-29T12:06:47+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/campass-sass.html</loc>
+  <lastmod>2016-02-26T16:43:23+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/learn-search-engine.html</loc>
+  <lastmod>2016-02-25T13:08:52+08:00</lastmod>
 </url>
 
 <url>
@@ -77,10 +102,36 @@
 
 
 <url>
+  <loc>http://notes.lidong.me/mypages.html</loc>
+  <lastmod>2016-02-29T14:49:13+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/collect.html</loc>
+  <lastmod>2016-02-29T14:44:25+08:00</lastmod>
+</url>
+
+<url>
   <loc>http://notes.lidong.me/about.html</loc>
   <lastmod>2016-02-04T02:40:13+08:00</lastmod>
 </url>
 
+
+<url>
+  <loc>http://notes.lidong.me/css.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/frontend.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/html5.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/wangzhanchengxu.html</loc>
+</url>
 
 <url>
   <loc>http://notes.lidong.me/editor-ide.html</loc>
@@ -95,23 +146,7 @@
 </url>
 
 <url>
-  <loc>http://notes.lidong.me/frontend.html</loc>
-</url>
-
-<url>
   <loc>http://notes.lidong.me/ethereum.html</loc>
-</url>
-
-<url>
-  <loc>http://notes.lidong.me/css.html</loc>
-</url>
-
-<url>
-  <loc>http://notes.lidong.me/wangzhanchengxu.html</loc>
-</url>
-
-<url>
-  <loc>http://notes.lidong.me/html5.html</loc>
 </url>
 
 

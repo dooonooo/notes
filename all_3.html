@@ -101,86 +101,30 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="install-fail2ban.html">
+                <a class="clearlink" href="front-optimization.html">
                 
-                  <h1>安装fail2ban 防止服务器的暴力攻击</h1>
+                  <h1>前端优化的方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>发现<a href="http://notes.lidong.me/server-safe.html">服务器被扫描得厉害</a>，所以赶紧采取措施，以免被攻破（虽然没用什么宝贝，采取防御措施是不可以少的☺️）</p>
+                        	<ol>
+<li>减少http请求（合并压缩css、js、雪碧图（css-sprites）、cdn加速、data缓存、图片缓存）</li>
+<li>前端模版</li>
+<li>设置样式比较多的时候，设置className而不是直接操作样式</li>
+<li>用innerHTML 代替DOM操作，减少DOM的操作次数，优化javascript性能</li>
+<li>图片预加载，将样式放在顶部，将脚本放在底部加上时间戳。</li>
+<li>避免在主体布局使用table。</li>
+</ol>
 
-<p>安装</p>
-
-<pre><code>sudo yum install fail2ban
-</code></pre>
-
-<p>修改配置文件（(注意修改其中的内容修改成你自己的内容，如果你是安装的<a href="http://">msmtp</a>要将<code>mta=sendmail</code>修改为<code>mta＝msmtp</code>）</p>
-
-<pre><code>sudo vi /etc/fail2ban/jail.local
-</code></pre>
-
-<p>配置文件内容</p>
-
-<pre><code>[DEFAULT]
-# 以空格分隔的列表，可以是 IP 地址、CIDR 前缀或者 DNS 主机名
-# 用于指定哪些地址可以忽略 fail2ban 防御
-ignoreip = 127.0.0.1 172.31.0.0/24 10.10.0.0/24 192.168.0.0/24
-# 客户端主机被禁止的时长（秒）
-bantime = 86400
-# 客户端主机被禁止前允许失败的次数 
-maxretry = 5
-# 查找失败次数的时长（秒）
-findtime = 600 
-mta = sendmail
-[ssh-iptables]
-enabled = true
-filter = sshd
-action = iptables[name=SSH, port=ssh, protocol=tcp]
-sendmail-whois[name=SSH, dest=your@email.com, sender=fail2ban@email.com]
-# Debian 系的发行版 
-logpath = /var/log/auth.log
-# Red Hat 系的发行版
-logpath = /var/log/secure
-# ssh 服务的最大尝试次数 
-maxretry = 3
-</code></pre>
-
-<p>配置文件准备就绪后，重启fail2ban服务</p>
-
-<pre><code>sudo systemctl restart fail2ban
-</code></pre>
-
-<p>验证fail2ban，使用参数&#39;ping&#39;来运行fail2ban-client 命令。 如果fail2ban服务正常运行，你可以看到“pong（嘭）”作为响应。</p>
-
-<pre><code>$ sudo fail2ban-client ping
-Server replied: pong
-
-
-sudo tail -f /var/log/fail2ban.log
-
-为了测试fail2ban是否能正常工作，尝试通过使用错误的密码来用SSH连接到服务器模拟一个暴力破解攻击。与此同时，监控 /var/log/fail2ban.log，该文件记录在fail2ban中发生的任何敏感事件,(安装fail2ban之前的系统日志，也会被监控)
-
-sudo tail -f /var/log/fail2ban.log
-</code></pre>
-
-<p>fail2ban会自动反向查询IP的主机信息<br/><br/>
-<img src="http://img.lidong.me/2015/02/Ku6WGJyAi2BA.png" alt=""/></p>
-
-<p>查看fail2ban状态信息</p>
-
-<pre><code>sudo fail2ban-client status
-</code></pre>
-
-<p>设置开机自启动</p>
-
-<pre><code>sudo systemctl enable fail2ban
-</code></pre>
-
-<p>此处只记录了centos7的操作。</p>
-
-<p>更多参考：<br/>
-1.<a href="https://linux.cn/article-5067-1.html">如何使用 fail2ban 防御 SSH 服务器的暴力破解攻击</a></p>
+<p>尽量向前端优化，减少数据库操作，减少磁盘io，<br/>
+在不影响功能体验上情况下，<br/>
+能在浏览器执行的不要在服务端执行，<br/>
+能在缓存服务器上直接返回的不要到应用服务器，<br/>
+程序能直接得出结果的不要到外部取得，<br/>
+本机能取得的数据不要到远程取<br/>
+内存能取得的不要到磁盘取<br/>
+缓存有的不要去数据库查询</p>
 
                         
                       </div>
@@ -189,197 +133,18 @@ sudo tail -f /var/log/fail2ban.log
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2016/2/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/install-fail2ban.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="install-msmtp.html">
-                
-                  <h1>安装msmtp使用smtp发送邮件</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1.下载</p>
-
-<pre><code>wget http://downloads.sourceforge.net/msmtp/msmtp-1.6.3.tar.xz
-xz -z msmtp-1.6.3.tar.xz
-tar xvf msmtp-1.6.3.tar
-</code></pre>
-
-<p>2.安装</p>
-
-<pre><code>cd msmtp-1.6.3
-./configure –prefix=/usr/local/msmtp
-sudo make
-sudo make install
-</code></pre>
-
-<p>3.配置</p>
-
-<pre><code>cd /usr/local/msmtp
-//新建文件夹etc, 
-mkdir etc 
-//新建文件
-vi /usr/local/msmtp/etc/msmtprc
-</code></pre>
-
-<p>编辑内容（部分内容需要修改成你自己的）</p>
-
-<pre><code># Set default values for all following accounts.
-defaults
-logfile /usr/local/msmtp/msmtp.log 
-# The SMTP server of the provider. 
-account test
-# SMTP邮件服务器地址
-host smtp.qq.com
-# 发送的邮件Email
-from xiaobaichi@qq.com
-auth login
-# 邮件服务器登录账号
-user xiaobaichi@qq.com
-# 邮件服务器登陆密码
-password 123456
-# Set a default account
-account default: test
-</code></pre>
-
-<p>为了安全起见，修改文件的权限<code>chmod 600 etc/msmtprc</code></p>
-
-<p>4.测试</p>
-
-<pre><code>/usr/local/msmtp/bin/msmtp youremail@test.com
-
-输入任意字符，然后按Ctrl+D退出，查看邮件是否收到。
-
-由于设置了日志，可以到 /usr/local/msmtp/msmtp.log，查看日志，发信成功失败都会有记录。
-</code></pre>
-
-<p>参考：<br/>
-    1.解压tar.xz文件 参考<a href="http://blog.csdn.net/rheostat/article/details/7614451">这里</a><br/>
-    2.官方<a href="http://msmtp.sourceforge.net/documentation.html">配置文档</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/install-msmtp.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="server-safe.html">
-                
-                  <h1>服务器安全配置</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>查看登陆失败的ip<br/>
-sudo grep <q>Failed password for</q> /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
-
-<p>我这也就曝光一些哪些扫描人ip<br/>
-这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
-<img src="http://img.lidong.me/2015/02/2QYfyR7lVtTy.png" alt=""/></p>
-
-<p>基于密钥认证的配置</p>
-
-<pre><code># vi /etc/ssh/sshd_config  
-PasswordAuthentication no //禁止使用基于口令认证的方式登陆
-PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
-# /etc/init.d/sshd reload
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/server-safe.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="html5-1.html">
-                
-                  <h1>html5</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>figure</p>
-
-<p>embed<br/>
-mark<br/>
-progress</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/3</span>
+                    <span class="date">2016/1/25</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
           				  
-          					    <span class="posted-in"><a href='html5.html'>html5</a></span>
+          					    <span class="posted-in"><a href='xinnengyouhua.html'>性能优化</a></span>
           				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
                       
-                        <a href="http://notes.lidong.me/html5-1.html#disqus_thread">comments</a>
+                        <a href="http://notes.lidong.me/front-optimization.html#disqus_thread">comments</a>
                       
 
                        
@@ -389,25 +154,22 @@ progress</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="hangjianyanshi.html">
+                <a class="clearlink" href="mysql-command.html">
                 
-                  <h1>行间样式使用</h1>
+                  <h1>mysql命令</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>今天在弄 <a href="http://notes.lidong.me/css-draw-1.html">css画图形</a> 的时候，要用到伪元素，但是伪元素不能在行内使用(貌似是，反正没有找到方法)，所以去看别怎么弄的画图的，我了个去，居然可以在body内容中<code>&lt;style&gt;</code>标签，一般教程都没有说这样用啊，一般文档都是让style标签放在<head></head>标签之内。</p>
+                        	<p>远程连接mysql</p>
 
-<pre><code>&lt;body&gt;
-&lt;style&gt;
-&lt;!--
-#contianer{
-color:red;
-}
---&gt;
-&lt;/style&gt;
-&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-&lt;/body&gt;
+<pre><code>//***指密码，下同
+mysql -u root -h 127.0.0.1 -P 3306 -p ***
+</code></pre>
+
+<p>导出数据表</p>
+
+<pre><code>mysqldump -u root -p *** -h 127.0.0.1 数据库.表 &gt; 导出sqld的路径
 </code></pre>
 
                         
@@ -417,18 +179,174 @@ color:red;
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2016/2/1</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='css.html'>css</a></span>
-          				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+                    <span class="date">2016/1/25</span>
+                    
           				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
                       
-                        <a href="http://notes.lidong.me/hangjianyanshi.html#disqus_thread">comments</a>
+                        <a href="http://notes.lidong.me/mysql-command.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="ethereum-command.html">
+                
+                  <h1>以太坊的一些有用知识</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">以太命令</h2>
+
+<p>安装钱包（geth）--需要提前安装homebrew。<br/>
+brew tap ethereum/ethereum<br/>
+brew install ethereum</p>
+
+<p>1.创建以太账户：geth account new<br/>
+2.查询已创建的账户：geth account list<br/>
+3.开启挖矿功能：geth --mine --minerthreads=4<br/>
+ (minerthreads=4是默认值，挖矿会占用电脑所有的计算资源，造成卡顿，可以改成2或者3)，等到generating DAG显示到达100%，就开始挖矿了</p>
+
+<h3 id="toc_1">官方指南(英文)：</h3>
+
+<p><a href="https://ethereum.gitbooks.io/frontier-guide/content/">https://ethereum.gitbooks.io/frontier-guide/content/</a></p>
+
+<h3 id="toc_2">在线查询帐户余额</h3>
+
+<p><a href="https://etherchain.org/">https://etherchain.org/</a><br/>
+输入你的地址，即可查询到你的余额（只有余额不为0的才可以查到）</p>
+
+<h2 id="toc_3">我的address：</h2>
+
+<p>98a07dd58c3887271ed29f058109e206972e8164</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ethereum.html'>以太</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/ethereum-command.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="sublime-note.html">
+                
+                  <h1>Sublime笔记</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>转载并修改<br/>
+原文链接： <a href="http://www.cnblogs.com/xiaohuochai/p/5073179.html">http://www.cnblogs.com/xiaohuochai/p/5073179.html</a></p>
+
+<h2 id="toc_0">单词操作</h2>
+
+<p>1.选中当前单词 ctrl＋d<br/>
+2.选中相同的所有单词 alt+f3<br/>
+<img src="http://img.lidong.me/2015/01/C4ufG7enipFE.gif" alt="单词操作"/></p>
+
+<h2 id="toc_1">行操作</h2>
+
+<p>选中当前行 ctrl＋l</p>
+
+<h1 id="toc_2">goto（ctrl＋p）</h1>
+
+<p>文件名 要打开的文件<br/>
+:行 具体行(ctrl+g)<br/>
+@名称  CSS选择器、HTMLid名及ID值、js事件及函数名(ctrl+r)<br/>
+#关键字  具体的关键字(ctrl+;)</p>
+
+<p><img src="http://img.lidong.me/2015/01/5yqBH2O47PHw.gif" alt="goto操作"/></p>
+
+<h2 id="toc_3">缩进</h2>
+
+<p>向前缩进tab ctrl+[<br/>
+向后缩进 tab+shift、ctrl+]</p>
+
+<h2 id="toc_4">注释</h2>
+
+<p>注释和取消注释单行  ctrl + /<br/>
+注释和取消注释大段代码 ctrl + shift + /</p>
+
+<h2 id="toc_5">折叠</h2>
+
+<p>折叠代码 ctrl+shift+[<br/>
+展开代码 ctrl+shift+]</p>
+
+<h2 id="toc_6">代码大小写</h2>
+
+<p>大写 ctrl+k ctrl+u<br/>
+小写ctrl+k ctrl+l</p>
+
+<h2 id="toc_7">其他</h2>
+
+<p>命令面板  ctrl+shift+p<br/>
+侧边栏 ctrl+k ctrl+b<br/>
+粘贴代码保持缩进格式 ctrl＋shiift＋v<br/>
+闭合标签  alt＋,<br/>
+选中光标的首尾标签 ctrl+shift+&#39;</p>
+
+<h2 id="toc_8">插件</h2>
+
+<p>package control安装<br/>
+代码地址：<a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a></p>
+
+<h3 id="toc_9">emmet</h3>
+
+<p>[1] !+tab -&gt;生成骨架结构<br/>
+[2] #foo -&gt;ID为&#39;foo&#39;<br/>
+[3] .foo -&gt;类名为&#39;foo&#39;<br/>
+[4] +   -&gt;同级元素<br/>
+[5] *3   -&gt;生成3个元素<br/>
+[6] w100    -&gt;width:100px<br/>
+[7] m5e    -&gt;margin:5em<br/>
+[8] @f    -&gt;@font-face<br/>
+[9] $    -&gt;从1开始的递增值<br/>
+[10] {}    -&gt;元素内容</p>
+
+<p><img src="http://img.lidong.me/2015/01/hIj1sfqP7OUP.gif" alt="emmet操作"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/1/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='editor-ide.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/sublime-note.html#disqus_thread">comments</a>
                       
 
                        
@@ -443,12 +361,12 @@ color:red;
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   <a href="all.html">&laquo; Prev Page</a>  
+			   <a href="all_2.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="all_2.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>
