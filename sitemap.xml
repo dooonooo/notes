@@ -2,7 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>http://notes.lidong.me/</loc>
-  <lastmod>2016-02-29T20:34:28+08:00</lastmod>
+  <lastmod>2016-03-14T01:26:38+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/jquery-vslidation.html</loc>
+  <lastmod>2016-03-13T12:56:06+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/learn-jquery.html</loc>
+  <lastmod>2016-03-01T10:25:30+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/svg-simple.html</loc>
+  <lastmod>2016-02-29T22:54:01+08:00</lastmod>
 </url>
 
 <url>
@@ -118,23 +133,15 @@
 
 
 <url>
-  <loc>http://notes.lidong.me/css.html</loc>
-</url>
-
-<url>
-  <loc>http://notes.lidong.me/frontend.html</loc>
-</url>
-
-<url>
-  <loc>http://notes.lidong.me/html5.html</loc>
-</url>
-
-<url>
   <loc>http://notes.lidong.me/wangzhanchengxu.html</loc>
 </url>
 
 <url>
-  <loc>http://notes.lidong.me/editor-ide.html</loc>
+  <loc>http://notes.lidong.me/css.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/jquery.html</loc>
 </url>
 
 <url>
@@ -143,6 +150,18 @@
 
 <url>
   <loc>http://notes.lidong.me/linux.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/editor-ide.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/frontend.html</loc>
+</url>
+
+<url>
+  <loc>http://notes.lidong.me/html5.html</loc>
 </url>
 
 <url>

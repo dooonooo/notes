@@ -82,6 +82,8 @@
             <li><a href="linux.html">linux</a></li>
         
             <li><a href="html5.html">html5</a></li>
+        
+            <li><a href="jquery.html">jquery</a></li>
          
 
       </ul>
@@ -100,6 +102,144 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="server-safe.html">
+                
+                  <h1>服务器安全配置</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>查看登陆失败的ip<br/>
+sudo grep <q>Failed password for</q> /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
+
+<p>我这也就曝光一些哪些扫描人ip<br/>
+这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
+<img src="http://img.lidong.me/2015/02/2QYfyR7lVtTy.png" alt=""/></p>
+
+<p>基于密钥认证的配置</p>
+
+<pre><code># vi /etc/ssh/sshd_config  
+PasswordAuthentication no //禁止使用基于口令认证的方式登陆
+PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
+# /etc/init.d/sshd reload
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/server-safe.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="html5-1.html">
+                
+                  <h1>html5</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>figure</p>
+
+<p>embed<br/>
+mark<br/>
+progress</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				  
+          					    <span class="posted-in"><a href='html5.html'>html5</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/html5-1.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="hangjianyanshi.html">
+                
+                  <h1>行间样式使用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>今天在弄 <a href="http://notes.lidong.me/css-draw-1.html">css画图形</a> 的时候，要用到伪元素，但是伪元素不能在行内使用(貌似是，反正没有找到方法)，所以去看别怎么弄的画图的，我了个去，居然可以在body内容中<code>&lt;style&gt;</code>标签，一般教程都没有说这样用啊，一般文档都是让style标签放在<head></head>标签之内。</p>
+
+<pre><code>&lt;body&gt;
+&lt;style&gt;
+&lt;!--
+#contianer{
+color:red;
+}
+--&gt;
+&lt;/style&gt;
+&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				  
+          					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/hangjianyanshi.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="www-index.html">
                 
@@ -306,374 +446,6 @@ root html;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="directory-list.html">
-                
-                  <h1>目录列表程序</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>好久就想弄个可以分享文件的页面，感觉不复杂，但也不简单。</p>
-
-<p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
-
-<p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
-
-<p><img src="http://img.lidong.me/2015/01/hREZQHtZdOOK.png" alt=""/></p>
-
-<p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='wangzhanchengxu.html'>网站程序</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/directory-list.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="fontend-guide.html">
-                
-                  <h1>前端规范</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">html部分</h3>
-
-<ol>
-<li>页面声明：简单粗暴有内涵
-&lt;!DOCTYPE HTML&gt;</li>
-<li>把css放在<head>中，避免使用@import</li>
-<li>语言属性声明。
-<html lang="zh-CN"></li>
-<li>html标签使用小写</li>
-<li><p>使用utf-8编码<br/>
-html中：`<meta charset="uft-8"><br/>
-css中：@charset <q>uft-8</q>;</p></li>
-<li><p>IE兼容模式<br/>
-完美解决IE兼容模式代码： <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"></p></li>
-<li><p>自闭合元素（单闭合标签）后的斜杠是可以省略的，既然可以省略，省略最好，省字节。</p></li>
-<li><p>属性定义最好使用双引号</p></li>
-<li><p>html5中引入js、css文件不需要定义type属性。（能省则省）</p></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/26</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/fontend-guide.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="css-draw-1.html">
-                
-                  <h1>CSS画图形</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1.正方形<br/>
-<div style="width:100px;height:100px;background:red;"></div></p>
-
-<pre><code>.square{
-width:100px;
-height:100px;
-backgroud:red;}
-</code></pre>
-
-<p>2.长方形<br/>
-<div style="width:150px;height:100px;background:red;"></div></p>
-
-<pre><code>.rectangle{
-width:150px;
-height:100px;
-background:red;}
-</code></pre>
-
-<p>3.圆形<br/>
- <div style="width:100px;height: 100px;background:red;border-top-left-radius:50px;border-top-right-radius:50px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;"></div></p>
-
-<pre><code>.circle {
-//将正方形圆角放大到最大
-width:100px;
-height: 100px;
-background:red;
-border-top-left-radius:50px;
-border-top-right-radius:50px;
-border-bottom-left-radius:50px;
-border-bottom-right-radius:50px;}
-</code></pre>
-
-<p>4.椭圆<br/>
- <div style="width:200px;height: 100px;background:red;border-top-left-radius:100px 50px;border-top-right-radius:100px 50px;border-bottom-left-radius:100px 50px;border-bottom-right-radius:100px 50px;"></div></p>
-
-<pre><code>.oval{
-//长方形的圆角放大到最大
-width:200px;
-height: 100px;
-background:red;
-border-top-left-radius:100px 50px;
-border-top-right-radius:100px 50px;
-border-bottom-left-radius:100px 50px;
-border-bottom-right-radius:100px 50px;}
-</code></pre>
-
-<p>5.三角形<br/>
-<div style="width:0;height:0px; border-bottom:50px solid red; border-left:25px solid transparent; border-right:25px solid transparent;"></div></p>
-
-<pre><code>.triangle{
-//利用边框填充，
-width:0;
-height:0;
-border-bottom:50px solid red;
-border-left:25px solid transparent;
-border-right:25px solid transparent;}
-</code></pre>
-
-<p>6.直角三角形<br/>
-<div style="height:0;width:0;border-bottom:50px solid red;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.right-angled-triangle{
-//常规三角形的一半，将底边延长即为图例
-height:0;
-width:0;
-border-bottom:50px solid red;
-border-right:50px solid transparent;}
-</code></pre>
-
-<p>7.平行四边形<br/>
-<div style="width:100px;height:50px;background:red;transform: skew(30deg,0);"></div></p>
-
-<pre><code>.parallelogram{
-//将长方形沿x或y轴倾斜某个角度即为平行四边形
-width:100px;
-height:50px;
-background:red;
-transform: skew(30deg,0);}
-</code></pre>
-
-<p>8.梯形<br/>
-<div style="width:100px;height:0;border-bottom:100px solid red;border-left:50px solid transparent;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.trapezoid{
-//对三角形设置宽度
-width:100px;
-height:0;
-border-bottom:100px solid red;
-border-left:50px solid transparent;
-border-right:50px solid transparent;
-
-}
-</code></pre>
-
-<p>9.六角星</p>
-
-<style>
-<!--
-#star-six {
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid red;
-    position: relative;
-}
-#star-six:after {
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-top: 100px solid red;
-    position: absolute;
-    content: "";
-    top: 30px;
-    left: -50px;
-}
---></style>
-
-<div id="star-six"></div>
-
-<p>&nbsp;</p>
-
-<pre><code>#star-six {
-width: 0;
-height: 0;
-border-left: 50px solid transparent;
-border-right: 50px solid transparent;
-border-bottom: 100px solid red;
-}
-#star-six:after {
-width: 0;
-height: 0;
-border-left: 50px solid transparent;
-border-right: 50px solid transparent;
-border-top: 100px solid red;
-content: &quot;&quot;;
-top: 30px;
-left: -50px;
-}
-</code></pre>
-
-<p>10.五角星</p>
-
-<style>
-
-#star-five{margin:50px 0;
-display:block;
-position:relative;
-color:red;
-width:0;
-height:0;
-border-right:100px solid transparent;
-border-bottom:70px solid red;
-border-left:100px solid transparent;
-transform:rotate(35deg);
-}
-#star-five:before {
-border-bottom:80px solid red;
-border-left:30px solid transparent;
-border-right:30px solid transparent;
-position:absolute;
-height:0;
-width:0;
-top: -45px;
-left: -65px;
-dispaly:block;
-content:'';
-transform:rotate(-35deg);
-}
-
-#star-five:after { 
-position: absolute; 
-display: block; 
-color: red; 
-top: 3px; 
-left: -105px; 
-width: 0px; 
-height: 0px; 
-border-right: 100px solid transparent; 
-border-bottom: 70px solid red; 
-border-left: 100px solid transparent; 
--webkit-transform: rotate(-70deg); 
--moz-transform: rotate(-70deg); 
--ms-transform: rotate(-70deg); 
--o-transform: rotate(-70deg); 
-content: ''; 
-} 
-
-</style>
-
-<div id="star-five"></div>
-
-<p>&nbsp;</p>
-
-<pre><code>#star-five{
-//画左上与右下的一个三角形
-margin:50px 0;
-display:block;
-position:relative;
-color:red;
-width:0;
-height:0;
-border-right:100px solid transparent;
-border-bottom:70px solid red;
-border-left:100px solid transparent;
-transform:rotate(35deg);
-}
-//画顶上的三角形
-#star-five:before {
-border-bottom:80px solid red;
-border-left:30px solid transparent;
-border-right:30px solid transparent;
-position:absolute;
-height:0;
-width:0;
-top: -45px;
-left: -65px;
-dispaly:block;
-content:&#39;&#39;;
-transform:rotate(-35deg);
-}
-//画右上与左下的一个三角形
-#star-five:after { 
-position: absolute; 
-display: block; 
-color: red; 
-top: 3px; 
-left: -105px; 
-width: 0px; 
-height: 0px; 
-border-right: 100px solid transparent; 
-border-bottom: 70px solid red; 
-border-left: 100px solid transparent; 
--webkit-transform: rotate(-70deg); 
--moz-transform: rotate(-70deg); 
--ms-transform: rotate(-70deg); 
--o-transform: rotate(-70deg); 
-content: &#39;&#39;; 
-}
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='css.html'>css</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/css-draw-1.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -738,6 +510,8 @@ content: &#39;&#39;;
             <a href="linux.html"><strong>linux</strong></a>
         
             <a href="html5.html"><strong>html5</strong></a>
+        
+            <a href="jquery.html"><strong>jquery</strong></a>
          
         </p>
 
@@ -754,6 +528,24 @@ content: &#39;&#39;;
 	      
 		      
 			      <li class="post">
+			        <a href="jquery-vslidation.html">jquery验证插件 jquery-validation</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="learn-jquery.html">jQuery</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="svg-simple.html">svg简单介绍</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="nginx-conf-start.html">nginx自启动设置</a>
 			      </li>
 		     
@@ -765,22 +557,6 @@ content: &#39;&#39;;
 		     
 		  
 		      
-			      <li class="post">
-			        <a href="css-optimization.html">CSS优化</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="campass-sass.html">campass与sass</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="learn-search-engine.html">走进搜索引擎</a>
-			      </li>
-		     
 		  
 		      
 		  
