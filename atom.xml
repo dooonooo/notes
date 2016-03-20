@@ -4,13 +4,105 @@
   <title><![CDATA[Lidong's notes]]></title>
   <link href="http://notes.lidong.me/atom.xml" rel="self"/>
   <link href="http://notes.lidong.me/"/>
-  <updated>2016-03-14T01:25:55+08:00</updated>
+  <updated>2016-03-20T23:58:25+08:00</updated>
   <id>http://notes.lidong.me/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[canvas基础]]></title>
+    <link href="http://notes.lidong.me/canvas-basic.html"/>
+    <updated>2016-03-19T15:04:33+08:00</updated>
+    <id>http://notes.lidong.me/canvas-basic.html</id>
+    <content type="html"><![CDATA[
+<p>HTML</p>
+
+<pre><code>&lt;canvas id=&quot;canvas&quot;&gt;&lt;canvas&gt;
+</code></pre>
+
+<p>Javascript</p>
+
+<pre><code>var canvas=document.getElemenById(&quot;canvas&quot;)
+var context=canvas.getContext(&#39;2d&#39;);
+
+//使用context进行绘制
+</code></pre>
+
+<p>画直线</p>
+
+<pre><code>//状态设置
+context.moveTo(100,100);
+context.lineTo(700,700);
+context.lineWidth=10;//线条宽度
+context.strokeStyle=&quot;#058&quot;;// 线条颜色
+//绘制
+context.stroke();
+
+//创建一个全新的路径绘制
+context.beginPath();
+//关闭路径，绘制封闭的图形
+context.closePath();
+
+//颜色填充
+fillStyle =&quot;yellow&quot;;
+fill();
+
+//矩形
+rect(x,y,width,height);
+//包含填充的矩形
+fillRect(x,y width，height);
+//绘制边框
+strokeRect();
+</code></pre>
+
+<p>线条样式</p>
+
+<pre><code>//设置线条的开始、结尾显示样式
+lineCap=&quot;butt&quot;(default)
+         &quot;round&quot;（圆形）
+         &quot;square&quot;   （方形）
+//线条连接处
+lineJoin = &quot;miter&quot;(default)尖角
+           &quot;bevel&quot;
+           &quot;round&quot;圆角           
+miterLimit（默认为10） 
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CSS中字体文件引入]]></title>
+    <link href="http://notes.lidong.me/font-face.html"/>
+    <updated>2016-03-17T22:10:49+08:00</updated>
+    <id>http://notes.lidong.me/font-face.html</id>
+    <content type="html"><![CDATA[
+<pre><code>@font-face{
+font-family:&quot;icomoon&quot;;
+src:url(&quot;../fonts/icomoon.eot&quot;);/*IE9兼容*/
+/*?为IE6-8兼容*/
+src:url(&quot;../fonts/icomoon.eot?&quot;) format(&quot;embedded-opentype&quot;),
+    url(&quot;../fonts/icomoon.woff&quot;)format(&quot;woff&quot;),
+    url(&quot;../fonts/icomoon.ttf&quot;)format(&quot;truetype&quot;),
+    url(&quot;../fonts/icomoon.svg&quot;)formt(&quot;svg&quot;),
+    font-weight:normal;
+    font-style:normal;
+}
+
+.icon{
+    font-family:&quot;icomoon&quot;;
+    font-weight:normal;
+    font-style:normal;
+    -webkit-font-smoothing:antialiased;/*处理防锯齿*/
+    -moz-osx-font-somthing:grayscale;
+}
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[jquery验证插件 jquery-validation]]></title>
@@ -29,7 +121,7 @@
 <p>基本验证方法</p>
 
 <p>(1)、required:true               必输字段<br/>
-(2)、remote:<q>check.php</q>          使用ajax方法调用check.php验证输入值<br/>
+(2)、remote:&quot;check.php&quot;          使用ajax方法调用check.php验证输入值<br/>
 (3)、email:true                  必须输入正确格式的电子邮件<br/>
 (4)、url:true                    必须输入正确格式的网址<br/>
 (5)、date:true                   必须输入正确格式的日期<br/>
@@ -37,7 +129,7 @@
 (7)、number:true                 必须输入合法的数字(负数，小数)<br/>
 (8)、digits:true                 必须输入整数<br/>
 (9)、creditcard:true             必须输入合法的信用卡号<br/>
-(10)、equalTo:<q>#password</q>        输入值必须和#password相同<br/>
+(10)、equalTo:&quot;#password&quot;        输入值必须和#password相同<br/>
 (11)、accept:                    输入拥有合法后缀名的字符串（上传文件的后缀）<br/>
 (12)、maxlength:5                输入长度最多是5的字符串(汉字算一个字符)<br/>
 (13)、minlength:10               输入长度最小是10的字符串(汉字算一个字符)<br/>
@@ -594,7 +686,7 @@ account default: test
     <id>http://notes.lidong.me/server-safe.html</id>
     <content type="html"><![CDATA[
 <p>查看登陆失败的ip<br/>
-sudo grep <q>Failed password for</q> /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
+sudo grep &quot;Failed password for&quot; /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
 
 <p>我这也就曝光一些哪些扫描人ip<br/>
 这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
@@ -847,7 +939,7 @@ root html;
 <li>html标签使用小写</li>
 <li><p>使用utf-8编码<br/>
 html中：`<meta charset="uft-8"><br/>
-css中：@charset <q>uft-8</q>;</p></li>
+css中：@charset &quot;uft-8&quot;;</p></li>
 <li><p>IE兼容模式<br/>
 完美解决IE兼容模式代码： <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"></p></li>
 <li><p>自闭合元素（单闭合标签）后的斜杠是可以省略的，既然可以省略，省略最好，省字节。</p></li>
@@ -1104,53 +1196,6 @@ border-left: 100px solid transparent;
 -o-transform: rotate(-70deg); 
 content: &#39;&#39;; 
 }
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[前端优化的方法]]></title>
-    <link href="http://notes.lidong.me/front-optimization.html"/>
-    <updated>2016-01-25T20:52:18+08:00</updated>
-    <id>http://notes.lidong.me/front-optimization.html</id>
-    <content type="html"><![CDATA[
-<ol>
-<li>减少http请求（合并压缩css、js、雪碧图（css-sprites）、cdn加速、data缓存、图片缓存）</li>
-<li>前端模版</li>
-<li>设置样式比较多的时候，设置className而不是直接操作样式</li>
-<li>用innerHTML 代替DOM操作，减少DOM的操作次数，优化javascript性能</li>
-<li>图片预加载，将样式放在顶部，将脚本放在底部加上时间戳。</li>
-<li>避免在主体布局使用table。</li>
-</ol>
-
-<p>尽量向前端优化，减少数据库操作，减少磁盘io，<br/>
-在不影响功能体验上情况下，<br/>
-能在浏览器执行的不要在服务端执行，<br/>
-能在缓存服务器上直接返回的不要到应用服务器，<br/>
-程序能直接得出结果的不要到外部取得，<br/>
-本机能取得的数据不要到远程取<br/>
-内存能取得的不要到磁盘取<br/>
-缓存有的不要去数据库查询</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mysql命令]]></title>
-    <link href="http://notes.lidong.me/mysql-command.html"/>
-    <updated>2016-01-25T01:38:34+08:00</updated>
-    <id>http://notes.lidong.me/mysql-command.html</id>
-    <content type="html"><![CDATA[
-<p>远程连接mysql</p>
-
-<pre><code>//***指密码，下同
-mysql -u root -h 127.0.0.1 -P 3306 -p ***
-</code></pre>
-
-<p>导出数据表</p>
-
-<pre><code>mysqldump -u root -p *** -h 127.0.0.1 数据库.表 &gt; 导出sqld的路径
 </code></pre>
 
 ]]></content>

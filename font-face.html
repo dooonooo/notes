@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  目录列表程序 - Lidong's notes
+  CSS中字体文件引入 - Lidong's notes
   
   </title>
   
@@ -105,19 +105,21 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>目录列表程序</h1>
+          <h1>CSS中字体文件引入</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/1/30</span>
+          <span class="date">2016/3/17</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='wangzhanchengxu.html'>网站程序</a></span>
+              <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          
+              <span class="posted-in"><a href='css.html'>css</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/directory-list.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/font-face.html#disqus_thread">comments</a>
             
 
             
@@ -127,15 +129,26 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>好久就想弄个可以分享文件的页面，感觉不复杂，但也不简单。</p>
+      <pre><code>@font-face{
+font-family:&quot;icomoon&quot;;
+src:url(&quot;../fonts/icomoon.eot&quot;);/*IE9兼容*/
+/*?为IE6-8兼容*/
+src:url(&quot;../fonts/icomoon.eot?&quot;) format(&quot;embedded-opentype&quot;),
+    url(&quot;../fonts/icomoon.woff&quot;)format(&quot;woff&quot;),
+    url(&quot;../fonts/icomoon.ttf&quot;)format(&quot;truetype&quot;),
+    url(&quot;../fonts/icomoon.svg&quot;)formt(&quot;svg&quot;),
+    font-weight:normal;
+    font-style:normal;
+}
 
-<p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
-
-<p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
-
-<p><img src="http://img.lidong.me/2015/01/hREZQHtZdOOK.png" alt=""/></p>
-
-<p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
+.icon{
+    font-family:&quot;icomoon&quot;;
+    font-weight:normal;
+    font-style:normal;
+    -webkit-font-smoothing:antialiased;/*处理防锯齿*/
+    -moz-osx-font-somthing:grayscale;
+}
+</code></pre>
 
       </div>
 
@@ -143,16 +156,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="nginx-configure.html" 
-          title="Previous Post: Nginx配置">&laquo; Nginx配置</a>
+          <a href="canvas-basic.html" 
+          title="Previous Post: canvas基础">&laquo; canvas基础</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="fontend-guide.html" 
-          title="Next Post: 前端规范">前端规范 &raquo;</a>
+          <a  href="jquery-vslidation.html" 
+          title="Next Post: jquery验证插件 jquery-validation">jquery验证插件 jquery-validation &raquo;</a>
       
       </p>
         </div>

@@ -84,6 +84,8 @@
             <li><a href="html5.html">html5</a></li>
         
             <li><a href="jquery.html">jquery</a></li>
+        
+            <li><a href="canvas.html">canvas</a></li>
          
 
       </ul>
@@ -102,6 +104,62 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="font-face.html">
+                
+                  <h1>CSS中字体文件引入</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>@font-face{
+font-family:&quot;icomoon&quot;;
+src:url(&quot;../fonts/icomoon.eot&quot;);/*IE9兼容*/
+/*?为IE6-8兼容*/
+src:url(&quot;../fonts/icomoon.eot?&quot;) format(&quot;embedded-opentype&quot;),
+    url(&quot;../fonts/icomoon.woff&quot;)format(&quot;woff&quot;),
+    url(&quot;../fonts/icomoon.ttf&quot;)format(&quot;truetype&quot;),
+    url(&quot;../fonts/icomoon.svg&quot;)formt(&quot;svg&quot;),
+    font-weight:normal;
+    font-style:normal;
+}
+
+.icon{
+    font-family:&quot;icomoon&quot;;
+    font-weight:normal;
+    font-style:normal;
+    -webkit-font-smoothing:antialiased;/*处理防锯齿*/
+    -moz-osx-font-somthing:grayscale;
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				  
+          					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/font-face.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="css-optimization.html">
                 
@@ -185,9 +243,9 @@
                     <span class="date">2016/2/29</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				  
           					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -234,9 +292,9 @@ color:red;
                     <span class="date">2016/2/1</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				  
           					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -592,6 +650,8 @@ content: &#39;&#39;;
             <a href="html5.html"><strong>html5</strong></a>
         
             <a href="jquery.html"><strong>jquery</strong></a>
+        
+            <a href="canvas.html"><strong>canvas</strong></a>
          
         </p>
 
@@ -608,6 +668,18 @@ content: &#39;&#39;;
 	      
 		      
 			      <li class="post">
+			        <a href="canvas-basic.html">canvas基础</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="font-face.html">CSS中字体文件引入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="jquery-vslidation.html">jquery验证插件 jquery-validation</a>
 			      </li>
 		     
@@ -621,18 +693,6 @@ content: &#39;&#39;;
 		      
 			      <li class="post">
 			        <a href="svg-simple.html">svg简单介绍</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="nginx-conf-start.html">nginx自启动设置</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="js-regexp.html">js正则表达式</a>
 			      </li>
 		     
 		  

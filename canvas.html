@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  目录列表程序 - Lidong's notes
+  canvas - Lidong's notes
   
   </title>
   
@@ -96,83 +96,117 @@
 
         <section id="main-content" role="main" class="scroll-container">
  <script type="text/javascript">
-  $(function(){
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>目录列表程序</h1>
-     
-        <div class="read-more clearfix">
-          <span class="date">2016/1/30</span>
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="canvas-basic.html">
+                
+                  <h1>canvas基础</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>HTML</p>
 
-          <span>posted in&nbsp;</span> 
-          
-              <span class="posted-in"><a href='wangzhanchengxu.html'>网站程序</a></span>
-           
-         
-          <span class="comments">
-            
-              <a href="http://notes.lidong.me/directory-list.html#disqus_thread">comments</a>
-            
+<pre><code>&lt;canvas id=&quot;canvas&quot;&gt;&lt;canvas&gt;
+</code></pre>
 
-            
-          </span>
+<p>Javascript</p>
 
-        </div>
-      </div><!-- article -->
+<pre><code>var canvas=document.getElemenById(&quot;canvas&quot;)
+var context=canvas.getContext(&#39;2d&#39;);
 
-      <div class="article-content">
-      <p>好久就想弄个可以分享文件的页面，感觉不复杂，但也不简单。</p>
+//使用context进行绘制
+</code></pre>
 
-<p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
+<p>画直线</p>
 
-<p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
+<pre><code>//状态设置
+context.moveTo(100,100);
+context.lineTo(700,700);
+context.lineWidth=10;//线条宽度
+context.strokeStyle=&quot;#058&quot;;// 线条颜色
+//绘制
+context.stroke();
 
-<p><img src="http://img.lidong.me/2015/01/hREZQHtZdOOK.png" alt=""/></p>
+//创建一个全新的路径绘制
+context.beginPath();
+//关闭路径，绘制封闭的图形
+context.closePath();
 
-<p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
+//颜色填充
+fillStyle =&quot;yellow&quot;;
+fill();
 
-      </div>
+//矩形
+rect(x,y,width,height);
+//包含填充的矩形
+fillRect(x,y width，height);
+//绘制边框
+strokeRect();
+</code></pre>
 
-      <div class="row">
-        <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="nginx-configure.html" 
-          title="Previous Post: Nginx配置">&laquo; Nginx配置</a>
-      
-        </p>
-        </div>
-        <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="fontend-guide.html" 
-          title="Next Post: 前端规范">前端规范 &raquo;</a>
-      
-      </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          
+<p>线条样式</p>
 
-          
-            <div id="disqus_thread"></div>
-          
+<pre><code>//设置线条的开始、结尾显示样式
+lineCap=&quot;butt&quot;(default)
+         &quot;round&quot;（圆形）
+         &quot;square&quot;   （方形）
+//线条连接处
+lineJoin = &quot;miter&quot;(default)尖角
+           &quot;bevel&quot;
+           &quot;round&quot;圆角           
+miterLimit（默认为10） 
+</code></pre>
 
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 -->
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/19</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='canvas.html'>canvas</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/canvas-basic.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
-
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
