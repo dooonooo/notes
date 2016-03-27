@@ -180,11 +180,78 @@ lineJoin = &quot;miter&quot;(default)尖角
 miterLimit（默认为10） 
 </code></pre>
 
+<p>图形</p>
+
+<pre><code>//图形状态保存
+save()
+restore()
+
+translate(x,y);  //位移
+rotate(deg);  //旋转
+scale(sx,sy);   //缩放
+
+//图形变换操作(变换矩阵)
+transform(a,b,c,d,e,f);
+setTransform(a,b,c,d,e,f);
+</code></pre>
+
+<p><img src="http://img.lidong.me/2015/03/nBBh9iN5ebO3.png" alt="变换矩阵"/></p>
+
+<pre><code>//填充样式
+fillStyle = color
+            gradient
+            image
+            canvas
+            video
+
+fillStyle = image||canvas||video
+createPattern(img,repeat-style)        
+          (canvas,repeat-style)
+          (video,repeat-style)
+
+          repeat-style:no-repeat
+                        repeat-x
+                        repeat-y
+                        repeat
+</code></pre>
+
+<p>线条样式                        </p>
+
+<pre><code>strokestyle:    
+</code></pre>
+
+<p>曲线绘制               </p>
+
+<pre><code>context.arc(centerx,centery,radius,startingAngle,endingAngle, anticlockwise = false)
+context.arcTo(x1,y1,x2,y2,radius)//沿切线绘制曲线
+</code></pre>
+
+<p>贝塞尔曲线</p>
+
+<pre><code>context.quadraticCurveTo(
+                    x1,y1,   //---控制点
+                    x2,y2)   //---结束点
+context,bezeirCurveTo(
+                    x1,y1,x2,y2,   //---控制点
+                    x3,y3)         //---结束点
+</code></pre>
+
+<p>文字渲染</p>
+
+<pre><code>context.font = &quot;bold  40px Arial&quot;
+
+context.fillText(string,x,y,[maxlen]);
+context.strokeText(string,x,y,[maxlen]);
+</code></pre>
+
       </div>
 
       <div class="row">
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="14588368863574.html" 
+          title="Previous Post: html5移动端常见问题">&laquo; html5移动端常见问题</a>
       
         </p>
         </div>
@@ -280,6 +347,18 @@ miterLimit（默认为10）
 	      
 		      
 			      <li class="post">
+			        <a href="14590924535400.html">fullpage</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14588368863574.html">html5移动端常见问题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="canvas-basic.html">canvas基础</a>
 			      </li>
 		     
@@ -293,18 +372,6 @@ miterLimit（默认为10）
 		      
 			      <li class="post">
 			        <a href="jquery-vslidation.html">jquery验证插件 jquery-validation</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="learn-jquery.html">jQuery</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="svg-simple.html">svg简单介绍</a>
 			      </li>
 		     
 		  

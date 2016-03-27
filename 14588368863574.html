@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  目录列表程序 - Lidong's notes
+  html5移动端常见问题 - Lidong's notes
   
   </title>
   
@@ -105,19 +105,17 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>目录列表程序</h1>
+          <h1>html5移动端常见问题</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/1/30</span>
+          <span class="date">2016/3/25</span>
 
-          <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='wangzhanchengxu.html'>网站程序</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/directory-list.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/14588368863574.html#disqus_thread">comments</a>
             
 
             
@@ -127,15 +125,47 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>好久就想弄个可以分享文件的页面，感觉不复杂，但也不简单。</p>
+      <p>meta<br/>
+窗口宽度自动调整到设备宽度，禁止用户缩放页面<br/>
+    <meta name="viewport" content = "width = device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /> </p>
 
-<p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
+<p>忽略将页面中的数字识别为电话号码</p>
 
-<p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
+<pre><code>&lt;meta name =&quot;format-detaction&quot; content=&quot;telephone=no&quot; /&gt;
+</code></pre>
 
-<p><img src="http://img.lidong.me/2015/01/hREZQHtZdOOK.png" alt=""/></p>
+<p>忽略android对邮箱地址的识别</p>
 
-<p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
+<pre><code>&lt;meta name = &quot;format-detection&quot; content= &quot;email=no&quot; /&gt;
+</code></pre>
+
+<p>常用的移动端框架<br/>
+zepto.js<br/>
+语法与jquery几乎一样，会jquery基本会zepto~<br/>
+最新版本已经更新到1.16<br/>
+官网：<a href="http://zeptojs.com/">http://zeptojs.com/</a><br/>
+中文(非官网)：<a href="http://www.css88.com/doc/zeptojs_api/">http://www.css88.com/doc/zeptojs_api/</a><br/>
+常使用的扩展模块：<br/>
+浏览器检测：<a href="https://github.com/madrobby/zepto/blob/master/src/detect.js">https://github.com/madrobby/zepto/blob/master/src/detect.js</a><br/>
+tap事件：<a href="https://github.com/madrobby/zepto/blob/master/src/touch.js">https://github.com/madrobby/zepto/blob/master/src/touch.js</a><br/>
+ <br/>
+iscroll.js<br/>
+解决页面不支持弹性滚动，不支持fixed引起的问题~<br/>
+实现下拉刷新，滑屏，缩放等功能~<br/>
+最新版本已经更新到5.0<br/>
+官网：<a href="http://cubiq.org/iscroll-5">http://cubiq.org/iscroll-5</a><br/>
+ <br/>
+underscore.js<br/>
+笔者没用过，不过听说好用，推荐给大家~<br/>
+该库提供了一整套函数式编程的实用功能，但是没有扩展任何JavaScript内置对象。<br/>
+最新版本已经更新到1.8.2<br/>
+官网：<a href="http://underscorejs.org/">http://underscorejs.org/</a><br/>
+ <br/>
+滑屏框架<br/>
+适合上下滑屏、左右滑屏等滑屏切换页面的效果<br/>
+slip.js<br/>
+iSlider.js<br/>
+fullpage.js</p>
 
       </div>
 
@@ -143,16 +173,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="nginx-configure.html" 
-          title="Previous Post: Nginx配置">&laquo; Nginx配置</a>
+          <a href="14590924535400.html" 
+          title="Previous Post: fullpage">&laquo; fullpage</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="fontend-guide.html" 
-          title="Next Post: 前端规范">前端规范 &raquo;</a>
+          <a  href="canvas-basic.html" 
+          title="Next Post: canvas基础">canvas基础 &raquo;</a>
       
       </p>
         </div>

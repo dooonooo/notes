@@ -105,6 +105,129 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="14590924535400.html">
+                
+                  <h1>fullpage</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>基本的页面结构</p>
+
+<pre><code>&lt;div id =&quot;fullpage&quot;&gt;
+    &lt;div class = &quot;section&quot;&gt; 一些内容&lt;/div&gt;
+    &lt;div class = &quot;section&quot;&gt; 一些内容&lt;/div&gt;
+    &lt;div class = &quot;section&quot;&gt; 一些内容&lt;/div&gt;
+    &lt;div class = &quot;section&quot;&gt; 一些内容&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>在某一个section页中增加slide（幻灯片）</p>
+
+<p><div class = "section"><br/>
+       <div class = "slide">slide1</div><br/>
+       <div class = "slide">slide1</div><br/>
+       <div class = "slide">slide1</div><br/>
+       <div class = "slide">slide1</div><br/>
+   </div></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/27</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/14590924535400.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14588368863574.html">
+                
+                  <h1>html5移动端常见问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>meta<br/>
+窗口宽度自动调整到设备宽度，禁止用户缩放页面<br/>
+    <meta name="viewport" content = "width = device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /> </p>
+
+<p>忽略将页面中的数字识别为电话号码</p>
+
+<pre><code>&lt;meta name =&quot;format-detaction&quot; content=&quot;telephone=no&quot; /&gt;
+</code></pre>
+
+<p>忽略android对邮箱地址的识别</p>
+
+<pre><code>&lt;meta name = &quot;format-detection&quot; content= &quot;email=no&quot; /&gt;
+</code></pre>
+
+<p>常用的移动端框架<br/>
+zepto.js<br/>
+语法与jquery几乎一样，会jquery基本会zepto~<br/>
+最新版本已经更新到1.16<br/>
+官网：<a href="http://zeptojs.com/">http://zeptojs.com/</a><br/>
+中文(非官网)：<a href="http://www.css88.com/doc/zeptojs_api/">http://www.css88.com/doc/zeptojs_api/</a><br/>
+常使用的扩展模块：<br/>
+浏览器检测：<a href="https://github.com/madrobby/zepto/blob/master/src/detect.js">https://github.com/madrobby/zepto/blob/master/src/detect.js</a><br/>
+tap事件：<a href="https://github.com/madrobby/zepto/blob/master/src/touch.js">https://github.com/madrobby/zepto/blob/master/src/touch.js</a><br/>
+ <br/>
+iscroll.js<br/>
+解决页面不支持弹性滚动，不支持fixed引起的问题~<br/>
+实现下拉刷新，滑屏，缩放等功能~<br/>
+最新版本已经更新到5.0<br/>
+官网：<a href="http://cubiq.org/iscroll-5">http://cubiq.org/iscroll-5</a><br/>
+ <br/>
+underscore.js<br/>
+笔者没用过，不过听说好用，推荐给大家~<br/>
+该库提供了一整套函数式编程的实用功能，但是没有扩展任何JavaScript内置对象。<br/>
+最新版本已经更新到1.8.2<br/>
+官网：<a href="http://underscorejs.org/">http://underscorejs.org/</a><br/>
+ <br/>
+滑屏框架<br/>
+适合上下滑屏、左右滑屏等滑屏切换页面的效果<br/>
+slip.js<br/>
+iSlider.js<br/>
+fullpage.js</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/25</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/14588368863574.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="canvas-basic.html">
                 
                   <h1>canvas基础</h1>
@@ -163,6 +286,70 @@ lineJoin = &quot;miter&quot;(default)尖角
            &quot;bevel&quot;
            &quot;round&quot;圆角           
 miterLimit（默认为10） 
+</code></pre>
+
+<p>图形</p>
+
+<pre><code>//图形状态保存
+save()
+restore()
+
+translate(x,y);  //位移
+rotate(deg);  //旋转
+scale(sx,sy);   //缩放
+
+//图形变换操作(变换矩阵)
+transform(a,b,c,d,e,f);
+setTransform(a,b,c,d,e,f);
+</code></pre>
+
+<p><img src="http://img.lidong.me/2015/03/nBBh9iN5ebO3.png" alt="变换矩阵"/></p>
+
+<pre><code>//填充样式
+fillStyle = color
+            gradient
+            image
+            canvas
+            video
+
+fillStyle = image||canvas||video
+createPattern(img,repeat-style)        
+          (canvas,repeat-style)
+          (video,repeat-style)
+
+          repeat-style:no-repeat
+                        repeat-x
+                        repeat-y
+                        repeat
+</code></pre>
+
+<p>线条样式                        </p>
+
+<pre><code>strokestyle:    
+</code></pre>
+
+<p>曲线绘制               </p>
+
+<pre><code>context.arc(centerx,centery,radius,startingAngle,endingAngle, anticlockwise = false)
+context.arcTo(x1,y1,x2,y2,radius)//沿切线绘制曲线
+</code></pre>
+
+<p>贝塞尔曲线</p>
+
+<pre><code>context.quadraticCurveTo(
+                    x1,y1,   //---控制点
+                    x2,y2)   //---结束点
+context,bezeirCurveTo(
+                    x1,y1,x2,y2,   //---控制点
+                    x3,y3)         //---结束点
+</code></pre>
+
+<p>文字渲染</p>
+
+<pre><code>context.font = &quot;bold  40px Arial&quot;
+
+context.fillText(string,x,y,[maxlen]);
+context.strokeText(string,x,y,[maxlen]);
 </code></pre>
 
                         
@@ -229,9 +416,9 @@ src:url(&quot;../fonts/icomoon.eot?&quot;) format(&quot;embedded-opentype&quot;)
                     <span class="date">2016/3/17</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				  
           					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -301,101 +488,6 @@ src:url(&quot;../fonts/icomoon.eot?&quot;) format(&quot;embedded-opentype&quot;)
                   <span class="comments">
                       
                         <a href="http://notes.lidong.me/jquery-vslidation.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="learn-jquery.html">
-                
-                  <h1>jQuery</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1.jQuery安装<br/>
-<script src="http://code.jquery.com/jquery-1.9.0.js"></script><br/>
-<script src="http://code.jquery.com/jquery-1.12.1.js"></script>(目前最新)</p>
-
-<p>2.jQuery语法<br/>
-jQuery选择器<br/>
-jQuery事件<br/>
-jQuery效果<br/>
-显示隐藏<br/>
-淡入淡出<br/>
-滑动<br/>
-动画<br/>
-stop</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/3/1</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/learn-jquery.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="svg-simple.html">
-                
-                  <h1>svg简单介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>&lt;svg width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot; version=&quot;1.1&quot;&gt;
-    &lt;circle cx=&quot;60&quot; cy=&quot;60&quot; r=&quot;50&quot;&gt; &lt;/circle&gt;
-&lt;/svg&gt;
-</code></pre>
-
-<p>引入外部svg文件<br/>
-iframe</p>
-
-<pre><code>&lt;body&gt;
-    &lt;iframe src=&quot;/svg.svg&quot; width=&quot;300&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;
-&lt;/body&gt;
-</code></pre>
-
-<h3 id="toc_0">参考</h3>
-
-<p>mozilla svg <a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG">https://developer.mozilla.org/zh-CN/docs/Web/SVG</a></p>
-
-<p>svg 元素参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element">https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/29</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/svg-simple.html#disqus_thread">comments</a>
                       
 
                        
@@ -488,6 +580,18 @@ iframe</p>
 	      
 		      
 			      <li class="post">
+			        <a href="14590924535400.html">fullpage</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14588368863574.html">html5移动端常见问题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="canvas-basic.html">canvas基础</a>
 			      </li>
 		     
@@ -501,18 +605,6 @@ iframe</p>
 		      
 			      <li class="post">
 			        <a href="jquery-vslidation.html">jquery验证插件 jquery-validation</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="learn-jquery.html">jQuery</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="svg-simple.html">svg简单介绍</a>
 			      </li>
 		     
 		  
