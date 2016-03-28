@@ -86,6 +86,8 @@
             <li><a href="jquery.html">jquery</a></li>
         
             <li><a href="canvas.html">canvas</a></li>
+        
+            <li><a href="mobile-frontend.html">移动端</a></li>
          
 
       </ul>
@@ -104,6 +106,54 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="server-safe.html">
+                
+                  <h1>服务器安全配置</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>查看登陆失败的ip<br/>
+sudo grep &quot;Failed password for&quot; /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
+
+<p>我这也就曝光一些哪些扫描人ip<br/>
+这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
+<img src="http://img.lidong.me/2015/02/2QYfyR7lVtTy.png" alt=""/></p>
+
+<p>基于密钥认证的配置</p>
+
+<pre><code># vi /etc/ssh/sshd_config  
+PasswordAuthentication no //禁止使用基于口令认证的方式登陆
+PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
+# /etc/init.d/sshd reload
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/server-safe.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="html5-1.html">
                 
@@ -400,49 +450,6 @@ root html;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="directory-list.html">
-                
-                  <h1>目录列表程序</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>好久就想弄个可以分享文件的页面，感觉不复杂，但也不简单。</p>
-
-<p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
-
-<p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
-
-<p><img src="http://img.lidong.me/2015/01/hREZQHtZdOOK.png" alt=""/></p>
-
-<p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='wangzhanchengxu.html'>网站程序</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/directory-list.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -511,6 +518,8 @@ root html;
             <a href="jquery.html"><strong>jquery</strong></a>
         
             <a href="canvas.html"><strong>canvas</strong></a>
+        
+            <a href="mobile-frontend.html"><strong>移动端</strong></a>
          
         </p>
 
@@ -527,13 +536,19 @@ root html;
 	      
 		      
 			      <li class="post">
-			        <a href="14590924535400.html">fullpage</a>
+			        <a href="mobile-frame.html">常用的移动端框架</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14588368863574.html">html5移动端常见问题</a>
+			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="html5-mobile-meta.html">html5移动端meta信息</a>
 			      </li>
 		     
 		  
@@ -546,12 +561,6 @@ root html;
 		      
 			      <li class="post">
 			        <a href="font-face.html">CSS中字体文件引入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="jquery-vslidation.html">jquery验证插件 jquery-validation</a>
 			      </li>
 		     
 		  

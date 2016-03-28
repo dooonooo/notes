@@ -86,6 +86,8 @@
             <li><a href="jquery.html">jquery</a></li>
         
             <li><a href="canvas.html">canvas</a></li>
+        
+            <li><a href="mobile-frontend.html">移动端</a></li>
          
 
       </ul>
@@ -104,6 +106,106 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="css-optimization.html">
+                
+                  <h1>CSS优化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">一、提高可维护性</h3>
+
+<p>1.1 命名与备注<br/>
+提高自己命名的能力，可以多看看别人的代码。下面是CSS中的一些命名相关的建议</p>
+
+<pre><code>头：header
+内容：content/container
+尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体佈局宽度：wrapper
+左右中：left right center
+登录条：loginbar
+标志：logo
+广告：banner
+页面主体：main
+热点：hot
+新闻：news
+下载：download
+子导航：subnav
+菜单：menu
+子菜单：submenu
+搜索：search
+友情链接：friendlink
+页脚：footer
+版权：copyright
+滚动：scroll
+内容：content
+标签：tags
+文章列表：list
+提示信息：msg
+小技巧：tips
+栏目标题：title
+加入：joinus
+指南：guide
+服务：service
+注册：regsiter
+状态：status
+投票：vote
+合作伙伴：partner
+导航：nav
+主导航：mainnav
+子导航：subnav
+顶导航：topnav
+边导航：sidebar
+左导航：leftsidebar
+右导航：rightsidebar
+菜单：menu
+子菜单：submenu
+标题: title
+摘要: summary
+</code></pre>
+
+<p>1.2、书写顺序<br/>
+这个书写顺序指的是各个样式的书写顺序，下面是推荐的CSS书写顺序<br/>
+（1）位置属性(position, top, right, z-index, display, float等)<br/>
+（2）大小(width, height, padding, margin)<br/>
+（3）文字系列(font, line-height, letter-spacing, color- text-align等)<br/>
+（4）背景(background, border等)<br/>
+（5）其他(animation, transition等)<br/>
+书写顺序不一定非得按照上面的推荐来进行，而是根据你自己的习惯，但是最好能保证前后的习惯一致的，或者团队应该有一个共同的代码规范去遵守，这样后期维护起来也会方便许多。</p>
+
+<p>1.3、提取重复样式</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/29</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/css-optimization.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="campass-sass.html">
                 
@@ -368,54 +470,6 @@ account default: test
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="server-safe.html">
-                
-                  <h1>服务器安全配置</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>查看登陆失败的ip<br/>
-sudo grep &quot;Failed password for&quot; /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
-
-<p>我这也就曝光一些哪些扫描人ip<br/>
-这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
-<img src="http://img.lidong.me/2015/02/2QYfyR7lVtTy.png" alt=""/></p>
-
-<p>基于密钥认证的配置</p>
-
-<pre><code># vi /etc/ssh/sshd_config  
-PasswordAuthentication no //禁止使用基于口令认证的方式登陆
-PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
-# /etc/init.d/sshd reload
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/server-safe.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -484,6 +538,8 @@ PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
             <a href="jquery.html"><strong>jquery</strong></a>
         
             <a href="canvas.html"><strong>canvas</strong></a>
+        
+            <a href="mobile-frontend.html"><strong>移动端</strong></a>
          
         </p>
 
@@ -500,13 +556,19 @@ PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
 	      
 		      
 			      <li class="post">
-			        <a href="14590924535400.html">fullpage</a>
+			        <a href="mobile-frame.html">常用的移动端框架</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14588368863574.html">html5移动端常见问题</a>
+			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="html5-mobile-meta.html">html5移动端meta信息</a>
 			      </li>
 		     
 		  
@@ -519,12 +581,6 @@ PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
 		      
 			      <li class="post">
 			        <a href="font-face.html">CSS中字体文件引入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="jquery-vslidation.html">jquery验证插件 jquery-validation</a>
 			      </li>
 		     
 		  
