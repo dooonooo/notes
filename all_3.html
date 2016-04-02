@@ -107,6 +107,98 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="install-msmtp.html">
+                
+                  <h1>安装msmtp使用smtp发送邮件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1.下载</p>
+
+<pre><code>wget http://downloads.sourceforge.net/msmtp/msmtp-1.6.3.tar.xz
+xz -z msmtp-1.6.3.tar.xz
+tar xvf msmtp-1.6.3.tar
+</code></pre>
+
+<p>2.安装</p>
+
+<pre><code>cd msmtp-1.6.3
+./configure –prefix=/usr/local/msmtp
+sudo make
+sudo make install
+</code></pre>
+
+<p>3.配置</p>
+
+<pre><code>cd /usr/local/msmtp
+//新建文件夹etc, 
+mkdir etc 
+//新建文件
+vi /usr/local/msmtp/etc/msmtprc
+</code></pre>
+
+<p>编辑内容（部分内容需要修改成你自己的）</p>
+
+<pre><code># Set default values for all following accounts.
+defaults
+logfile /usr/local/msmtp/msmtp.log 
+# The SMTP server of the provider. 
+account test
+# SMTP邮件服务器地址
+host smtp.qq.com
+# 发送的邮件Email
+from xiaobaichi@qq.com
+auth login
+# 邮件服务器登录账号
+user xiaobaichi@qq.com
+# 邮件服务器登陆密码
+password 123456
+# Set a default account
+account default: test
+</code></pre>
+
+<p>为了安全起见，修改文件的权限<code>chmod 600 etc/msmtprc</code></p>
+
+<p>4.测试</p>
+
+<pre><code>/usr/local/msmtp/bin/msmtp youremail@test.com
+
+输入任意字符，然后按Ctrl+D退出，查看邮件是否收到。
+
+由于设置了日志，可以到 /usr/local/msmtp/msmtp.log，查看日志，发信成功失败都会有记录。
+</code></pre>
+
+<p>参考：<br/>
+    1.解压tar.xz文件 参考<a href="http://blog.csdn.net/rheostat/article/details/7614451">这里</a><br/>
+    2.官方<a href="http://msmtp.sourceforge.net/documentation.html">配置文档</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/install-msmtp.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="server-safe.html">
                 
                   <h1>服务器安全配置</h1>
@@ -278,178 +370,6 @@ color:red;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="nginx-configure.html">
-                
-                  <h1>Nginx配置</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>最近看了一本<a href="http://book.douban.com/subject/7564094/" title="豆瓣链接">《高性能Linux服务器构建实战》</a>，里面讲到Nginx，感觉以前使用nginx系统配置多不专业，一些要设置，都没有设置。<br/>
-现在整理一下，基本算是完整了。</p>
-
-<p>基本配置</p>
-
-<pre><code>#user  nobody;
-worker_processes  1;
-#error_log  logs/error.log;
-error_log  logs/error.log  notice;
-#error_log  logs/error.log  info;
-pid        logs/nginx.pid;
-events {
-    worker_connections  1024;
-}
-http {
-    include       mime.types;
-    default_type  application/octet-stream;
-    log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
-                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
-                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
-    access_log  logs/access.log  main;
-    sendfile        on;
-    #tcp_nopush     on;
-    #设置客户端连接保持活动的超时时间，超过这个时间，服务器关闭连接
-    #keepalive_timeout  0;
-    keepalive_timeout  65;
-    ##gzip压缩
-    #gzip  on;
-
-    #fastCGI优化(书上提到这个，目前我配置Nginx的时候没有设置优化，暂时不想深入这一块)
-    ##fastcgi缓存路径、目录结构等级、关键字区域存储时间、非活动删除时间
-    #fastcgi_path /usr/local/nginx/fastcgi_cache levels=1:2 keys_zone=TEST:10m inactive=5m;
-    ##连接到后端fastcgi超时时间
-    #fastcgi_connect_timeout 300;
-    #fastcgi_send_timeout 300;
-    #fastcgi_read_timeout 300;
-    #fastcgi_buffer_size 64k;
-    #fastcgi_buffers 4 64k;
-    #fastcgi_busy_buffers_size 128k;
-    #fastcgi_temp_file_write_size 128k;
-    #fastcgi_cache TEST;
-    #fastcgi_cache_valid 200 302 1h;
-    #fastcgi_cache_valid 301 1d;
-    #fastcgi_cache_valid any 1m;    
-
-    server {
-        listen       80;
-        server_name  localhost;
-        access_log  logs/host.access.log  main;
-        location / {
-            root   html;
-            index  index.html index.htm index.php;
-        }
-        #设置图片等静态文件的内容过期时间
-        #location ~ .*\.(gif|jpg|jpeg|png|bmp|ico|swf|flv|js|css)${
-        #    expires 30d;
-        #}
-        #设置upload、static文件的内容过期时间
-        #location ~ */(upload|status)/ {
-        #    root html;
-        #    expires 30d;
-        #}
-
-        #error_page  404              /404.html;
-        # redirect server error pages to the static page /50x.html
-        #error_page   500 502 503 504  /50x.html;
-        #location = /50x.html {
-        #    root   html;
-        #}
-
-        #PHP配置
-        #location ~ \.php$ {
-        #    root           html;
-        #    fastcgi_pass   127.0.0.1:9000;
-        #    fastcgi_index  index.php;
-        #    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        #    include        fastcgi_params;
-        #}
-
-    }
-
-    #include /usr/nginx/conf/vhosts/www.domain2.com.conf;
-}
-</code></pre>
-
-<p>这里用到了include指令，其中<code>/usr/nginx/conf/vhosts/www.domain2.com.conf</code>的内容为：    </p>
-
-<pre><code>server {
-    listen 80;
-    server_name www.domain2.com;
-    access_log logs/domain2.access.log main;
-    location / {
-        index index.html;
-        root html/domain2.com/;
-    }
-}
-</code></pre>
-
-<p>https配置   </p>
-
-<pre><code>    # HTTPS server
-    #
-    #server {
-    #    listen       443 ssl;
-    #    server_name  localhost;
-    #    ssl_certificate      cert.pem;
-    #    ssl_certificate_key  cert.key;
-
-    #    ssl_session_cache    shared:SSL:1m;
-    #    ssl_session_timeout  5m;
-
-    #    ssl_ciphers  HIGH:!aNULL:!MD5;
-    #    ssl_prefer_server_ciphers  on;
-    #    location / {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
-</code></pre>
-
-<p>防盗链配置</p>
-
-<pre><code>#针对文件名后缀设置防盗链    
-location ~* \.(jpg|gif|png|swf|flv|wma|wmv|asf|mp3|mmf|zip|rar)$ {
-    valid_referers none blocked *.lidong.me lidong.me;
-    if ($invalid_referer) { 
-        rewrite ^/ http://www.lidong.me/img/error.gif;
-        #return 403;
-    }
-}
-#对目录设置防盗链
-location /images {
-root html;
-    valid_referers none blocked *.lidong.me lidong.me;
-    if ($invalid_referer) {
-        return 403;
-        }
-    }
-}     
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/30</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/nginx-configure.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -536,6 +456,12 @@ root html;
 	      
 		      
 			      <li class="post">
+			        <a href="css-bug.html">css bug</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="mobile-frame.html">常用的移动端框架</a>
 			      </li>
 		     
@@ -555,12 +481,6 @@ root html;
 		      
 			      <li class="post">
 			        <a href="canvas-basic.html">canvas基础</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="font-face.html">CSS中字体文件引入</a>
 			      </li>
 		     
 		  

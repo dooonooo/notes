@@ -107,6 +107,62 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="font-face.html">
+                
+                  <h1>CSS中字体文件引入</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>@font-face{
+font-family:&quot;icomoon&quot;;
+src:url(&quot;../fonts/icomoon.eot&quot;);/*IE9兼容*/
+/*?为IE6-8兼容*/
+src:url(&quot;../fonts/icomoon.eot?&quot;) format(&quot;embedded-opentype&quot;),
+    url(&quot;../fonts/icomoon.woff&quot;)format(&quot;woff&quot;),
+    url(&quot;../fonts/icomoon.ttf&quot;)format(&quot;truetype&quot;),
+    url(&quot;../fonts/icomoon.svg&quot;)formt(&quot;svg&quot;),
+    font-weight:normal;
+    font-style:normal;
+}
+
+.icon{
+    font-family:&quot;icomoon&quot;;
+    font-weight:normal;
+    font-style:normal;
+    -webkit-font-smoothing:antialiased;/*处理防锯齿*/
+    -moz-osx-font-somthing:grayscale;
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/font-face.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="jquery-vslidation.html">
                 
                   <h1>jquery验证插件 jquery-validation</h1>
@@ -391,166 +447,6 @@ vi /etc/rc.local<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="js-regexp.html">
-                
-                  <h1>js正则表达式</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">新建正则表达式：</h3>
-
-<pre><code>var regexp = /aabb/g; //g可以省
-var regexp = new Regexp(&quot;xyz&quot;,&quot;g&quot;); //第二个参数可省略
-</code></pre>
-
-<p>区别在于：<br/>
-1.采用字面量的写法新建的正则表达式对象在代码编译时就会生成，是平常开发中常用的方式；<br/>
-2.采用构造函数生成的正则对象要在代码运行时生成。</p>
-
-<h3 id="toc_1">使用正则表达式：</h3>
-
-<p>正则对象的方法是指这样使用的： RegExp对象.方法(字符串)<br/>
- 字符串对象的方法是这样使用：字符串.方法(RegExp对象)</p>
-
-<h2 id="toc_2">正则对象的属性和方法</h2>
-
-<h3 id="toc_3">1.1 正则对象的属性：</h3>
-
-<pre><code>ignoreCase  //返回一个布尔值表示正则对象是否设置i修饰符，只读属性
-global  //表示正则对象是否设置了g修饰符
-muktikine  //表示是否设置了m修饰符，返回布尔值
-lastIndex  //返回下一次开始搜索的位置，该属性可读写，但只在设置了g修饰符有意义
-source  //返回正则表达式的字符串形式（不包括反斜杠），只读属性
-</code></pre>
-
-<p>例子：<br/>
-<img src="http://img.lidong.me/2015/02/F1XIrjz1Ta7w.png" alt=""/></p>
-
-<pre><code>i 执行的时候忽略大小写匹配
-g 执行全局匹配（查看所有的匹配而不是找到第一个匹配就停止）
-m 执行多行匹配
-</code></pre>
-
-<h3 id="toc_4">1.2 test方法</h3>
-
-<p>test方法返回布尔值，用来验证字符串是否符合某个模式。如果正则表达式带有g修饰符，则每一次test方法都从上一次匹配结束的位置开始匹配。</p>
-
-<p>使用了g修饰符的正则对象，表示要记录搜索的位置，接着使用test方法，每次开始搜索的委会都是上一次匹配的后一个位置：</p>
-
-<p><img src="http://img.lidong.me/2015/02/yAxtPduwBk0V.png" alt=""/></p>
-
-<p>如果正则表达式是一个空字符串，则会匹配所有的字符串，但前提是使用new RegExp()的方式：</p>
-
-<p><img src="http://img.lidong.me/2015/02/v3FQQasHlfe9.png" alt=""/></p>
-
-<h3 id="toc_5">1.3 exec方法</h3>
-
-<p>exec()返回匹配的结果，匹配成功返回装有匹配结果的数组，匹配失败返回null</p>
-
-<p><img src="http://img.lidong.me/2015/02/aMqZRO3H3GSb.png" alt=""/></p>
-
-<p>如果正则表达式包含圆括号，则返回的数组会包括多个元素。首先是整个匹配成功的结果，后面是圆括号里匹配成功的结果，如果有多个圆括号，他们的匹配成功的结果都会成为数组元素：</p>
-
-<p><img src="http://img.lidong.me/2015/02/WwhUmwRF85df.png" alt=""/></p>
-
-<p>调用exec方法后返回的数组具有以下两个属性：</p>
-
-<pre><code>input 整个原来待匹配的字符串
-index 整个模式匹配开始位置
-</code></pre>
-
-<p><img src="http://img.lidong.me/2015/02/NL6LZM7Qb5P3.png" alt=""/><br/>
-给正则表达式加上g修饰符就可以多次使用exec方法，下一次搜索的位置从上一次成功匹配结束的位置开始。</p>
-
-<p>如果正则对象是一个空字符串：<br/>
-<img src="http://img.lidong.me/2015/02/rbyOilU5hlRg.png" alt=""/></p>
-
-<h2 id="toc_6">字符串对象的方法</h2>
-
-<pre><code>match 返回匹配的子字符串
-search  搜索
-replace  替换
-split  分割
-</code></pre>
-
-<h3 id="toc_7">2.1 match()方法</h3>
-
-<p>字符串对象的match方法和正则对象的exec方法比较类似：</p>
-
-<p><img src="http://img.lidong.me/2015/02/wxfBhlBOt5bQ.png" alt=""/></p>
-
-<p>但是如果正则表达式带有g修饰符，那么match方法与exec方法就有差别了：</p>
-
-<p><img src="http://img.lidong.me/2015/02/LSFvdBnUvK1p.png" alt=""/></p>
-
-<p>match返回了所有成功匹配的结果，但是exec方法返回一个。</p>
-
-<h3 id="toc_8">2.2 search方法</h3>
-
-<p>search方法返回匹配成功的位置在整个字符串中的索引，如果没有匹配成功任何字符则返回-1,search方法自动忽略g修饰符。</p>
-
-<p><img src="http://img.lidong.me/2015/02/TY9VtGZKQwVf.png" alt=""/></p>
-
-<h3 id="toc_9">2.3 replace方法</h3>
-
-<p>str.replace(&#39;搜索模式&#39;，&#39;替换的内容&#39;);</p>
-
-<p><img src="http://img.lidong.me/2015/02/FphzytozqKbA.png" alt=""/><br/>
-如果正则表达式不带g修饰符，那么replace方法会替换第一个匹配成功的结果，如果加上g修饰符号，那么会替换所有匹配成功的结果。</p>
-
-<p>replace方法第二个参数可以使用$符号，用来指代所要替换的内容：</p>
-
-<pre><code>$&amp;  指代匹配的字符串
-$`  匹配结果前面的文本
-$&#39;  匹配结果后面的文本
-$n  指代匹配成功的第n组内容，n从1开始
-$$  指代美元符号
-</code></pre>
-
-<p><img src="http://img.lidong.me/2015/02/IVU3cLqYAiIQ.png" alt=""/></p>
-
-<p>replace方法的第二个参数也可以是函数，用于将第一个参数匹配到的值替换成函数的返回值。</p>
-
-<p><img src="http://img.lidong.me/2015/02/3W2iSi6dYVoj.png" alt=""/></p>
-
-<h3 id="toc_10">2.4 split()方法</h3>
-
-<p>split(&#39;字符串的分割正则&#39;,&#39;返回数组的最大成员数&#39;); 返回分割后各部分组成的数组。<br/>
-<img src="http://img.lidong.me/2015/02/GJNZ7qGuMO3D.png" alt=""/></p>
-
-<p>变换成正则的匹配规则来分割字符串。<br/>
-<img src="http://img.lidong.me/2015/02/TnKy1BazCg8v.png" alt=""/></p>
-
-<p>更多内容：<br/>
-<a href="http://www.cnblogs.com/skylar/p/4265490.html">http://www.cnblogs.com/skylar/p/4265490.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/29</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/js-regexp.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -637,6 +533,12 @@ $$  指代美元符号
 	      
 		      
 			      <li class="post">
+			        <a href="css-bug.html">css bug</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="mobile-frame.html">常用的移动端框架</a>
 			      </li>
 		     
@@ -656,12 +558,6 @@ $$  指代美元符号
 		      
 			      <li class="post">
 			        <a href="canvas-basic.html">canvas基础</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="font-face.html">CSS中字体文件引入</a>
 			      </li>
 		     
 		  
