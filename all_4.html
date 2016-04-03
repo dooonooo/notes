@@ -107,6 +107,89 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="hangjianyanshi.html">
+                
+                  <h1>行间样式使用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>今天在弄 <a href="http://notes.lidong.me/css-draw-1.html">css画图形</a> 的时候，要用到伪元素，但是伪元素不能在行内使用(貌似是，反正没有找到方法)，所以去看别怎么弄的画图的，我了个去，居然可以在body内容中<code>&lt;style&gt;</code>标签，一般教程都没有说这样用啊，一般文档都是让style标签放在<head></head>标签之内。</p>
+
+<pre><code>&lt;body&gt;
+&lt;style&gt;
+&lt;!--
+#contianer{
+color:red;
+}
+--&gt;
+&lt;/style&gt;
+&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='css.html'>css</a></span>
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/hangjianyanshi.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="www-index.html">
+                
+                  <h1>我有首页了</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>一直以来都是木有首页，今天终于模仿<a href="http://www.ruanyifeng.com/">阮一峰</a>的首页，做了一个<a href="http://www.lidong.me">首页</a>。使用了 <a href="http://unsplash.it">http://unsplash.it</a> 的随机图片作背景图片，逼格满满，😄<br/>
+目前在PC上访问应该木有，是在手机上有一些问题。背景图片显示只显示半屏幕。其实可以通过获取 unsplash 高度大一些的图片解决，但是我那样的确有些浪费，所以先让我在学习学习再弄。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/1</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/www-index.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="nginx-configure.html">
                 
                   <h1>Nginx配置</h1>
@@ -371,334 +454,6 @@ css中：@charset &quot;uft-8&quot;;</p></li>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="css-draw-1.html">
-                
-                  <h1>CSS画图形</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1.正方形<br/>
-<div style="width:100px;height:100px;background:red;"></div></p>
-
-<pre><code>.square{
-width:100px;
-height:100px;
-backgroud:red;}
-</code></pre>
-
-<p>2.长方形<br/>
-<div style="width:150px;height:100px;background:red;"></div></p>
-
-<pre><code>.rectangle{
-width:150px;
-height:100px;
-background:red;}
-</code></pre>
-
-<p>3.圆形<br/>
- <div style="width:100px;height: 100px;background:red;border-top-left-radius:50px;border-top-right-radius:50px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;"></div></p>
-
-<pre><code>.circle {
-//将正方形圆角放大到最大
-width:100px;
-height: 100px;
-background:red;
-border-top-left-radius:50px;
-border-top-right-radius:50px;
-border-bottom-left-radius:50px;
-border-bottom-right-radius:50px;}
-</code></pre>
-
-<p>4.椭圆<br/>
- <div style="width:200px;height: 100px;background:red;border-top-left-radius:100px 50px;border-top-right-radius:100px 50px;border-bottom-left-radius:100px 50px;border-bottom-right-radius:100px 50px;"></div></p>
-
-<pre><code>.oval{
-//长方形的圆角放大到最大
-width:200px;
-height: 100px;
-background:red;
-border-top-left-radius:100px 50px;
-border-top-right-radius:100px 50px;
-border-bottom-left-radius:100px 50px;
-border-bottom-right-radius:100px 50px;}
-</code></pre>
-
-<p>5.三角形<br/>
-<div style="width:0;height:0px; border-bottom:50px solid red; border-left:25px solid transparent; border-right:25px solid transparent;"></div></p>
-
-<pre><code>.triangle{
-//利用边框填充，
-width:0;
-height:0;
-border-bottom:50px solid red;
-border-left:25px solid transparent;
-border-right:25px solid transparent;}
-</code></pre>
-
-<p>6.直角三角形<br/>
-<div style="height:0;width:0;border-bottom:50px solid red;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.right-angled-triangle{
-//常规三角形的一半，将底边延长即为图例
-height:0;
-width:0;
-border-bottom:50px solid red;
-border-right:50px solid transparent;}
-</code></pre>
-
-<p>7.平行四边形<br/>
-<div style="width:100px;height:50px;background:red;transform: skew(30deg,0);"></div></p>
-
-<pre><code>.parallelogram{
-//将长方形沿x或y轴倾斜某个角度即为平行四边形
-width:100px;
-height:50px;
-background:red;
-transform: skew(30deg,0);}
-</code></pre>
-
-<p>8.梯形<br/>
-<div style="width:100px;height:0;border-bottom:100px solid red;border-left:50px solid transparent;border-right:50px solid transparent;"></div></p>
-
-<pre><code>.trapezoid{
-//对三角形设置宽度
-width:100px;
-height:0;
-border-bottom:100px solid red;
-border-left:50px solid transparent;
-border-right:50px solid transparent;
-
-}
-</code></pre>
-
-<p>9.六角星</p>
-
-<style>
-<!--
-#star-six {
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid red;
-    position: relative;
-}
-#star-six:after {
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-top: 100px solid red;
-    position: absolute;
-    content: "";
-    top: 30px;
-    left: -50px;
-}
---></style>
-
-<div id="star-six"></div>
-
-<p>&nbsp;</p>
-
-<pre><code>#star-six {
-width: 0;
-height: 0;
-border-left: 50px solid transparent;
-border-right: 50px solid transparent;
-border-bottom: 100px solid red;
-}
-#star-six:after {
-width: 0;
-height: 0;
-border-left: 50px solid transparent;
-border-right: 50px solid transparent;
-border-top: 100px solid red;
-content: &quot;&quot;;
-top: 30px;
-left: -50px;
-}
-</code></pre>
-
-<p>10.五角星</p>
-
-<style>
-
-#star-five{margin:50px 0;
-display:block;
-position:relative;
-color:red;
-width:0;
-height:0;
-border-right:100px solid transparent;
-border-bottom:70px solid red;
-border-left:100px solid transparent;
-transform:rotate(35deg);
-}
-#star-five:before {
-border-bottom:80px solid red;
-border-left:30px solid transparent;
-border-right:30px solid transparent;
-position:absolute;
-height:0;
-width:0;
-top: -45px;
-left: -65px;
-dispaly:block;
-content:'';
-transform:rotate(-35deg);
-}
-
-#star-five:after { 
-position: absolute; 
-display: block; 
-color: red; 
-top: 3px; 
-left: -105px; 
-width: 0px; 
-height: 0px; 
-border-right: 100px solid transparent; 
-border-bottom: 70px solid red; 
-border-left: 100px solid transparent; 
--webkit-transform: rotate(-70deg); 
--moz-transform: rotate(-70deg); 
--ms-transform: rotate(-70deg); 
--o-transform: rotate(-70deg); 
-content: ''; 
-} 
-
-</style>
-
-<div id="star-five"></div>
-
-<p>&nbsp;</p>
-
-<pre><code>#star-five{
-//画左上与右下的一个三角形
-margin:50px 0;
-display:block;
-position:relative;
-color:red;
-width:0;
-height:0;
-border-right:100px solid transparent;
-border-bottom:70px solid red;
-border-left:100px solid transparent;
-transform:rotate(35deg);
-}
-//画顶上的三角形
-#star-five:before {
-border-bottom:80px solid red;
-border-left:30px solid transparent;
-border-right:30px solid transparent;
-position:absolute;
-height:0;
-width:0;
-top: -45px;
-left: -65px;
-dispaly:block;
-content:&#39;&#39;;
-transform:rotate(-35deg);
-}
-//画右上与左下的一个三角形
-#star-five:after { 
-position: absolute; 
-display: block; 
-color: red; 
-top: 3px; 
-left: -105px; 
-width: 0px; 
-height: 0px; 
-border-right: 100px solid transparent; 
-border-bottom: 70px solid red; 
-border-left: 100px solid transparent; 
--webkit-transform: rotate(-70deg); 
--moz-transform: rotate(-70deg); 
--ms-transform: rotate(-70deg); 
--o-transform: rotate(-70deg); 
-content: &#39;&#39;; 
-}
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='css.html'>css</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/css-draw-1.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="front-optimization.html">
-                
-                  <h1>前端优化的方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li>减少http请求（合并压缩css、js、雪碧图（css-sprites）、cdn加速、data缓存、图片缓存）</li>
-<li>前端模版</li>
-<li>设置样式比较多的时候，设置className而不是直接操作样式</li>
-<li>用innerHTML 代替DOM操作，减少DOM的操作次数，优化javascript性能</li>
-<li>图片预加载，将样式放在顶部，将脚本放在底部加上时间戳。</li>
-<li>避免在主体布局使用table。</li>
-</ol>
-
-<p>尽量向前端优化，减少数据库操作，减少磁盘io，<br/>
-在不影响功能体验上情况下，<br/>
-能在浏览器执行的不要在服务端执行，<br/>
-能在缓存服务器上直接返回的不要到应用服务器，<br/>
-程序能直接得出结果的不要到外部取得，<br/>
-本机能取得的数据不要到远程取<br/>
-内存能取得的不要到磁盘取<br/>
-缓存有的不要去数据库查询</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				  
-          					    <span class="posted-in"><a href='xinnengyouhua.html'>性能优化</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/front-optimization.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -785,6 +540,18 @@ content: &#39;&#39;;
 	      
 		      
 			      <li class="post">
+			        <a href="14596930403739.html">dockerfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14596900345198.html">docker 报错</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="css-bug.html">css bug</a>
 			      </li>
 		     
@@ -798,18 +565,6 @@ content: &#39;&#39;;
 		      
 			      <li class="post">
 			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="html5-mobile-meta.html">html5移动端meta信息</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="canvas-basic.html">canvas基础</a>
 			      </li>
 		     
 		  

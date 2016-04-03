@@ -107,6 +107,112 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="14596930403739.html">
+                
+                  <h1>dockerfile</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>run<br/>
+    shell格式<br/>
+        RUN yum install -y nginx<br/>
+    exec格式（推荐）<br/>
+        RUN <a href="json%E6%A0%BC%E5%BC%8F">&quot;yum&quot;,&quot;install&quot;,&quot;-y&quot;,&quot;nginx&quot;</a></p>
+
+<p>EXPOSE</p>
+
+<p>CMD<br/>
+    CMD[&quot;&quot;]</p>
+
+<p>ENTRYPOINT</p>
+
+<p>VOLUME</p>
+
+<pre><code>//为基于此镜像创建的容器创建一个名为/opt/project的挂载点
+VOLUME [&quot;/opt/project&quot;]
+
+VOLUME[&quot;/opt/project&quot;,&quot;data&quot;]
+</code></pre>
+
+<p>ADD</p>
+
+<pre><code>ADD  home 
+ADD  http://www.example.com/abc.zip
+ADD
+</code></pre>
+
+<p>COPY </p>
+
+<pre><code>COPY 
+</code></pre>
+
+<p>ONBUILD</p>
+
+<pre><code>¡
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/4/3</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/14596930403739.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14596900345198.html">
+                
+                  <h1>docker 报错</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+
+
+eval &quot;$(docker-machine env default)&quot;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/4/3</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/14596900345198.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="css-bug.html">
                 
                   <h1>css bug</h1>
@@ -463,206 +569,6 @@ fullpage.js</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="html5-mobile-meta.html">
-                
-                  <h1>html5移动端meta信息</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">meta信息</h3>
-
-<p>窗口宽度自动调整到设备宽度，禁止用户缩放页面<br/>
-    <meta name="viewport" content = "width = device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /> </p>
-
-<p>忽略将页面中的数字识别为电话号码</p>
-
-<pre><code>&lt;meta name =&quot;format-detaction&quot; content=&quot;telephone=no&quot; /&gt;
-</code></pre>
-
-<p>忽略android对邮箱地址的识别</p>
-
-<pre><code>&lt;meta name = &quot;format-detection&quot; content= &quot;email=no&quot; /&gt;
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/3/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='html5.html'>html5</a></span>
-          				  
-          					    <span class="posted-in"><a href='mobile-frontend.html'>移动端</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/html5-mobile-meta.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="canvas-basic.html">
-                
-                  <h1>canvas基础</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>HTML</p>
-
-<pre><code>&lt;canvas id=&quot;canvas&quot;&gt;&lt;canvas&gt;
-</code></pre>
-
-<p>Javascript</p>
-
-<pre><code>var canvas=document.getElemenById(&quot;canvas&quot;)
-var context=canvas.getContext(&#39;2d&#39;);
-
-//使用context进行绘制
-</code></pre>
-
-<p>画直线</p>
-
-<pre><code>//状态设置
-context.moveTo(100,100);
-context.lineTo(700,700);
-context.lineWidth=10;//线条宽度
-context.strokeStyle=&quot;#058&quot;;// 线条颜色
-//绘制
-context.stroke();
-
-//创建一个全新的路径绘制
-context.beginPath();
-//关闭路径，绘制封闭的图形
-context.closePath();
-
-//颜色填充
-fillStyle =&quot;yellow&quot;;
-fill();
-
-//矩形
-rect(x,y,width,height);
-//包含填充的矩形
-fillRect(x,y width，height);
-//绘制边框
-strokeRect();
-</code></pre>
-
-<p>线条样式</p>
-
-<pre><code>//设置线条的开始、结尾显示样式
-lineCap=&quot;butt&quot;(default)
-         &quot;round&quot;（圆形）
-         &quot;square&quot;   （方形）
-//线条连接处
-lineJoin = &quot;miter&quot;(default)尖角
-           &quot;bevel&quot;
-           &quot;round&quot;圆角           
-miterLimit（默认为10） 
-</code></pre>
-
-<p>图形</p>
-
-<pre><code>//图形状态保存
-save()
-restore()
-
-translate(x,y);  //位移
-rotate(deg);  //旋转
-scale(sx,sy);   //缩放
-
-//图形变换操作(变换矩阵)
-transform(a,b,c,d,e,f);
-setTransform(a,b,c,d,e,f);
-</code></pre>
-
-<p><img src="http://img.lidong.me/2015/03/nBBh9iN5ebO3.png" alt="变换矩阵"/></p>
-
-<pre><code>//填充样式
-fillStyle = color
-            gradient
-            image
-            canvas
-            video
-
-fillStyle = image||canvas||video
-createPattern(img,repeat-style)        
-          (canvas,repeat-style)
-          (video,repeat-style)
-
-          repeat-style:no-repeat
-                        repeat-x
-                        repeat-y
-                        repeat
-</code></pre>
-
-<p>线条样式                        </p>
-
-<pre><code>strokestyle:    
-</code></pre>
-
-<p>曲线绘制               </p>
-
-<pre><code>context.arc(centerx,centery,radius,startingAngle,endingAngle, anticlockwise = false)
-context.arcTo(x1,y1,x2,y2,radius)//沿切线绘制曲线
-</code></pre>
-
-<p>贝塞尔曲线</p>
-
-<pre><code>context.quadraticCurveTo(
-                    x1,y1,   //---控制点
-                    x2,y2)   //---结束点
-context,bezeirCurveTo(
-                    x1,y1,x2,y2,   //---控制点
-                    x3,y3)         //---结束点
-</code></pre>
-
-<p>文字渲染</p>
-
-<pre><code>context.font = &quot;bold  40px Arial&quot;
-
-context.fillText(string,x,y,[maxlen]);
-context.strokeText(string,x,y,[maxlen]);
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/3/19</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='canvas.html'>canvas</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/canvas-basic.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -749,6 +655,18 @@ context.strokeText(string,x,y,[maxlen]);
 	      
 		      
 			      <li class="post">
+			        <a href="14596930403739.html">dockerfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14596900345198.html">docker 报错</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="css-bug.html">css bug</a>
 			      </li>
 		     
@@ -762,18 +680,6 @@ context.strokeText(string,x,y,[maxlen]);
 		      
 			      <li class="post">
 			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="html5-mobile-meta.html">html5移动端meta信息</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="canvas-basic.html">canvas基础</a>
 			      </li>
 		     
 		  

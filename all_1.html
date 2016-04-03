@@ -107,6 +107,206 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="html5-mobile-meta.html">
+                
+                  <h1>html5移动端meta信息</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">meta信息</h3>
+
+<p>窗口宽度自动调整到设备宽度，禁止用户缩放页面<br/>
+    <meta name="viewport" content = "width = device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /> </p>
+
+<p>忽略将页面中的数字识别为电话号码</p>
+
+<pre><code>&lt;meta name =&quot;format-detaction&quot; content=&quot;telephone=no&quot; /&gt;
+</code></pre>
+
+<p>忽略android对邮箱地址的识别</p>
+
+<pre><code>&lt;meta name = &quot;format-detection&quot; content= &quot;email=no&quot; /&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='html5.html'>html5</a></span>
+          				  
+          					    <span class="posted-in"><a href='mobile-frontend.html'>移动端</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/html5-mobile-meta.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="canvas-basic.html">
+                
+                  <h1>canvas基础</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>HTML</p>
+
+<pre><code>&lt;canvas id=&quot;canvas&quot;&gt;&lt;canvas&gt;
+</code></pre>
+
+<p>Javascript</p>
+
+<pre><code>var canvas=document.getElemenById(&quot;canvas&quot;)
+var context=canvas.getContext(&#39;2d&#39;);
+
+//使用context进行绘制
+</code></pre>
+
+<p>画直线</p>
+
+<pre><code>//状态设置
+context.moveTo(100,100);
+context.lineTo(700,700);
+context.lineWidth=10;//线条宽度
+context.strokeStyle=&quot;#058&quot;;// 线条颜色
+//绘制
+context.stroke();
+
+//创建一个全新的路径绘制
+context.beginPath();
+//关闭路径，绘制封闭的图形
+context.closePath();
+
+//颜色填充
+fillStyle =&quot;yellow&quot;;
+fill();
+
+//矩形
+rect(x,y,width,height);
+//包含填充的矩形
+fillRect(x,y width，height);
+//绘制边框
+strokeRect();
+</code></pre>
+
+<p>线条样式</p>
+
+<pre><code>//设置线条的开始、结尾显示样式
+lineCap=&quot;butt&quot;(default)
+         &quot;round&quot;（圆形）
+         &quot;square&quot;   （方形）
+//线条连接处
+lineJoin = &quot;miter&quot;(default)尖角
+           &quot;bevel&quot;
+           &quot;round&quot;圆角           
+miterLimit（默认为10） 
+</code></pre>
+
+<p>图形</p>
+
+<pre><code>//图形状态保存
+save()
+restore()
+
+translate(x,y);  //位移
+rotate(deg);  //旋转
+scale(sx,sy);   //缩放
+
+//图形变换操作(变换矩阵)
+transform(a,b,c,d,e,f);
+setTransform(a,b,c,d,e,f);
+</code></pre>
+
+<p><img src="http://img.lidong.me/2015/03/nBBh9iN5ebO3.png" alt="变换矩阵"/></p>
+
+<pre><code>//填充样式
+fillStyle = color
+            gradient
+            image
+            canvas
+            video
+
+fillStyle = image||canvas||video
+createPattern(img,repeat-style)        
+          (canvas,repeat-style)
+          (video,repeat-style)
+
+          repeat-style:no-repeat
+                        repeat-x
+                        repeat-y
+                        repeat
+</code></pre>
+
+<p>线条样式                        </p>
+
+<pre><code>strokestyle:    
+</code></pre>
+
+<p>曲线绘制               </p>
+
+<pre><code>context.arc(centerx,centery,radius,startingAngle,endingAngle, anticlockwise = false)
+context.arcTo(x1,y1,x2,y2,radius)//沿切线绘制曲线
+</code></pre>
+
+<p>贝塞尔曲线</p>
+
+<pre><code>context.quadraticCurveTo(
+                    x1,y1,   //---控制点
+                    x2,y2)   //---结束点
+context,bezeirCurveTo(
+                    x1,y1,x2,y2,   //---控制点
+                    x3,y3)         //---结束点
+</code></pre>
+
+<p>文字渲染</p>
+
+<pre><code>context.font = &quot;bold  40px Arial&quot;
+
+context.fillText(string,x,y,[maxlen]);
+context.strokeText(string,x,y,[maxlen]);
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/19</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='canvas.html'>canvas</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/canvas-basic.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="font-face.html">
                 
                   <h1>CSS中字体文件引入</h1>
@@ -270,183 +470,6 @@ stop</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="svg-simple.html">
-                
-                  <h1>svg简单介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>&lt;svg width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot; version=&quot;1.1&quot;&gt;
-    &lt;circle cx=&quot;60&quot; cy=&quot;60&quot; r=&quot;50&quot;&gt; &lt;/circle&gt;
-&lt;/svg&gt;
-</code></pre>
-
-<p>引入外部svg文件<br/>
-iframe</p>
-
-<pre><code>&lt;body&gt;
-    &lt;iframe src=&quot;/svg.svg&quot; width=&quot;300&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;
-&lt;/body&gt;
-</code></pre>
-
-<h3 id="toc_0">参考</h3>
-
-<p>mozilla svg <a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG">https://developer.mozilla.org/zh-CN/docs/Web/SVG</a></p>
-
-<p>svg 元素参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element">https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/29</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/svg-simple.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="nginx-conf-start.html">
-                
-                  <h1>nginx自启动设置</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>编写shell脚本，并把shell脚本启动命令加入到自启动名单中。</p>
-
-<p>vi /etc/init.d/nginx  </p>
-
-<pre><code>#!/bin/bash
-# nginx Startup script for the nginx HTTP Server
-# it is v.0.0.2 version.
-# chkconfig: - 85 15
-# description: nginx is a high-performance web and proxy server.
-#              It has a lot of features, but it&#39;s not for everyone.
-# processname: nginx
-# pidfile: /var/run/nginx.pid
-# config: /usr/local/nginx/conf/nginx.conf
-nginxd=/usr/local/nginx/sbin/nginx
-nginx_config=/usr/local/nginx/conf/nginx.conf
-nginx_pid=/var/run/nginx.pid
-RETVAL=0
-prog=&quot;nginx&quot;
-# Source function library.
-. /etc/rc.d/init.d/functions
-# Source networking configuration.
-. /etc/sysconfig/network
-# Check that networking is up.
-[ ${NETWORKING} = &quot;no&quot; ] &amp;&amp; exit 0
-[ -x $nginxd ] || exit 0
-# Start nginx daemons functions.
-start() {
-if [ -e $nginx_pid ];then
-  echo &quot;nginx already running....&quot;
-  exit 1
-fi
-  echo -n $&quot;Starting $prog: &quot;
-  daemon $nginxd -c ${nginx_config}
-  RETVAL=$?
-  echo
-  [ $RETVAL = 0 ] &amp;&amp; touch /var/lock/subsys/nginx
-  return $RETVAL
-}
-# Stop nginx daemons functions.
-stop() {
-       echo -n $&quot;Stopping $prog: &quot;
-       killproc $nginxd
-       RETVAL=$?
-       echo
-       [ $RETVAL = 0 ] &amp;&amp; rm -f /var/lock/subsys/nginx /var/run/nginx.pid
-}
-# reload nginx service functions.
-reload() {
-   echo -n $&quot;Reloading $prog: &quot;
-   #kill -HUP `cat ${nginx_pid}`
-   killproc $nginxd -HUP
-   RETVAL=$?
-   echo
-}
-# See how we were called.
-case &quot;$1&quot; in
-start)
-       start
-       ;;
-stop)
-       stop
-       ;;
-reload)
-       reload
-       ;;
-restart)
-       stop
-       start
-       ;;
-status)
-       status $prog
-       RETVAL=$?
-       ;;
-*)
-       echo $&quot;Usage: $prog {start|stop|restart|reload|status|help}&quot;
-       exit 1
-esac
-exit $RETVAL
-</code></pre>
-
-<p>设置文件的权限</p>
-
-<pre><code>chmod a+x /etc/init.d/nginx    (a+x ---- all user can execute 所有用户可执行)
-</code></pre>
-
-<p>这样就可以方便的操作：查看nginx当前状态、启动nginx、停止nginx、重启nginx...</p>
-
-<p>开机自启动<br/>
-vi /etc/rc.local<br/>
-添加一行</p>
-
-<pre><code>／etc/init.d/nginx start
-</code></pre>
-
-<p>下次重启生效</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/29</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/nginx-conf-start.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -533,6 +556,18 @@ vi /etc/rc.local<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="14596930403739.html">dockerfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14596900345198.html">docker 报错</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="css-bug.html">css bug</a>
 			      </li>
 		     
@@ -546,18 +581,6 @@ vi /etc/rc.local<br/>
 		      
 			      <li class="post">
 			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="html5-mobile-meta.html">html5移动端meta信息</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="canvas-basic.html">canvas基础</a>
 			      </li>
 		     
 		  

@@ -107,6 +107,145 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="learn-search-engine.html">
+                
+                  <h1>走进搜索引擎</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/25</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/learn-search-engine.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="install-fail2ban.html">
+                
+                  <h1>安装fail2ban 防止服务器的暴力攻击</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>发现<a href="http://notes.lidong.me/server-safe.html">服务器被扫描得厉害</a>，所以赶紧采取措施，以免被攻破（虽然没用什么宝贝，采取防御措施是不可以少的☺️）</p>
+
+<p>安装</p>
+
+<pre><code>sudo yum install fail2ban
+</code></pre>
+
+<p>修改配置文件（(注意修改其中的内容修改成你自己的内容，如果你是安装的<a href="http://">msmtp</a>要将<code>mta=sendmail</code>修改为<code>mta＝msmtp</code>）</p>
+
+<pre><code>sudo vi /etc/fail2ban/jail.local
+</code></pre>
+
+<p>配置文件内容</p>
+
+<pre><code>[DEFAULT]
+# 以空格分隔的列表，可以是 IP 地址、CIDR 前缀或者 DNS 主机名
+# 用于指定哪些地址可以忽略 fail2ban 防御
+ignoreip = 127.0.0.1 172.31.0.0/24 10.10.0.0/24 192.168.0.0/24
+# 客户端主机被禁止的时长（秒）
+bantime = 86400
+# 客户端主机被禁止前允许失败的次数 
+maxretry = 5
+# 查找失败次数的时长（秒）
+findtime = 600 
+mta = sendmail
+[ssh-iptables]
+enabled = true
+filter = sshd
+action = iptables[name=SSH, port=ssh, protocol=tcp]
+sendmail-whois[name=SSH, dest=your@email.com, sender=fail2ban@email.com]
+# Debian 系的发行版 
+logpath = /var/log/auth.log
+# Red Hat 系的发行版
+logpath = /var/log/secure
+# ssh 服务的最大尝试次数 
+maxretry = 3
+</code></pre>
+
+<p>配置文件准备就绪后，重启fail2ban服务</p>
+
+<pre><code>sudo systemctl restart fail2ban
+</code></pre>
+
+<p>验证fail2ban，使用参数&#39;ping&#39;来运行fail2ban-client 命令。 如果fail2ban服务正常运行，你可以看到“pong（嘭）”作为响应。</p>
+
+<pre><code>$ sudo fail2ban-client ping
+Server replied: pong
+
+
+sudo tail -f /var/log/fail2ban.log
+
+为了测试fail2ban是否能正常工作，尝试通过使用错误的密码来用SSH连接到服务器模拟一个暴力破解攻击。与此同时，监控 /var/log/fail2ban.log，该文件记录在fail2ban中发生的任何敏感事件,(安装fail2ban之前的系统日志，也会被监控)
+
+sudo tail -f /var/log/fail2ban.log
+</code></pre>
+
+<p>fail2ban会自动反向查询IP的主机信息<br/><br/>
+<img src="http://img.lidong.me/2015/02/Ku6WGJyAi2BA.png" alt=""/></p>
+
+<p>查看fail2ban状态信息</p>
+
+<pre><code>sudo fail2ban-client status
+</code></pre>
+
+<p>设置开机自启动</p>
+
+<pre><code>sudo systemctl enable fail2ban
+</code></pre>
+
+<p>此处只记录了centos7的操作。</p>
+
+<p>更多参考：<br/>
+1.<a href="https://linux.cn/article-5067-1.html">如何使用 fail2ban 防御 SSH 服务器的暴力破解攻击</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/install-fail2ban.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="install-msmtp.html">
                 
                   <h1>安装msmtp使用smtp发送邮件</h1>
@@ -287,89 +426,6 @@ progress</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="hangjianyanshi.html">
-                
-                  <h1>行间样式使用</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>今天在弄 <a href="http://notes.lidong.me/css-draw-1.html">css画图形</a> 的时候，要用到伪元素，但是伪元素不能在行内使用(貌似是，反正没有找到方法)，所以去看别怎么弄的画图的，我了个去，居然可以在body内容中<code>&lt;style&gt;</code>标签，一般教程都没有说这样用啊，一般文档都是让style标签放在<head></head>标签之内。</p>
-
-<pre><code>&lt;body&gt;
-&lt;style&gt;
-&lt;!--
-#contianer{
-color:red;
-}
---&gt;
-&lt;/style&gt;
-&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-&lt;/body&gt;
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/1</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='css.html'>css</a></span>
-          				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/hangjianyanshi.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="www-index.html">
-                
-                  <h1>我有首页了</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>一直以来都是木有首页，今天终于模仿<a href="http://www.ruanyifeng.com/">阮一峰</a>的首页，做了一个<a href="http://www.lidong.me">首页</a>。使用了 <a href="http://unsplash.it">http://unsplash.it</a> 的随机图片作背景图片，逼格满满，😄<br/>
-目前在PC上访问应该木有，是在手机上有一些问题。背景图片显示只显示半屏幕。其实可以通过获取 unsplash 高度大一些的图片解决，但是我那样的确有些浪费，所以先让我在学习学习再弄。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/1</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/www-index.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -456,6 +512,18 @@ color:red;
 	      
 		      
 			      <li class="post">
+			        <a href="14596930403739.html">dockerfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14596900345198.html">docker 报错</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="css-bug.html">css bug</a>
 			      </li>
 		     
@@ -469,18 +537,6 @@ color:red;
 		      
 			      <li class="post">
 			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="html5-mobile-meta.html">html5移动端meta信息</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="canvas-basic.html">canvas基础</a>
 			      </li>
 		     
 		  

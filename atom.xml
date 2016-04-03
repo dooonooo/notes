@@ -4,13 +4,75 @@
   <title><![CDATA[Lidong's notes]]></title>
   <link href="http://notes.lidong.me/atom.xml" rel="self"/>
   <link href="http://notes.lidong.me/"/>
-  <updated>2016-04-01T23:57:45+08:00</updated>
+  <updated>2016-04-02T23:52:23+08:00</updated>
   <id>http://notes.lidong.me/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[dockerfile]]></title>
+    <link href="http://notes.lidong.me/14596930403739.html"/>
+    <updated>2016-04-03T22:17:20+08:00</updated>
+    <id>http://notes.lidong.me/14596930403739.html</id>
+    <content type="html"><![CDATA[
+<p>run<br/>
+    shell格式<br/>
+        RUN yum install -y nginx<br/>
+    exec格式（推荐）<br/>
+        RUN <a href="json%E6%A0%BC%E5%BC%8F">&quot;yum&quot;,&quot;install&quot;,&quot;-y&quot;,&quot;nginx&quot;</a></p>
+
+<p>EXPOSE</p>
+
+<p>CMD<br/>
+    CMD[&quot;&quot;]</p>
+
+<p>ENTRYPOINT</p>
+
+<p>VOLUME</p>
+
+<pre><code>//为基于此镜像创建的容器创建一个名为/opt/project的挂载点
+VOLUME [&quot;/opt/project&quot;]
+
+VOLUME[&quot;/opt/project&quot;,&quot;data&quot;]
+</code></pre>
+
+<p>ADD</p>
+
+<pre><code>ADD  home 
+ADD  http://www.example.com/abc.zip
+ADD
+</code></pre>
+
+<p>COPY </p>
+
+<pre><code>COPY 
+</code></pre>
+
+<p>ONBUILD</p>
+
+<pre><code>¡
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[docker 报错]]></title>
+    <link href="http://notes.lidong.me/14596900345198.html"/>
+    <updated>2016-04-03T21:27:14+08:00</updated>
+    <id>http://notes.lidong.me/14596900345198.html</id>
+    <content type="html"><![CDATA[
+<pre><code>Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+
+
+eval &quot;$(docker-machine env default)&quot;
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[css bug]]></title>
@@ -1087,41 +1149,6 @@ PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
 <p>embed<br/>
 mark<br/>
 progress</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[行间样式使用]]></title>
-    <link href="http://notes.lidong.me/hangjianyanshi.html"/>
-    <updated>2016-02-01T18:43:28+08:00</updated>
-    <id>http://notes.lidong.me/hangjianyanshi.html</id>
-    <content type="html"><![CDATA[
-<p>今天在弄 <a href="http://notes.lidong.me/css-draw-1.html">css画图形</a> 的时候，要用到伪元素，但是伪元素不能在行内使用(貌似是，反正没有找到方法)，所以去看别怎么弄的画图的，我了个去，居然可以在body内容中<code>&lt;style&gt;</code>标签，一般教程都没有说这样用啊，一般文档都是让style标签放在<head></head>标签之内。</p>
-
-<pre><code>&lt;body&gt;
-&lt;style&gt;
-&lt;!--
-#contianer{
-color:red;
-}
---&gt;
-&lt;/style&gt;
-&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-&lt;/body&gt;
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[我有首页了]]></title>
-    <link href="http://notes.lidong.me/www-index.html"/>
-    <updated>2016-02-01T03:37:28+08:00</updated>
-    <id>http://notes.lidong.me/www-index.html</id>
-    <content type="html"><![CDATA[
-<p>一直以来都是木有首页，今天终于模仿<a href="http://www.ruanyifeng.com/">阮一峰</a>的首页，做了一个<a href="http://www.lidong.me">首页</a>。使用了 <a href="http://unsplash.it">http://unsplash.it</a> 的随机图片作背景图片，逼格满满，😄<br/>
-目前在PC上访问应该木有，是在手机上有一些问题。背景图片显示只显示半屏幕。其实可以通过获取 unsplash 高度大一些的图片解决，但是我那样的确有些浪费，所以先让我在学习学习再弄。</p>
 
 ]]></content>
   </entry>

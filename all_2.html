@@ -107,6 +107,183 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="svg-simple.html">
+                
+                  <h1>svg简单介绍</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>&lt;svg width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot; version=&quot;1.1&quot;&gt;
+    &lt;circle cx=&quot;60&quot; cy=&quot;60&quot; r=&quot;50&quot;&gt; &lt;/circle&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>引入外部svg文件<br/>
+iframe</p>
+
+<pre><code>&lt;body&gt;
+    &lt;iframe src=&quot;/svg.svg&quot; width=&quot;300&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;
+&lt;/body&gt;
+</code></pre>
+
+<h3 id="toc_0">参考</h3>
+
+<p>mozilla svg <a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG">https://developer.mozilla.org/zh-CN/docs/Web/SVG</a></p>
+
+<p>svg 元素参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element">https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/29</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/svg-simple.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="nginx-conf-start.html">
+                
+                  <h1>nginx自启动设置</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>编写shell脚本，并把shell脚本启动命令加入到自启动名单中。</p>
+
+<p>vi /etc/init.d/nginx  </p>
+
+<pre><code>#!/bin/bash
+# nginx Startup script for the nginx HTTP Server
+# it is v.0.0.2 version.
+# chkconfig: - 85 15
+# description: nginx is a high-performance web and proxy server.
+#              It has a lot of features, but it&#39;s not for everyone.
+# processname: nginx
+# pidfile: /var/run/nginx.pid
+# config: /usr/local/nginx/conf/nginx.conf
+nginxd=/usr/local/nginx/sbin/nginx
+nginx_config=/usr/local/nginx/conf/nginx.conf
+nginx_pid=/var/run/nginx.pid
+RETVAL=0
+prog=&quot;nginx&quot;
+# Source function library.
+. /etc/rc.d/init.d/functions
+# Source networking configuration.
+. /etc/sysconfig/network
+# Check that networking is up.
+[ ${NETWORKING} = &quot;no&quot; ] &amp;&amp; exit 0
+[ -x $nginxd ] || exit 0
+# Start nginx daemons functions.
+start() {
+if [ -e $nginx_pid ];then
+  echo &quot;nginx already running....&quot;
+  exit 1
+fi
+  echo -n $&quot;Starting $prog: &quot;
+  daemon $nginxd -c ${nginx_config}
+  RETVAL=$?
+  echo
+  [ $RETVAL = 0 ] &amp;&amp; touch /var/lock/subsys/nginx
+  return $RETVAL
+}
+# Stop nginx daemons functions.
+stop() {
+       echo -n $&quot;Stopping $prog: &quot;
+       killproc $nginxd
+       RETVAL=$?
+       echo
+       [ $RETVAL = 0 ] &amp;&amp; rm -f /var/lock/subsys/nginx /var/run/nginx.pid
+}
+# reload nginx service functions.
+reload() {
+   echo -n $&quot;Reloading $prog: &quot;
+   #kill -HUP `cat ${nginx_pid}`
+   killproc $nginxd -HUP
+   RETVAL=$?
+   echo
+}
+# See how we were called.
+case &quot;$1&quot; in
+start)
+       start
+       ;;
+stop)
+       stop
+       ;;
+reload)
+       reload
+       ;;
+restart)
+       stop
+       start
+       ;;
+status)
+       status $prog
+       RETVAL=$?
+       ;;
+*)
+       echo $&quot;Usage: $prog {start|stop|restart|reload|status|help}&quot;
+       exit 1
+esac
+exit $RETVAL
+</code></pre>
+
+<p>设置文件的权限</p>
+
+<pre><code>chmod a+x /etc/init.d/nginx    (a+x ---- all user can execute 所有用户可执行)
+</code></pre>
+
+<p>这样就可以方便的操作：查看nginx当前状态、启动nginx、停止nginx、重启nginx...</p>
+
+<p>开机自启动<br/>
+vi /etc/rc.local<br/>
+添加一行</p>
+
+<pre><code>／etc/init.d/nginx start
+</code></pre>
+
+<p>下次重启生效</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/29</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/nginx-conf-start.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="js-regexp.html">
                 
                   <h1>js正则表达式</h1>
@@ -399,145 +576,6 @@ $$  指代美元符号
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="learn-search-engine.html">
-                
-                  <h1>走进搜索引擎</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/25</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/learn-search-engine.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="install-fail2ban.html">
-                
-                  <h1>安装fail2ban 防止服务器的暴力攻击</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>发现<a href="http://notes.lidong.me/server-safe.html">服务器被扫描得厉害</a>，所以赶紧采取措施，以免被攻破（虽然没用什么宝贝，采取防御措施是不可以少的☺️）</p>
-
-<p>安装</p>
-
-<pre><code>sudo yum install fail2ban
-</code></pre>
-
-<p>修改配置文件（(注意修改其中的内容修改成你自己的内容，如果你是安装的<a href="http://">msmtp</a>要将<code>mta=sendmail</code>修改为<code>mta＝msmtp</code>）</p>
-
-<pre><code>sudo vi /etc/fail2ban/jail.local
-</code></pre>
-
-<p>配置文件内容</p>
-
-<pre><code>[DEFAULT]
-# 以空格分隔的列表，可以是 IP 地址、CIDR 前缀或者 DNS 主机名
-# 用于指定哪些地址可以忽略 fail2ban 防御
-ignoreip = 127.0.0.1 172.31.0.0/24 10.10.0.0/24 192.168.0.0/24
-# 客户端主机被禁止的时长（秒）
-bantime = 86400
-# 客户端主机被禁止前允许失败的次数 
-maxretry = 5
-# 查找失败次数的时长（秒）
-findtime = 600 
-mta = sendmail
-[ssh-iptables]
-enabled = true
-filter = sshd
-action = iptables[name=SSH, port=ssh, protocol=tcp]
-sendmail-whois[name=SSH, dest=your@email.com, sender=fail2ban@email.com]
-# Debian 系的发行版 
-logpath = /var/log/auth.log
-# Red Hat 系的发行版
-logpath = /var/log/secure
-# ssh 服务的最大尝试次数 
-maxretry = 3
-</code></pre>
-
-<p>配置文件准备就绪后，重启fail2ban服务</p>
-
-<pre><code>sudo systemctl restart fail2ban
-</code></pre>
-
-<p>验证fail2ban，使用参数&#39;ping&#39;来运行fail2ban-client 命令。 如果fail2ban服务正常运行，你可以看到“pong（嘭）”作为响应。</p>
-
-<pre><code>$ sudo fail2ban-client ping
-Server replied: pong
-
-
-sudo tail -f /var/log/fail2ban.log
-
-为了测试fail2ban是否能正常工作，尝试通过使用错误的密码来用SSH连接到服务器模拟一个暴力破解攻击。与此同时，监控 /var/log/fail2ban.log，该文件记录在fail2ban中发生的任何敏感事件,(安装fail2ban之前的系统日志，也会被监控)
-
-sudo tail -f /var/log/fail2ban.log
-</code></pre>
-
-<p>fail2ban会自动反向查询IP的主机信息<br/><br/>
-<img src="http://img.lidong.me/2015/02/Ku6WGJyAi2BA.png" alt=""/></p>
-
-<p>查看fail2ban状态信息</p>
-
-<pre><code>sudo fail2ban-client status
-</code></pre>
-
-<p>设置开机自启动</p>
-
-<pre><code>sudo systemctl enable fail2ban
-</code></pre>
-
-<p>此处只记录了centos7的操作。</p>
-
-<p>更多参考：<br/>
-1.<a href="https://linux.cn/article-5067-1.html">如何使用 fail2ban 防御 SSH 服务器的暴力破解攻击</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/install-fail2ban.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -624,6 +662,18 @@ sudo tail -f /var/log/fail2ban.log
 	      
 		      
 			      <li class="post">
+			        <a href="14596930403739.html">dockerfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14596900345198.html">docker 报错</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="css-bug.html">css bug</a>
 			      </li>
 		     
@@ -637,18 +687,6 @@ sudo tail -f /var/log/fail2ban.log
 		      
 			      <li class="post">
 			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="html5-mobile-meta.html">html5移动端meta信息</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="canvas-basic.html">canvas基础</a>
 			      </li>
 		     
 		  

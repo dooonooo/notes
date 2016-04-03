@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  html5移动端meta信息 - Lidong's notes
+  dockerfile - Lidong's notes
   
   </title>
   
@@ -107,21 +107,17 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>html5移动端meta信息</h1>
+          <h1>dockerfile</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/3/25</span>
+          <span class="date">2016/4/3</span>
 
-          <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='html5.html'>html5</a></span>
-          
-              <span class="posted-in"><a href='mobile-frontend.html'>移动端</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/html5-mobile-meta.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/14596930403739.html#disqus_thread">comments</a>
             
 
             
@@ -131,19 +127,42 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h3 id="toc_0">meta信息</h3>
+      <p>run<br/>
+    shell格式<br/>
+        RUN yum install -y nginx<br/>
+    exec格式（推荐）<br/>
+        RUN <a href="json%E6%A0%BC%E5%BC%8F">&quot;yum&quot;,&quot;install&quot;,&quot;-y&quot;,&quot;nginx&quot;</a></p>
 
-<p>窗口宽度自动调整到设备宽度，禁止用户缩放页面<br/>
-    <meta name="viewport" content = "width = device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /> </p>
+<p>EXPOSE</p>
 
-<p>忽略将页面中的数字识别为电话号码</p>
+<p>CMD<br/>
+    CMD[&quot;&quot;]</p>
 
-<pre><code>&lt;meta name =&quot;format-detaction&quot; content=&quot;telephone=no&quot; /&gt;
+<p>ENTRYPOINT</p>
+
+<p>VOLUME</p>
+
+<pre><code>//为基于此镜像创建的容器创建一个名为/opt/project的挂载点
+VOLUME [&quot;/opt/project&quot;]
+
+VOLUME[&quot;/opt/project&quot;,&quot;data&quot;]
 </code></pre>
 
-<p>忽略android对邮箱地址的识别</p>
+<p>ADD</p>
 
-<pre><code>&lt;meta name = &quot;format-detection&quot; content= &quot;email=no&quot; /&gt;
+<pre><code>ADD  home 
+ADD  http://www.example.com/abc.zip
+ADD
+</code></pre>
+
+<p>COPY </p>
+
+<pre><code>COPY 
+</code></pre>
+
+<p>ONBUILD</p>
+
+<pre><code>¡
 </code></pre>
 
       </div>
@@ -152,16 +171,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="fullpage.js.html" 
-          title="Previous Post: fullpage全屏滚动插件">&laquo; fullpage全屏滚动插件</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="canvas-basic.html" 
-          title="Next Post: canvas基础">canvas基础 &raquo;</a>
+          <a  href="14596900345198.html" 
+          title="Next Post: docker 报错">docker 报错 &raquo;</a>
       
       </p>
         </div>
