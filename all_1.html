@@ -67,7 +67,7 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="ethereum.html">以太</a></li>
+            <li><a href="%E4%BB%A5%E5%A4%AA.html">以太</a></li>
         
             <li><a href="editor-ide.html">工具</a></li>
         
@@ -87,7 +87,11 @@
         
             <li><a href="canvas.html">canvas</a></li>
         
-            <li><a href="mobile-frontend.html">移动端</a></li>
+            <li><a href="%E7%A7%BB%E5%8A%A8%E7%AB%AF.html">移动端</a></li>
+        
+            <li><a href="docker.html">docker</a></li>
+        
+            <li><a href="centos.html">centos</a></li>
          
 
       </ul>
@@ -106,6 +110,319 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="mobile-frame.html">
+                
+                  <h1>常用的移动端框架</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>zepto.js<br/>
+语法与jquery几乎一样，会jquery基本会zepto~<br/>
+最新版本已经更新到1.16<br/>
+官网：<a href="http://zeptojs.com/">http://zeptojs.com/</a><br/>
+中文(非官网)：<a href="http://www.css88.com/doc/zeptojs_api/">http://www.css88.com/doc/zeptojs_api/</a><br/>
+常使用的扩展模块：<br/>
+浏览器检测：<a href="https://github.com/madrobby/zepto/blob/master/src/detect.js">https://github.com/madrobby/zepto/blob/master/src/detect.js</a><br/>
+tap事件：<a href="https://github.com/madrobby/zepto/blob/master/src/touch.js">https://github.com/madrobby/zepto/blob/master/src/touch.js</a><br/>
+ <br/>
+iscroll.js<br/>
+解决页面不支持弹性滚动，不支持fixed引起的问题~<br/>
+实现下拉刷新，滑屏，缩放等功能~<br/>
+最新版本已经更新到5.0<br/>
+官网：<a href="http://cubiq.org/iscroll-5">http://cubiq.org/iscroll-5</a><br/>
+underscore.js<br/>
+slip.js<br/>
+iSlider.js<br/>
+fullpage.js</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/29</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%A7%BB%E5%8A%A8%E7%AB%AF.html'>移动端</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/mobile-frame.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="fullpage.js.html">
+                
+                  <h1>fullpage全屏滚动插件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">基本的页面结构</h3>
+
+<pre><code>&lt;div id =&quot;fullpage&quot;&gt;
+    &lt;div class = &quot;section&quot;&gt; 一些内容&lt;/div&gt;
+    &lt;div class = &quot;section&quot;&gt; 一些内容&lt;/div&gt;
+    &lt;div class = &quot;section&quot;&gt; 一些内容&lt;/div&gt;
+    &lt;div class = &quot;section&quot;&gt; 一些内容&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>在某一个section页中增加slide（幻灯片）</p>
+
+<pre><code>&lt;div class = &quot;section&quot;&gt;
+    &lt;div class = &quot;slide&quot;&gt;slide1&lt;/div&gt;
+    &lt;div class = &quot;slide&quot;&gt;slide1&lt;/div&gt;
+    &lt;div class = &quot;slide&quot;&gt;slide1&lt;/div&gt;
+    &lt;div class = &quot;slide&quot;&gt;slide1&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>意义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sectionsColor:</td>
+<td>设置每个section的background-color属性</td>
+</tr>
+<tr>
+<td>controlArrows:</td>
+<td>设置slide幻灯片是否显示箭头，默认true。移动设备可以滑动</td>
+</tr>
+<tr>
+<td>verticalCentered:</td>
+<td>设置每一页内容是否垂直居中，默认为true</td>
+</tr>
+<tr>
+<td>resize：</td>
+<td>字体是否随着窗口缩放而缩放，默认false。</td>
+</tr>
+<tr>
+<td>scrollingSpeend：</td>
+<td>滚动速度，单位毫秒，默认为700</td>
+</tr>
+<tr>
+<td>anchors:</td>
+<td>定义锚链接,默认值为[],有了锚链接，可以快速打开定位到某一页面。<br>锚链接的值不要和页面的中任何id或name相同，不要添加#</td>
+</tr>
+<tr>
+<td>lockAnchors:</td>
+<td>是否锁定锚链接，默认为false，<br>如果设置为true，那么定义的锚链接即anchors属性则没有效果。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>easing:</td>
+<td>定义页面section滚动的动画方式，默认是easeInOutCubic, <br>如果修改此项，需要引入jquery.easings插件，或jquery ui。</td>
+</tr>
+<tr>
+<td>css3:</td>
+<td>是否使用css3 transforms来实现滚动效果，默认true。<br>(这个配置项可以提高支持css3的浏览器的速度，<br>如果浏览器不支持css3，则会是 jquery来代替css3实现滚动效果。)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>loopTop：</td>
+<td>滚动到最顶部是否连续滚动到底部，默认false。</td>
+</tr>
+<tr>
+<td>loopbuttom：</td>
+<td>滚到到最顶部是否连续滚动到顶部，默认false。</td>
+</tr>
+<tr>
+<td>loopHorizontal：</td>
+<td>横向slider幻灯片是否循环滚动，默认为true。</td>
+</tr>
+<tr>
+<td>autoScrolling:</td>
+<td>是否使用插件的滚动方式，默认为true，<br>选择false，则出现浏览器自带的滚动条，将不会按页滚动，<br>而是按照滚动条的默认行为来滚动。</td>
+</tr>
+<tr>
+<td>scrollBar:</td>
+<td>是否包含滚动条，默认为false，<br>如果设置为true，则浏览器自带的滚动条出现，<br>页面滚动时还是按页滚动，但是滚动条的默认行为也有效。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>paddingTop/paddingBottom:</td>
+<td>设置每一个section顶部和底部的pandding默认是0。<br>一般如果我们需要设置一个固定在顶部或底部的菜单、导航元素等，<br>可以使用这两个配置项。</td>
+</tr>
+<tr>
+<td>fixedelements：</td>
+<td>固定的元素，默认null，需要配置jquery选择器，<br>在页面滚动的时候，fixedElements设置的元素固定不动。<br>（fixedElements:&#39;#header&#39;）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>keyboardScrolling:</td>
+<td>是否可以使用键盘方向键导航，默认为true</td>
+</tr>
+<tr>
+<td>touchSensitivity:</td>
+<td>在移动设备中的滑动页面的敏感性，默认为5，<br>按百分比来衡量，最大值100，越大越来滑动。</td>
+</tr>
+<tr>
+<td>continuousVertical：</td>
+<td>是否循环滚动，默认为false。<br>如果设置为true，则页面会循环滚动，<br>不像loopTop或loopBottom那样出现跳动,<br>与loopTop、loopBottom不兼容，不能同时设置。</td>
+</tr>
+<tr>
+<td>animateAnchor:</td>
+<td>锚链接是否可以控制滚动动画，默认为true。<br>如果设置为false，则通过锚链接定位到某个页面不再有动画效果</td>
+</tr>
+<tr>
+<td>recordHistory:</td>
+<td>是否记录历史，默认为true，<br>可以记录页面滚动的历史，通过浏览器的前进后退来导航。<br>如果设置了autoScrolling:false,那么这个配置也将被关闭，即设置为false</td>
+</tr>
+<tr>
+<td>menu:</td>
+<td>绑定菜单，设定data-menuanchor属性与anchors的值对应后，<br>菜单可以控制滚动，<br>默认为false。可以设置为菜单的jquery选择器。</td>
+</tr>
+<tr>
+<td>navigation:</td>
+<td>是否显示导航，默认为false。<br>如果设置为true，会显示小圆点，作为导航。</td>
+</tr>
+<tr>
+<td>navigationPosition：</td>
+<td>导航小圆点的位置，可以设置为left或right。</td>
+</tr>
+<tr>
+<td>navigationtooltips：</td>
+<td>导航小圆点的tooltips设置，<br>默认为[]，注意按照顺序设置。</td>
+</tr>
+<tr>
+<td>showactiveTooltip:</td>
+<td>是否显示当前页面的导航的tooltip信息，<br>默认为false</td>
+</tr>
+<tr>
+<td>slidesNavigation：</td>
+<td>是否显示横向幻灯片的导航，默认为false。</td>
+</tr>
+<tr>
+<td>slidesNavPosition:</td>
+<td>横向幻灯片导航的位置，默认为bottom，可以设置为top或bottom</td>
+</tr>
+<tr>
+<td>scrollOverflow:</td>
+<td>内容超过满屏后是否显示滚动条，默认为false。<br>如果设置为true，则会显示滚动条，如果要显示滚动条查看内容，<br>还需要jquery.slimscroll插件的配合。<br>slimscroll插件主要用于模拟传统的浏览器滚动条。</td>
+</tr>
+<tr>
+<td>sectionselector：</td>
+<td>section的选择器，默认为.section。</td>
+</tr>
+<tr>
+<td>slideSelector:</td>
+<td>slide的选择器，默认为.slide。</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_1">方法</h3>
+
+<p>调用方法：$.fn.fullpage.xxxx();</p>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>moveSectionUp():</td>
+<td>向上滚动</td>
+</tr>
+<tr>
+<td>moveSectionDown():</td>
+<td>向下滚动</td>
+</tr>
+<tr>
+<td>moveTo(section，slide):</td>
+<td>滚动到第几页，第几个幻灯片，<br>页面是从1开始，而幻灯片，从0开始</td>
+</tr>
+<tr>
+<td>setAutoScrolling(boolean):</td>
+<td>动态设置autoscrolling</td>
+</tr>
+<tr>
+<td>setLockAnchors(boolean):</td>
+<td>动态设置LockAnchors</td>
+</tr>
+<tr>
+<td>setRecordHistory(boolean):</td>
+<td>动态设置RecordHistory</td>
+</tr>
+<tr>
+<td>setScrollingSpeed(milliseconds):</td>
+<td>动态设置ScrollingSpeed</td>
+</tr>
+<tr>
+<td>setAllowScrolling(boolean,[directions]):</td>
+<td>添加或删除鼠标滚轮/滑动控制,<br>第一个参数true为启用，false为禁用，<br>后面的参数为方向取值包含all,up,down,left,right,<br>可以使用多个，逗号分隔</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_2">更多</h3>
+
+<p>边看<a href="http://www.imooc.com/learn/514">FullPage.js全屏滚动插件</a>视频边整理</p>
+
+<p>整理得差不多了，发现有相似的整理<a href="http://www.dowebok.com/77.html">http://www.dowebok.com/77.html</a>推荐一下</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/3/27</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%A7%BB%E5%8A%A8%E7%AB%AF.html'>移动端</a></span>
+          				  
+          					    <span class="posted-in"><a href='jquery.html'>jquery</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/fullpage.js.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="html5-mobile-meta.html">
                 
@@ -139,9 +456,9 @@
                     <span class="date">2016/3/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='html5.html'>html5</a></span>
+          					    <span class="posted-in"><a href='%E7%A7%BB%E5%8A%A8%E7%AB%AF.html'>移动端</a></span>
           				  
-          					    <span class="posted-in"><a href='mobile-frontend.html'>移动端</a></span>
+          					    <span class="posted-in"><a href='html5.html'>html5</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -345,123 +662,15 @@ src:url(&quot;../fonts/icomoon.eot?&quot;) format(&quot;embedded-opentype&quot;)
                     <span class="date">2016/3/17</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='css.html'>css</a></span>
-          				  
           					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				  
+          					    <span class="posted-in"><a href='css.html'>css</a></span>
           				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
                       
                         <a href="http://notes.lidong.me/font-face.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="jquery-vslidation.html">
-                
-                  <h1>jquery验证插件 jquery-validation</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>method 验证方法</p>
-
-<p>rule验证规则</p>
-
-<p>validata核心方法</p>
-
-<p>debug 设置不提交</p>
-
-<p>基本验证方法</p>
-
-<p>(1)、required:true               必输字段<br/>
-(2)、remote:&quot;check.php&quot;          使用ajax方法调用check.php验证输入值<br/>
-(3)、email:true                  必须输入正确格式的电子邮件<br/>
-(4)、url:true                    必须输入正确格式的网址<br/>
-(5)、date:true                   必须输入正确格式的日期<br/>
-(6)、dateISO:true                必须输入正确格式的日期(ISO)，例如：2009-06-23，1998/01/22 只验证格式，不验证有效性<br/>
-(7)、number:true                 必须输入合法的数字(负数，小数)<br/>
-(8)、digits:true                 必须输入整数<br/>
-(9)、creditcard:true             必须输入合法的信用卡号<br/>
-(10)、equalTo:&quot;#password&quot;        输入值必须和#password相同<br/>
-(11)、accept:                    输入拥有合法后缀名的字符串（上传文件的后缀）<br/>
-(12)、maxlength:5                输入长度最多是5的字符串(汉字算一个字符)<br/>
-(13)、minlength:10               输入长度最小是10的字符串(汉字算一个字符)<br/>
-(14)、rangelength:[5,10]         输入长度必须介于 5 和 10 之间的字符串&quot;)(汉字算一个字符)<br/>
-(15)、range:[5,10]               输入值必须介于 5 和 10 之间<br/>
-(16)、max:5                      输入值不能大于5<br/>
-(17)、min:10                     输入值不能小于10</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/3/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
-          				  
-          					    <span class="posted-in"><a href='jquery.html'>jquery</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/jquery-vslidation.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="learn-jquery.html">
-                
-                  <h1>jQuery</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1.jQuery安装<br/>
-<script src="http://code.jquery.com/jquery-1.9.0.js"></script><br/>
-<script src="http://code.jquery.com/jquery-1.12.1.js"></script>(目前最新)</p>
-
-<p>2.jQuery语法<br/>
-jQuery选择器<br/>
-jQuery事件<br/>
-jQuery效果<br/>
-显示隐藏<br/>
-淡入淡出<br/>
-滑动<br/>
-动画<br/>
-stop</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/3/1</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/learn-jquery.html#disqus_thread">comments</a>
                       
 
                        
@@ -519,7 +728,7 @@ stop</p>
 
       	<p class="cat-list">
         
-            <a href="ethereum.html"><strong>以太</strong></a>
+            <a href="%E4%BB%A5%E5%A4%AA.html"><strong>以太</strong></a>
         
             <a href="editor-ide.html"><strong>工具</strong></a>
         
@@ -539,7 +748,11 @@ stop</p>
         
             <a href="canvas.html"><strong>canvas</strong></a>
         
-            <a href="mobile-frontend.html"><strong>移动端</strong></a>
+            <a href="%E7%A7%BB%E5%8A%A8%E7%AB%AF.html"><strong>移动端</strong></a>
+        
+            <a href="docker.html"><strong>docker</strong></a>
+        
+            <a href="centos.html"><strong>centos</strong></a>
          
         </p>
 
@@ -556,31 +769,31 @@ stop</p>
 	      
 		      
 			      <li class="post">
-			        <a href="14596930403739.html">dockerfile</a>
+			        <a href="rpm-qa.html">rpm -qa</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14596900345198.html">docker 报错</a>
+			        <a href="centos-v.html">查看CentOS版本方法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="dockerfile.html">dockerfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="docker-error.html">docker 报错</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
 			        <a href="css-bug.html">css bug</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="mobile-frame.html">常用的移动端框架</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
 			      </li>
 		     
 		  

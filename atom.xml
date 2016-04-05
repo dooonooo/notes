@@ -4,7 +4,7 @@
   <title><![CDATA[Lidong's notes]]></title>
   <link href="http://notes.lidong.me/atom.xml" rel="self"/>
   <link href="http://notes.lidong.me/"/>
-  <updated>2016-04-02T23:52:23+08:00</updated>
+  <updated>2016-04-05T23:47:09+08:00</updated>
   <id>http://notes.lidong.me/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,10 +13,69 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
+    <title type="html"><![CDATA[rpm -qa]]></title>
+    <link href="http://notes.lidong.me/rpm-qa.html"/>
+    <updated>2016-04-04T15:21:23+08:00</updated>
+    <id>http://notes.lidong.me/rpm-qa.html</id>
+    <content type="html"><![CDATA[
+<p>centos如何查看系统安装了哪些程序</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[查看CentOS版本方法]]></title>
+    <link href="http://notes.lidong.me/centos-v.html"/>
+    <updated>2016-04-04T14:52:39+08:00</updated>
+    <id>http://notes.lidong.me/centos-v.html</id>
+    <content type="html"><![CDATA[
+<p>有以下命令可以查看：</p>
+
+<h1 id="toc_0">lsb_release -a</h1>
+
+<p>LSB Version:    :core-3.1-ia32:core-3.1-noarch:graphics-3.1-ia32:graphics-3.1-noarch<br/>
+Distributor ID: CentOS<br/>
+Description:    CentOS release 5.4 (Final)<br/>
+Release:        5.4<br/>
+Codename:       Final</p>
+
+<p>这个命令适用于所有的linux，包括Redhat、SuSE、Debian、Centos等发行版。</p>
+
+<p>root@MyMail ~ # uname<br/>
+Linux<br/>
+root@MyMail ~ # uname -r<br/>
+2.6.18-164.el5<br/>
+[root@localhost ~]# uname -a<br/>
+Linux localhost.localdomain 2.6.18-194.el5 #1 SMP Fri Apr 2 14:58:35 EDT 2010 i686 i686 i386 GNU/Linux</p>
+
+<p>以下二种方法适用于RedHat,CentOS</p>
+
+<p>root@MyMail ~ # cat /etc/redhat-release<br/>
+CentOS release 5.4 (Final)</p>
+
+<p>登录到linux执行rpm -q redhat-release</p>
+
+<h1 id="toc_1">rpm -q redhat-release</h1>
+
+<p>或CentOS</p>
+
+<p>root@MyMail ~ # rpm -q centos-release<br/>
+centos-release-5-4.el5.centos.1</p>
+
+<p>当前centos 版本与redhat对应的版本的命令</p>
+
+<h1 id="toc_2">cat /proc/version</h1>
+
+<p>Linux version 2.6.9-78.ELsmp (<a href="mailto:mockbuild@builder16.centos.org">mockbuild@builder16.centos.org</a>) (gcc version 3.4.6 20060404 (Red Hat 3.4.6-10)) #1 SMP Fri Jul 25 00:04:28 EDT 2008</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[dockerfile]]></title>
-    <link href="http://notes.lidong.me/14596930403739.html"/>
+    <link href="http://notes.lidong.me/dockerfile.html"/>
     <updated>2016-04-03T22:17:20+08:00</updated>
-    <id>http://notes.lidong.me/14596930403739.html</id>
+    <id>http://notes.lidong.me/dockerfile.html</id>
     <content type="html"><![CDATA[
 <p>run<br/>
     shell格式<br/>
@@ -61,15 +120,30 @@ ADD
   
   <entry>
     <title type="html"><![CDATA[docker 报错]]></title>
-    <link href="http://notes.lidong.me/14596900345198.html"/>
+    <link href="http://notes.lidong.me/docker-error.html"/>
     <updated>2016-04-03T21:27:14+08:00</updated>
-    <id>http://notes.lidong.me/14596900345198.html</id>
+    <id>http://notes.lidong.me/docker-error.html</id>
     <content type="html"><![CDATA[
 <pre><code>Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 
 
 eval &quot;$(docker-machine env default)&quot;
+
+&lt;https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon&gt;
+
+
+Warning: failed to get default registry endpoint from daemon (Cannot connect to the Docker daemon. Is the docker daemon running on this host?). Using system default: https://index.docker.io/v1/
 </code></pre>
+
+<p>Cannot connect to the Docker daemon. Is the docker daemon running on this host?<br/>
+[dong@dooonooo ~]$ systemctl docker start <br/>
+Unknown operation &#39;docker&#39;.</p>
+
+<p><code># systemctl start docker</code></p>
+
+<p>Docker运行容器后自动退出<br/>
+<a href="http://www.pangxie.space/docker/96">http://www.pangxie.space/docker/96</a><br/>
+Khmv2NKUaFhU3z8D</p>
 
 ]]></content>
   </entry>
@@ -1110,45 +1184,6 @@ account default: test
 <p>参考：<br/>
     1.解压tar.xz文件 参考<a href="http://blog.csdn.net/rheostat/article/details/7614451">这里</a><br/>
     2.官方<a href="http://msmtp.sourceforge.net/documentation.html">配置文档</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[服务器安全配置]]></title>
-    <link href="http://notes.lidong.me/server-safe.html"/>
-    <updated>2016-02-04T04:50:48+08:00</updated>
-    <id>http://notes.lidong.me/server-safe.html</id>
-    <content type="html"><![CDATA[
-<p>查看登陆失败的ip<br/>
-sudo grep &quot;Failed password for&quot; /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
-
-<p>我这也就曝光一些哪些扫描人ip<br/>
-这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
-<img src="http://img.lidong.me/2015/02/2QYfyR7lVtTy.png" alt=""/></p>
-
-<p>基于密钥认证的配置</p>
-
-<pre><code># vi /etc/ssh/sshd_config  
-PasswordAuthentication no //禁止使用基于口令认证的方式登陆
-PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
-# /etc/init.d/sshd reload
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[html5]]></title>
-    <link href="http://notes.lidong.me/html5-1.html"/>
-    <updated>2016-02-03T15:34:02+08:00</updated>
-    <id>http://notes.lidong.me/html5-1.html</id>
-    <content type="html"><![CDATA[
-<p>figure</p>
-
-<p>embed<br/>
-mark<br/>
-progress</p>
 
 ]]></content>
   </entry>

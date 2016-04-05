@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  dockerfile - Lidong's notes
+  rpm -qa - Lidong's notes
   
   </title>
   
@@ -67,7 +67,7 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="ethereum.html">以太</a></li>
+            <li><a href="%E4%BB%A5%E5%A4%AA.html">以太</a></li>
         
             <li><a href="editor-ide.html">工具</a></li>
         
@@ -87,7 +87,11 @@
         
             <li><a href="canvas.html">canvas</a></li>
         
-            <li><a href="mobile-frontend.html">移动端</a></li>
+            <li><a href="%E7%A7%BB%E5%8A%A8%E7%AB%AF.html">移动端</a></li>
+        
+            <li><a href="docker.html">docker</a></li>
+        
+            <li><a href="centos.html">centos</a></li>
          
 
       </ul>
@@ -107,17 +111,21 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>dockerfile</h1>
+          <h1>rpm -qa</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/4/3</span>
+          <span class="date">2016/4/4</span>
 
+          <span>posted in&nbsp;</span> 
           
+              <span class="posted-in"><a href='centos.html'>centos</a></span>
+          
+              <span class="posted-in"><a href='linux.html'>linux</a></span>
            
          
           <span class="comments">
             
-              <a href="http://notes.lidong.me/14596930403739.html#disqus_thread">comments</a>
+              <a href="http://notes.lidong.me/rpm-qa.html#disqus_thread">comments</a>
             
 
             
@@ -127,43 +135,7 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>run<br/>
-    shell格式<br/>
-        RUN yum install -y nginx<br/>
-    exec格式（推荐）<br/>
-        RUN <a href="json%E6%A0%BC%E5%BC%8F">&quot;yum&quot;,&quot;install&quot;,&quot;-y&quot;,&quot;nginx&quot;</a></p>
-
-<p>EXPOSE</p>
-
-<p>CMD<br/>
-    CMD[&quot;&quot;]</p>
-
-<p>ENTRYPOINT</p>
-
-<p>VOLUME</p>
-
-<pre><code>//为基于此镜像创建的容器创建一个名为/opt/project的挂载点
-VOLUME [&quot;/opt/project&quot;]
-
-VOLUME[&quot;/opt/project&quot;,&quot;data&quot;]
-</code></pre>
-
-<p>ADD</p>
-
-<pre><code>ADD  home 
-ADD  http://www.example.com/abc.zip
-ADD
-</code></pre>
-
-<p>COPY </p>
-
-<pre><code>COPY 
-</code></pre>
-
-<p>ONBUILD</p>
-
-<pre><code>¡
-</code></pre>
+      <p>centos如何查看系统安装了哪些程序</p>
 
       </div>
 
@@ -176,8 +148,8 @@ ADD
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="14596900345198.html" 
-          title="Next Post: docker 报错">docker 报错 &raquo;</a>
+          <a  href="centos-v.html" 
+          title="Next Post: 查看CentOS版本方法">查看CentOS版本方法 &raquo;</a>
       
       </p>
         </div>
@@ -230,7 +202,7 @@ ADD
 
       	<p class="cat-list">
         
-            <a href="ethereum.html"><strong>以太</strong></a>
+            <a href="%E4%BB%A5%E5%A4%AA.html"><strong>以太</strong></a>
         
             <a href="editor-ide.html"><strong>工具</strong></a>
         
@@ -250,7 +222,11 @@ ADD
         
             <a href="canvas.html"><strong>canvas</strong></a>
         
-            <a href="mobile-frontend.html"><strong>移动端</strong></a>
+            <a href="%E7%A7%BB%E5%8A%A8%E7%AB%AF.html"><strong>移动端</strong></a>
+        
+            <a href="docker.html"><strong>docker</strong></a>
+        
+            <a href="centos.html"><strong>centos</strong></a>
          
         </p>
 
@@ -267,31 +243,31 @@ ADD
 	      
 		      
 			      <li class="post">
-			        <a href="14596930403739.html">dockerfile</a>
+			        <a href="rpm-qa.html">rpm -qa</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14596900345198.html">docker 报错</a>
+			        <a href="centos-v.html">查看CentOS版本方法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="dockerfile.html">dockerfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="docker-error.html">docker 报错</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
 			        <a href="css-bug.html">css bug</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="mobile-frame.html">常用的移动端框架</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
 			      </li>
 		     
 		  

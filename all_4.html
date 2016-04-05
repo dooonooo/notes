@@ -67,7 +67,7 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="ethereum.html">以太</a></li>
+            <li><a href="%E4%BB%A5%E5%A4%AA.html">以太</a></li>
         
             <li><a href="editor-ide.html">工具</a></li>
         
@@ -87,7 +87,11 @@
         
             <li><a href="canvas.html">canvas</a></li>
         
-            <li><a href="mobile-frontend.html">移动端</a></li>
+            <li><a href="%E7%A7%BB%E5%8A%A8%E7%AB%AF.html">移动端</a></li>
+        
+            <li><a href="docker.html">docker</a></li>
+        
+            <li><a href="centos.html">centos</a></li>
          
 
       </ul>
@@ -106,6 +110,95 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="server-safe.html">
+                
+                  <h1>服务器安全配置</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>查看登陆失败的ip<br/>
+sudo grep &quot;Failed password for&quot; /var/log/secure |awk &#39;{print $11}&#39;|sort|uniq -c |sort -nr|more</p>
+
+<p>我这也就曝光一些哪些扫描人ip<br/>
+这是我的到今天开机50天登陆失败次数500次以上的ip<br/>
+<img src="http://img.lidong.me/2015/02/2QYfyR7lVtTy.png" alt=""/></p>
+
+<p>基于密钥认证的配置</p>
+
+<pre><code># vi /etc/ssh/sshd_config  
+PasswordAuthentication no //禁止使用基于口令认证的方式登陆
+PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆
+# /etc/init.d/sshd reload
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/server-safe.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="html5-1.html">
+                
+                  <h1>html5</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>figure</p>
+
+<p>embed<br/>
+mark<br/>
+progress</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='html5.html'>html5</a></span>
+          				  
+          					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://notes.lidong.me/html5-1.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="hangjianyanshi.html">
                 
@@ -138,9 +231,9 @@ color:red;
                     <span class="date">2016/2/1</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='css.html'>css</a></span>
-          				  
           					    <span class="posted-in"><a href='frontend.html'>前端</a></span>
+          				  
+          					    <span class="posted-in"><a href='css.html'>css</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -361,99 +454,6 @@ root html;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="directory-list.html">
-                
-                  <h1>目录列表程序</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>好久就想弄个可以分享文件的页面，感觉不复杂，但也不简单。</p>
-
-<p>今天意外发现了<a href="http://soft.laozuo.org">http://soft.laozuo.org</a> 貌似就是我想象中的东西。看了看老左的介绍 <a href="http://www.laozuo.org/6300.html">http://www.laozuo.org/6300.html</a> 啊嗷，原来这个东西叫目录列表程序啊。😄</p>
-
-<p>当然，现在我就弄了一个。 <a href="http://file.lidong.me">http://file.lidong.me</a> 只是觉得上传有点不太方便，需要FTP上传，如果从前端页面上可以直接上传就好（对作者的一点小小的期待），要不看什么时候自己把它改改好了。😄</p>
-
-<p><img src="http://img.lidong.me/2015/01/hREZQHtZdOOK.png" alt=""/></p>
-
-<p>目前是弄几个fq软件（有时换电脑或捣腾手机后，在不fq的时候去找fq软件，那叫一个尴尬😅），现在提前准备到这里，以后就不怕不怕啦。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='wangzhanchengxu.html'>网站程序</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/directory-list.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="fontend-guide.html">
-                
-                  <h1>前端规范</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">html部分</h3>
-
-<ol>
-<li>页面声明：简单粗暴有内涵
-&lt;!DOCTYPE HTML&gt;</li>
-<li>把css放在<head>中，避免使用@import</li>
-<li>语言属性声明。
-<html lang="zh-CN"></li>
-<li>html标签使用小写</li>
-<li><p>使用utf-8编码<br/>
-html中：`<meta charset="uft-8"><br/>
-css中：@charset &quot;uft-8&quot;;</p></li>
-<li><p>IE兼容模式<br/>
-完美解决IE兼容模式代码： <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"></p></li>
-<li><p>自闭合元素（单闭合标签）后的斜杠是可以省略的，既然可以省略，省略最好，省字节。</p></li>
-<li><p>属性定义最好使用双引号</p></li>
-<li><p>html5中引入js、css文件不需要定义type属性。（能省则省）</p></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/26</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-                        <a href="http://notes.lidong.me/fontend-guide.html#disqus_thread">comments</a>
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -503,7 +503,7 @@ css中：@charset &quot;uft-8&quot;;</p></li>
 
       	<p class="cat-list">
         
-            <a href="ethereum.html"><strong>以太</strong></a>
+            <a href="%E4%BB%A5%E5%A4%AA.html"><strong>以太</strong></a>
         
             <a href="editor-ide.html"><strong>工具</strong></a>
         
@@ -523,7 +523,11 @@ css中：@charset &quot;uft-8&quot;;</p></li>
         
             <a href="canvas.html"><strong>canvas</strong></a>
         
-            <a href="mobile-frontend.html"><strong>移动端</strong></a>
+            <a href="%E7%A7%BB%E5%8A%A8%E7%AB%AF.html"><strong>移动端</strong></a>
+        
+            <a href="docker.html"><strong>docker</strong></a>
+        
+            <a href="centos.html"><strong>centos</strong></a>
          
         </p>
 
@@ -540,31 +544,31 @@ css中：@charset &quot;uft-8&quot;;</p></li>
 	      
 		      
 			      <li class="post">
-			        <a href="14596930403739.html">dockerfile</a>
+			        <a href="rpm-qa.html">rpm -qa</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14596900345198.html">docker 报错</a>
+			        <a href="centos-v.html">查看CentOS版本方法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="dockerfile.html">dockerfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="docker-error.html">docker 报错</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
 			        <a href="css-bug.html">css bug</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="mobile-frame.html">常用的移动端框架</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="fullpage.js.html">fullpage全屏滚动插件</a>
 			      </li>
 		     
 		  
